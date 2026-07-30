@@ -73,34 +73,15 @@
     navSections.forEach((item) => sectionObserver.observe(item.section));
   }
 
-  // Interactive Cursor & Parallax
-  const cursor = document.querySelector('.custom-cursor');
+  // Hero Parallax
   const hero = document.querySelector('.hero');
-  const interactiveElements = document.querySelectorAll('a, button');
 
-  if (cursor && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  if (hero && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     document.addEventListener('mousemove', (e) => {
-      // Update cursor position
-      cursor.style.left = e.clientX + 'px';
-      cursor.style.top = e.clientY + 'px';
-      
-      // Update hero parallax variables if hero is present
-      if (hero) {
-        const x = (e.clientX / window.innerWidth) - 0.5;
-        const y = (e.clientY / window.innerHeight) - 0.5;
-        hero.style.setProperty('--mouse-x', x);
-        hero.style.setProperty('--mouse-y', y);
-      }
-    });
-
-    // Add hovering effect on interactive elements
-    interactiveElements.forEach(el => {
-      el.addEventListener('mouseenter', () => {
-        cursor.classList.add('is-hovering');
-      });
-      el.addEventListener('mouseleave', () => {
-        cursor.classList.remove('is-hovering');
-      });
+      const x = (e.clientX / window.innerWidth) - 0.5;
+      const y = (e.clientY / window.innerHeight) - 0.5;
+      hero.style.setProperty('--mouse-x', x);
+      hero.style.setProperty('--mouse-y', y);
     });
   }
 
