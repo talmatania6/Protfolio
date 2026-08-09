@@ -1,165 +1,408 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Video Editing Instructional Design Case Study — Tal Matania</title>
-  <meta name="description" content="How Tal Matania analyzed beginner creators, structured complex video-editing content, and selected a one-page website to support a clear, action-oriented learning journey.">
-  <meta name="theme-color" content="#0a0a0a">
-  <link rel="canonical" href="https://your-domain.example/cases/video-editing.html">
+  <title>Video Editing for Beginner Creators — Tal Matania</title>
+  <meta name="description"
+    content="Instructional design case study: Analyzing beginner creator roadblocks and architecting a guided one-page learning website and interactive prototype.">
+  <meta name="theme-color" content="#fdfcf8">
+  <link rel="canonical" href="https://talmatania.com/cases/video-editing.html">
   <meta property="og:type" content="article">
-  <meta property="og:title" content="Video Editing Website for Aspiring Creators — Tal Matania">
-  <meta property="og:description" content="An instructional design case study showing how audience needs, content analysis, task sequencing, and UX/UI shaped a guided video-editing learning website.">
+  <meta property="og:title" content="Video Editing for Beginner Creators — Tal Matania">
+  <meta property="og:description"
+    content="From content analysis to a guided one-page learning website for aspiring content creators.">
   <meta property="og:image" content="../assets/projects/video-editing/video-hero.svg">
-  <meta property="og:url" content="https://your-domain.example/cases/video-editing.html">
-  <meta name="twitter:card" content="summary_large_image">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&amp;family=Inter:wght@600;700;800;900&amp;display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800;900&display=swap"
+    rel="stylesheet">
   <link rel="icon" href="../assets/icons/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="../css/styles.css">
-  <link rel="stylesheet" href="../css/case-study.css">
   <script>document.documentElement.classList.add('js');</script>
 </head>
-<body class="case-page case-video">
+
+<body>
+  <div class="cursor-glow" aria-hidden="true"></div>
   <a class="skip-link" href="#main-content">Skip to content</a>
-  <header class="site-header case-nav" data-header>
+
+  <!-- SITE HEADER -->
+  <header class="site-header" data-header>
     <nav class="site-nav wrap" aria-label="Primary navigation">
       <a class="brand" href="../index.html" aria-label="Tal Matania home"><span>T</span><span>M</span></a>
-      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-menu" data-menu-toggle><span class="sr-only">Toggle navigation</span><span aria-hidden="true"></span><span aria-hidden="true"></span></button>
-      <div class="nav-links" id="primary-menu" data-menu><a href="../index.html#projects">Projects</a><a href="../index.html#about">About</a><a href="../assets/documents/tal-matania-cv.pdf" download>CV <span aria-hidden="true">↙</span></a><a href="#contact">Contact</a></div>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-menu"
+        data-menu-toggle><span class="sr-only">Toggle navigation</span><span aria-hidden="true"></span><span
+          aria-hidden="true"></span></button>
+      <div class="nav-links" id="primary-menu" data-menu>
+        <a href="../index.html#projects">Work</a>
+        <a href="../index.html#philosophy">Philosophy</a>
+        <a href="../index.html#process">Process</a>
+        <a href="../index.html#about">About</a>
+        <a href="../assets/documents/tal-matania-cv.pdf" download>CV <span aria-hidden="true">↙</span></a>
+        <a href="#contact">Contact</a>
+      </div>
     </nav>
   </header>
 
   <main id="main-content">
-    <section class="case-hero wrap" aria-labelledby="case-title">
-      <div class="case-label reveal"><span>Case study / 01</span><span>2026</span></div>
-      <div class="case-hero-grid">
-        <div class="reveal"><h1 class="case-title" id="case-title">Video Editing<br>for Beginner<br>Creators</h1></div>
-        <div class="reveal" data-delay="1"><p class="case-subtitle">From content analysis to a guided learning website</p><a class="text-link case-live" href="https://example.com/" target="_blank" rel="noreferrer">See it live <span aria-hidden="true">↗</span></a></div>
-        <div class="case-visual reveal" data-delay="2"><img src="../assets/projects/video-editing/video-hero.svg" width="1200" height="900" alt="Visual preview of a lively instructional video editing website"></div>
-      </div>
-      <dl class="case-facts reveal" data-delay="2"><div><dt>My role</dt><dd>Instructional design, content strategy &amp; UX/UI</dd></div><div><dt>Audience</dt><dd>Beginner content creators, ages 18–25</dd></div><div><dt>Learning goal</dt><dd>Plan and complete a first edit with confidence</dd></div><div><dt>Solution</dt><dd>Responsive one-page learning website</dd></div></dl>
-    </section>
 
-    <section class="case-section wrap" aria-labelledby="overview-title">
-      <div class="section-heading case-heading reveal"><p class="eyebrow">01 / The brief</p><h2 id="overview-title">Overview<span>.</span></h2></div>
-      <div class="case-body reveal" data-delay="1">
-        <p>The brief was not simply to explain video-editing tools. The instructional challenge was to help beginner creators understand <strong>what to do, in what order, and why each decision matters</strong> when building a video.</p>
-        <p>I began by defining the target performance: enabling a learner to plan and complete a first edit with confidence. I then identified the minimum essential knowledge, removed advanced material that did not support that goal, and translated the remaining content into a clear, visual learning journey.</p>
-      </div>
-    </section>
+    <!-- CASE HERO HEADER (LEFT-ALIGNED) -->
+    <header class="wrap" id="overview" aria-labelledby="case-title" style="padding-top: 2.5rem; text-align: left;">
+      
+      <!-- Top Left Breadcrumb Navigation -->
+      <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+        <a href="../index.html">← Portfolio</a>
+        <span class="separator">/</span>
+        <span>Video Editing One-Pager</span>
+      </nav>
 
-    <section class="case-section audience-section wrap" aria-labelledby="audience-title">
-      <div class="section-heading case-heading reveal"><p class="eyebrow">02 / Audience analysis</p><h2 id="audience-title">Designing for<br>Beginner Creators<span>.</span></h2></div>
-      <p class="audience-intro reveal" data-delay="1">The audience is digitally fluent, but not yet fluent in editing. They are motivated by publishing a stronger video — not by learning software for its own sake. That distinction shaped both the content and the format.</p>
-      <div class="audience-grid reveal" data-delay="1">
-        <article><span>Need 01</span><h3>Outcome-driven</h3><p>They want a fast route to a visible result: a video that feels polished enough to publish.</p></article>
-        <article><span>Need 02</span><h3>Low editing confidence</h3><p>Professional interfaces, unfamiliar terms, and fear of making mistakes can stop progress before it begins.</p></article>
-        <article><span>Need 03</span><h3>Short learning moments</h3><p>They scan, compare examples, and learn by trying. The experience needed to support short visits without losing the overall sequence.</p></article>
-        <article><span>Need 04</span><h3>Platform-aware guidance</h3><p>The advice needed to feel relevant across TikTok, Reels, and YouTube while teaching principles that transfer between tools.</p></article>
-      </div>
-    </section>
-
-    <section class="case-section wrap" aria-labelledby="challenges-title">
-      <div class="section-heading case-heading reveal"><p class="eyebrow">03 / Content analysis</p><h2 id="challenges-title">The Content<br>Challenge<span>.</span></h2></div>
-      <ol class="challenge-list reveal" data-delay="1">
-        <li><span class="challenge-number">01</span><h3>Prioritize the<br>Essential</h3><p>Video editing is a broad professional domain. I needed to distinguish the knowledge required for a successful first edit from advanced features that would add cognitive load without supporting the immediate learning goal.</p></li>
-        <li><span class="challenge-number">02</span><h3>Build a Meaningful<br>Sequence</h3><p>Scattered tips do not create a usable mental model. The content needed to follow the creator’s real task flow — from planning and shooting to editing, polishing, and exporting.</p></li>
-        <li><span class="challenge-number">03</span><h3>Turn Knowledge<br>into Action</h3><p>Every explanation needed to answer a practical question: “What should I do next?” Concepts were paired with examples, decisions, and concrete actions inside the learner’s workflow.</p></li>
-      </ol>
-    </section>
-
-    <section class="case-section solution" aria-labelledby="solution-title">
-      <div class="wrap solution-grid">
-        <div class="reveal"><p class="eyebrow">04 / Learning strategy</p><h2 class="solution-intro" id="solution-title">Why a<br>One-Page<br>Website.</h2></div>
-        <div class="solution-points reveal" data-delay="1">
-          <article><span aria-hidden="true">A</span><div><h3>Organize around performance</h3><p>The learning architecture follows the actions involved in producing a video, rather than the menus of a specific editing program. This keeps the content transferable and goal-focused.</p></div></article>
-          <article><span aria-hidden="true">B</span><div><h3>Chunk without losing context</h3><p>Short learning units, tabs, and on-demand popups reduce cognitive load while allowing the learner to stay inside one continuous journey.</p></div></article>
-          <article><span aria-hidden="true">C</span><div><h3>Teach through worked examples</h3><p>Visual examples and creator references make abstract principles observable, helping learners connect a technique to the effect it creates.</p></div></article>
-          <article><span aria-hidden="true">D</span><div><h3>Let the format follow the problem</h3><p>A responsive one-page website minimizes navigation decisions, preserves the sequence, and lets learners revisit a specific step quickly while editing on another screen.</p></div></article>
-        </div>
-      </div>
-    </section>
-
-    <section class="case-section wrap content-architecture" aria-labelledby="architecture-title">
-      <div class="section-heading case-heading reveal"><p class="eyebrow">05 / Content architecture</p><h2 id="architecture-title">From Expert Knowledge<br>to a Learnable Path<span>.</span></h2></div>
-      <div class="content-map reveal" data-delay="1">
-        <article><span>01</span><div><h3>Foundations</h3><p>Cutting, lighting, text, and sound — the four principles beginners need to recognize before using advanced tools.</p></div></article>
-        <article><span>02</span><div><h3>Production workflow</h3><p>A step-by-step route from idea and planning through shooting, editing, review, and export.</p></div></article>
-        <article><span>03</span><div><h3>Personalized direction</h3><p>A short quiz connects the general principles to the learner’s platform, style, and current confidence level.</p></div></article>
-        <article><span>04</span><div><h3>Worked examples</h3><p>A creator gallery deconstructs successful videos so learners can see how the principles work in context.</p></div></article>
-        <article><span>05</span><div><h3>Performance support</h3><p>An FAQ provides just-in-time answers to common beginner questions without interrupting the main learning flow.</p></div></article>
-      </div>
-    </section>
-
-    <section class="case-section result-strip" aria-labelledby="results-title">
-      <div class="wrap result-grid reveal"><h2 id="results-title">Designed<br>Outcomes.</h2><article><h3>First-Edit Readiness</h3><p>The learner receives a clear mental model of the process, understands the purpose of each stage, and can move from explanation to a practical first edit.</p></article><article><h3>Reusable Learning Architecture</h3><p>The modular content structure can be updated as platforms, trends, and editing tools change without rebuilding the entire learning journey.</p></article></div>
-    </section>
-
-    <section class="case-section preview-section" aria-labelledby="preview-title">
-      <div class="wrap">
-        <div class="preview-intro reveal">
-          <h2 id="preview-title">Explore the<br>interactive one-pager.</h2>
-          <p>Scroll inside the prototype and click through the learning interactions, tabs, and guided content.</p>
+      <div class="reveal">
+        <div class="card-tags" style="margin-bottom: 1rem;">
+          <span class="tag-pill-sm highlight">Instructional Web Design</span>
+          <span class="tag-pill-sm">Content Architecture</span>
+          <span class="tag-pill-sm">Figma Interactive Prototype</span>
+          <span class="tag-pill-sm">Cognitive Load Strategy</span>
         </div>
 
-        <div class="browser-frame prototype-frame reveal" data-delay="1">
-          <div class="browser-bar" aria-hidden="true"><span></span><span></span><span></span><i></i></div>
-          <div class="prototype-embed">
-            <iframe
-              src="https://embed.figma.com/proto/EZmyaUxAYAYzfeio6mKMoR/%D7%A2%D7%A8%D7%95%D7%9A-%D7%90%D7%AA-%D7%96%D7%94?node-id=684-1004&amp;p=f&amp;viewport=-565%2C-481%2C0.09&amp;scaling=scale-down&amp;content-scaling=fixed&amp;starting-point-node-id=684%3A1004&amp;page-id=0%3A1&amp;embed-host=share"
-              title="Interactive prototype of the Video Editing instructional one-pager"
-              loading="lazy"
-              allowfullscreen>
-            </iframe>
+        <h1 class="hero-name" id="case-title" style="font-size: clamp(2.8rem, 5.5vw, 4.5rem); margin-bottom: 0.75rem;">
+          Video Editing for Beginners<span>.</span>
+        </h1>
+
+        <p class="hero-role-title" style="font-size: clamp(1.25rem, 2vw, 1.65rem); color: var(--ink-muted); font-weight: 600; margin-bottom: 1.5rem;">
+          From Complex Technical Domain to a Guided One-Page Learning Experience
+        </p>
+
+        <p class="hero-value-prop" style="margin-inline: 0; max-width: 820px; font-size: 1.25rem;">
+          How I analyzed beginner creator roadblocks, eliminated software feature bloat, and structured a performance-based one-page website—combining task sequencing, worked creator examples, and Figma interactive prototypes.
+        </p>
+
+        <!-- LARGE DEDICATED SHOWCASE MEDIA PLACEHOLDER -->
+        <div class="showcase-media-frame">
+          <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.12); padding-bottom: 1rem; margin-bottom: 1.5rem;">
+            <span style="font-family: var(--display); font-size: 0.85rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--orange);">
+              🎬 Interactive Figma Prototype
+            </span>
+            <a class="pill-badge dark" href="https://embed.figma.com/proto/EZmyaUxAYAYzfeio6mKMoR/%D7%A2%D7%A8%D7%95%D7%9A-%D7%90%D7%AA-%D7%96%D7%94?node-id=684-1004&p=f&viewport=-565%2C-481%2C0.09&scaling=scale-down&content-scaling=fixed&starting-point-node-id=684%3A1004&page-id=0%3A1&embed-host=share" target="_blank" rel="noreferrer" style="text-decoration: none;">
+              Open Full Screen Figma ↗
+            </a>
+          </div>
+
+          <!-- Video / High-Resolution Image Frame Placeholder -->
+          <div style="background: rgba(0,0,0,0.4); border-radius: var(--radius-md); border: 2px dashed rgba(255,255,255,0.15); min-height: 380px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 2rem; position: relative;">
+            <div style="font-size: 3.5rem; margin-bottom: 1rem;">💻</div>
+            <h3 style="color: #ffffff; font-size: 1.4rem; margin: 0 0 0.5rem;">Interactive Learning One-Pager UI &amp; Prototype</h3>
+            <p style="color: rgba(255,255,255,0.7); max-width: 520px; font-size: 0.95rem; margin: 0 0 1.5rem;">
+              [ Embedded Interactive Figma Prototype &amp; Step-by-Step Production UI Mockup ]
+            </p>
+            <a class="button button-primary" href="https://embed.figma.com/proto/EZmyaUxAYAYzfeio6mKMoR/%D7%A2%D7%A8%D7%95%D7%9A-%D7%90%D7%AA-%D7%96%D7%94?node-id=684-1004&p=f&viewport=-565%2C-481%2C0.09&scaling=scale-down&content-scaling=fixed&starting-point-node-id=684%3A1004&page-id=0%3A1&embed-host=share" target="_blank" rel="noreferrer">
+              Interact with Prototype <span aria-hidden="true">↗</span>
+            </a>
           </div>
         </div>
 
-        <div class="prototype-mobile-fallback reveal" data-delay="1">
-          <img
-            src="../assets/projects/video-editing/full-one-pager.svg"
-            width="1100"
-            height="2450"
-            alt="Preview of the complete Video Editing instructional one-pager"
-            loading="lazy">
-          <a
-            class="button button-dark prototype-open-link"
-            href="https://embed.figma.com/proto/EZmyaUxAYAYzfeio6mKMoR/%D7%A2%D7%A8%D7%95%D7%9A-%D7%90%D7%AA-%D7%96%D7%94?node-id=684-1004&amp;p=f&amp;viewport=-565%2C-481%2C0.09&amp;scaling=scale-down&amp;content-scaling=fixed&amp;starting-point-node-id=684%3A1004&amp;page-id=0%3A1&amp;embed-host=share"
-            target="_blank"
-            rel="noreferrer">
-            Open interactive prototype <span aria-hidden="true">↗</span>
-          </a>
+      </div>
+    </header>
+
+    <!-- IN-PAGE STICKY SUBNAV WITH ACTIVE HIGHLIGHT -->
+    <nav class="case-subnav" aria-label="Case study navigation">
+      <div class="wrap">
+        <ul class="case-subnav-list">
+          <li><a href="#overview" class="is-active">Overview</a></li>
+          <li><a href="#audience">Audience</a></li>
+          <li><a href="#challenge">Content Challenge</a></li>
+          <li><a href="#strategy">One-Page Strategy</a></li>
+          <li><a href="#decisions">Logic to Layout</a></li>
+          <li><a href="#impact">Outcomes</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- 01 / "AT A GLANCE" SECTION (3 DISTINCT CARDS) -->
+    <section class="wrap at-a-glance-section" aria-labelledby="glance-heading">
+      <h2 id="glance-heading" class="sr-only">Project At A Glance</h2>
+      <div class="at-a-glance-grid">
+        
+        <!-- Card 1: Role -->
+        <article class="at-a-glance-card reveal" data-delay="1">
+          <span class="glance-icon" aria-hidden="true">👤</span>
+          <h3>Role</h3>
+          <p><strong>Instructional Designer, Content Strategist &amp; UX/UI:</strong> Conducted beginner creator cognitive analysis, task flow modeling, content chunking, and full interactive Figma prototyping.</p>
+        </article>
+
+        <!-- Card 2: Deliverables & Tools -->
+        <article class="at-a-glance-card reveal" data-delay="2">
+          <span class="glance-icon" aria-hidden="true">🛠️</span>
+          <h3>Deliverables &amp; Tools</h3>
+          <p><strong>Figma</strong> (Interactive Component Prototyping), <strong>Task Sequence Architecture</strong>, <strong>Worked Creator Examples</strong>, <strong>Responsive Web Framework</strong>.</p>
+        </article>
+
+        <!-- Card 3: Outcome -->
+        <article class="at-a-glance-card reveal" data-delay="3">
+          <span class="glance-icon" aria-hidden="true">🎯</span>
+          <h3>Outcome</h3>
+          <p><strong>Action-Oriented Learning Website:</strong> Shifted instruction away from dry tool menus into an intuitive 7-step performance sequence, empowering beginners to publish their first edit with confidence.</p>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- 02 / CONTENT BLOCKS -->
+
+    <!-- BLOCK 1: OVERVIEW & THE BRIEF -->
+    <section class="wrap section" id="overview-brief" aria-labelledby="overview-brief-heading" style="padding-top: 2rem;">
+      <div class="split-alternating">
+        <div class="split-text-block reveal">
+          <p class="eyebrow">01 / The Brief</p>
+          <h2 id="overview-brief-heading">Performance Over Tool Menus<span>.</span></h2>
+          <p>
+            The challenge was not to explain video-editing tools, but to help beginners understand what to do, in what order, and why each editorial decision matters.
+          </p>
+          <p>
+            I began by defining the target performance: enabling a learner to plan, execute, and export a publishable first video with confidence. I identified the minimum essential knowledge, eliminated advanced feature bloat, and mapped the remainder into a clean visual journey.
+          </p>
+          <div class="takeaway-box">
+            <p><strong>Instructional Principle:</strong> Remove software feature-overload. Focus entirely on the immediate goal of producing a publishable first video.</p>
+          </div>
+        </div>
+
+        <div class="split-visual-frame reveal" data-delay="1">
+          <span style="font-size: 0.75rem; font-weight: 800; color: var(--orange); text-transform: uppercase; letter-spacing: 0.06em;">Instructional Reframing</span>
+          <h4 style="font-size: 1.2rem; margin: 0.5rem 0 1rem;">Software Manual vs. Performance Path</h4>
+          
+          <div style="display: grid; gap: 0.85rem;">
+            <div style="background: var(--paper-soft); padding: 1rem; border-radius: 8px; border-left: 3px solid #e05252;">
+              <strong style="display: block; font-size: 0.9rem; color: #e05252; margin-bottom: 0.2rem;">❌ Software Menu Approach</strong>
+              <p style="margin: 0; font-size: 0.88rem; color: var(--ink-muted);">Explaining 50+ toolbars and settings before the learner even touches footage.</p>
+            </div>
+
+            <div style="background: var(--paper-soft); padding: 1rem; border-radius: 8px; border-left: 3px solid #38a169;">
+              <strong style="display: block; font-size: 0.9rem; color: #38a169; margin-bottom: 0.2rem;">✓ Goal-Oriented Creator Flow</strong>
+              <p style="margin: 0; font-size: 0.88rem; color: var(--ink-muted);">Step-by-step task execution answering: "What do I cut first and why?"</p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
-    <section class="case-section wrap" aria-labelledby="logic-title">
-      <div class="section-heading case-heading reveal"><p class="eyebrow">06 / Learning decisions made visible</p><h2 id="logic-title">From Logic to Layout<span>.</span></h2></div>
-      <div class="logic-intro reveal" data-delay="1"><p>Each interface decision began with an instructional question: what does the learner need to understand, do, or decide next? The examples below show how content strategy, learning goals, and UX/UI were translated into specific screen-level decisions.</p></div>
+    <!-- BLOCK 2: AUDIENCE ANALYSIS -->
+    <section class="wrap section" id="audience" aria-labelledby="audience-heading">
+      <div class="section-heading reveal">
+        <p class="eyebrow">02 / Audience Insights</p>
+        <h2 id="audience-heading">Designing for Beginner Creators<span>.</span></h2>
+        <p class="hook">The audience is digitally native, but not yet fluent in editing. They are motivated by publishing a stronger video—not by learning software.</p>
+      </div>
 
-      <article class="design-detail reveal">
-        <div class="design-copy"><p class="detail-index">01 / Learning promise → first screen</p><h3>The Hero<br>Section</h3><dl><div><dt>Learning need</dt><dd>Establish relevance immediately and show beginners the practical outcome they are working toward.</dd></div><div><dt>Instructional decision</dt><dd>The opening frames the experience around creating a publishable video rather than mastering software, using an aspirational visual and a clear promise of a guided path.</dd></div><div class="result"><dt>UX result</dt><dd>The learner understands the value of the experience before encountering any technical content.</dd></div></dl></div><div class="concept-board board-dark" aria-label="Abstract representation of the Hero Section layout"><span class="concept-tag">Final UI</span><div class="concept-ui"><i></i><i></i><i></i><i></i></div><strong class="concept-title">MAKE<br>THE CUT.</strong></div>
-      </article>
-      <article class="design-detail reveal">
-        <div class="design-copy"><p class="detail-index">02 / Content model → interactive principles</p><h3>Instructional<br>Principles</h3><dl><div><dt>Learning need</dt><dd>Give beginners a small set of foundational mental models they can use across different editing tools.</dd></div><div><dt>Instructional decision</dt><dd>Expert knowledge was reduced to four principles — cutting, lighting, text, and sound — and presented through tabs with visual examples and concise explanations.</dd></div><div class="result"><dt>UX result</dt><dd>Learners can compare principles without facing all of the content at once, reducing overload while preserving depth.</dd></div></dl></div><div class="concept-board board-cream" aria-label="Abstract tabbed layout representing instructional principles"><span class="concept-tag">Tabbed learning</span><div class="concept-ui"><i></i><i></i><i></i><i></i></div><strong class="concept-title">CUT / LIGHT<br>TEXT / SOUND</strong></div>
-      </article>
-      <article class="design-detail reveal">
-        <div class="design-copy"><p class="detail-index">03 / Task analysis → production workflow</p><h3>The Production<br>Workflow</h3><dl><div><dt>Learning need</dt><dd>Help learners build an accurate mental model of the full process, not just collect isolated editing tips.</dd></div><div><dt>Instructional decision</dt><dd>A task analysis was translated into seven connected stages. The main route stays visible, while popups and video previews provide detail only when it is needed.</dd></div><div class="result"><dt>UX result</dt><dd>The learner can see where they are, what comes next, and how each action contributes to the final video.</dd></div></dl></div><div class="concept-board board-lilac" aria-label="Abstract timeline representing the production workflow"><span class="concept-tag">Process line</span><div class="concept-orbit"></div><strong class="concept-title">01—07<br>THE FLOW</strong></div>
-      </article>
-      <article class="design-detail reveal">
-        <div class="design-copy"><p class="detail-index">04 / Learner variables → personalized guidance</p><h3>The Personalization<br>Quiz</h3><dl><div><dt>Learning need</dt><dd>Connect general editing principles to the learner’s actual platform, content style, and current confidence.</dd></div><div><dt>Instructional decision</dt><dd>A short diagnostic flow uses a small number of meaningful inputs and returns a focused recommendation rather than an overwhelming list of options.</dd></div><div class="result"><dt>UX result</dt><dd>The learner leaves with a relevant next step and a stronger sense that the guidance was designed for their context.</dd></div></dl></div><div class="concept-board board-mint" aria-label="Abstract personalized quiz dashboard"><span class="concept-tag">Your edit style</span><div class="concept-ui"><i></i><i></i><i></i><i></i></div><strong class="concept-title">WHAT’S<br>YOUR VIBE?</strong></div>
-      </article>
-      <article class="design-detail reveal">
-        <div class="design-copy"><p class="detail-index">05 / Worked examples → inspiration gallery</p><h3>The Inspiration<br>Gallery</h3><dl><div><dt>Learning need</dt><dd>Support transfer by showing how editing principles appear inside real creator content.</dd></div><div><dt>Instructional decision</dt><dd>A familiar story-based interface invites exploration, while each example is deconstructed to reveal the techniques behind the finished video.</dd></div><div class="result"><dt>UX result</dt><dd>Inspiration becomes a worked example: learners can identify a principle, observe its effect, and apply it to their own content.</dd></div></dl></div><div class="concept-board board-gold" aria-label="Abstract social-story layout representing an inspiration gallery"><span class="concept-tag">Creator stories</span><div class="concept-orbit"></div><strong class="concept-title">LOOK.<br>LEARN. MAKE.</strong></div>
-      </article>
-      <article class="design-detail reveal">
-        <div class="design-copy"><p class="detail-index">06 / Performance support → FAQ</p><h3>FAQ<br>Section</h3><dl><div><dt>Learning need</dt><dd>Resolve common beginner uncertainties at the moment they arise without adding more content to the core learning path.</dd></div><div><dt>Instructional decision</dt><dd>A concise accordion separates optional support from essential instruction, allowing learners to access answers on demand.</dd></div><div class="result"><dt>UX result</dt><dd>The main journey stays focused, while learners retain control over the amount of detail they open.</dd></div></dl></div><div class="concept-board board-dark" aria-label="Abstract accordion layout representing FAQ section"><span class="concept-tag">FAQ</span><div class="concept-ui"><i></i><i></i><i></i><i></i></div><strong class="concept-title">ASK<br>AWAY.</strong></div>
-      </article>
+      <div class="at-a-glance-grid">
+        <article class="at-a-glance-card reveal" data-delay="1">
+          <span class="glance-icon">🎯</span>
+          <h3>Outcome-Driven</h3>
+          <p>They want the fastest direct route to a visible, polished result they can proudly share on social media.</p>
+        </article>
+
+        <article class="at-a-glance-card reveal" data-delay="2">
+          <span class="glance-icon">🛡️</span>
+          <h3>Overcoming Low Confidence</h3>
+          <p>Complex interfaces and technical jargon cause analysis paralysis; clear scaffolding restores momentum.</p>
+        </article>
+
+        <article class="at-a-glance-card reveal" data-delay="3">
+          <span class="glance-icon">⏱️</span>
+          <h3>Short Learning Moments</h3>
+          <p>They learn by doing in short bursts. Content must support quick on-demand references while editing.</p>
+        </article>
+
+        <article class="at-a-glance-card reveal" data-delay="4">
+          <span class="glance-icon">📱</span>
+          <h3>Platform-Agnostic Principles</h3>
+          <p>Principles (pacing, cuts, lighting) transfer seamlessly across TikTok, YouTube, and Reels.</p>
+        </article>
+      </div>
     </section>
+
+    <!-- BLOCK 3: THE CONTENT CHALLENGE -->
+    <section class="wrap section" id="challenge" aria-labelledby="challenge-heading">
+      <div class="section-heading reveal">
+        <p class="eyebrow">03 / Content Deconstruction</p>
+        <h2 id="challenge-heading">The Content Challenge<span>.</span></h2>
+        <p class="hook">Translating an expansive professional domain into an actionable learning sequence.</p>
+      </div>
+
+      <div class="at-a-glance-grid">
+        <article class="at-a-glance-card reveal" data-delay="1">
+          <span class="glance-icon">🗂️</span>
+          <h3>1. Prioritize the Essential</h3>
+          <p>Distinguished essential core principles needed for a first cut from advanced features that create cognitive overload.</p>
+        </article>
+
+        <article class="at-a-glance-card reveal" data-delay="2">
+          <span class="glance-icon">🛤️</span>
+          <h3>2. Meaningful Sequence</h3>
+          <p>Replaced scattered online tips with a structured task flow matching the creator’s real process—from planning to export.</p>
+        </article>
+
+        <article class="at-a-glance-card reveal" data-delay="3">
+          <span class="glance-icon">🎬</span>
+          <h3>3. Knowledge to Action</h3>
+          <p>Every concept directly answers: “What do I do next?”pairing visual creator worked examples with concrete steps.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- BLOCK 4: ONE-PAGE LEARNING STRATEGY -->
+    <section class="wrap section" id="strategy" aria-labelledby="strategy-heading">
+      <div class="split-alternating reverse">
+        <div class="split-text-block reveal">
+          <p class="eyebrow">04 / Learning Strategy</p>
+          <h2 id="strategy-heading">Why a One-Page Website?<span>.</span></h2>
+          <p>
+            A responsive one-page website minimizes navigation friction, preserves the chronological learning sequence, and allows creators to keep the guide open on a secondary screen while editing.
+          </p>
+          <ul>
+            <li><strong>Performance-Centered Architecture:</strong> Organizes around creating the video, not software toolbars.</li>
+            <li><strong>Chunking Without Context Loss:</strong> Interactive tabs and modals deliver depth on demand without scattering navigation.</li>
+            <li><strong>Worked Examples:</strong> Deconstructs real creator videos to make abstract pacing principles immediately observable.</li>
+          </ul>
+
+          <div class="takeaway-box">
+            <p><strong>Design Win:</strong> Frictionless dual-screen reference preserving the learner's creative momentum.</p>
+          </div>
+        </div>
+
+        <div class="split-visual-frame reveal" data-delay="1" style="background: var(--ink); color: #ffffff;">
+          <span style="font-size: 0.72rem; font-weight: 800; color: #ffaa40; text-transform: uppercase; letter-spacing: 0.08em; display: block; margin-bottom: 0.5rem;">Connected Learning Ecosystem</span>
+          <h4 style="color: #ffffff; font-size: 1.2rem; margin: 0 0 1rem;">5 Core Page Stages</h4>
+
+          <div style="display: grid; gap: 0.65rem;">
+            <div style="background: rgba(255,255,255,0.06); padding: 0.65rem 0.85rem; border-radius: 6px; font-size: 0.88rem;">
+              <strong style="color: #ffaa40;">01. Foundations:</strong> The 4 core principles (Cut, Light, Text, Sound).
+            </div>
+            <div style="background: rgba(255,255,255,0.06); padding: 0.65rem 0.85rem; border-radius: 6px; font-size: 0.88rem;">
+              <strong style="color: #ffaa40;">02. Production Flow:</strong> 7-step roadmap from raw clips to final export.
+            </div>
+            <div style="background: rgba(255,255,255,0.06); padding: 0.65rem 0.85rem; border-radius: 6px; font-size: 0.88rem;">
+              <strong style="color: #ffaa40;">03. Personalization:</strong> Interactive diagnostic quiz matching style.
+            </div>
+            <div style="background: rgba(255,255,255,0.06); padding: 0.65rem 0.85rem; border-radius: 6px; font-size: 0.88rem;">
+              <strong style="color: #ffaa40;">04. Worked Examples:</strong> Story-based creator inspiration gallery.
+            </div>
+            <div style="background: rgba(255,255,255,0.06); padding: 0.65rem 0.85rem; border-radius: 6px; font-size: 0.88rem;">
+              <strong style="color: #ffaa40;">05. FAQ Support:</strong> On-demand troubleshooting accordions.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BLOCK 5: FROM LOGIC TO LAYOUT (6 INTERFACE DECISIONS) -->
+    <section class="wrap section" id="decisions" aria-labelledby="decisions-heading">
+      <div class="section-heading reveal">
+        <p class="eyebrow">05 / Instructional UX/UI</p>
+        <h2 id="decisions-heading">From Logic to Layout<span>.</span></h2>
+        <p class="hook">Each interface pattern was born from an instructional requirement: what does the learner need to decide or do next?</p>
+      </div>
+
+      <div class="at-a-glance-grid">
+        <article class="at-a-glance-card reveal" data-delay="1">
+          <span class="glance-icon">🚀</span>
+          <h3>01. Hero Promise ("Make The Cut")</h3>
+          <p><strong>Need:</strong> Establish value before software intimidation.<br><strong>Decision:</strong> Frame around creating a publishable video with a clear guided path.</p>
+        </article>
+
+        <article class="at-a-glance-card reveal" data-delay="2">
+          <span class="glance-icon">📑</span>
+          <h3>02. Tabbed Principles (Cut / Light / Text / Sound)</h3>
+          <p><strong>Need:</strong> Foundational mental models.<br><strong>Decision:</strong> Chunk 4 universal pillars into interactive tabs, reducing simultaneous cognitive load.</p>
+        </article>
+
+        <article class="at-a-glance-card reveal" data-delay="3">
+          <span class="glance-icon">🛤️</span>
+          <h3>03. The 7-Stage Process Line</h3>
+          <p><strong>Need:</strong> Build end-to-end task awareness.<br><strong>Decision:</strong> Persistent timeline showing current stage, with modals for on-demand details.</p>
+        </article>
+
+        <article class="at-a-glance-card reveal" data-delay="1">
+          <span class="glance-icon">🎨</span>
+          <h3>04. Personalization Quiz ("What's Your Vibe?")</h3>
+          <p><strong>Need:</strong> Tailor principles to learner platform.<br><strong>Decision:</strong> 3-question diagnostic providing custom tool recommendations.</p>
+        </article>
+
+        <article class="at-a-glance-card reveal" data-delay="2">
+          <span class="glance-icon">👁️</span>
+          <h3>05. Inspiration Worked Gallery</h3>
+          <p><strong>Need:</strong> Bridge theory to actual video formats.<br><strong>Decision:</strong> Social-story format deconstructing techniques behind real viral edits.</p>
+        </article>
+
+        <article class="at-a-glance-card reveal" data-delay="3">
+          <span class="glance-icon">❓</span>
+          <h3>06. Performance Support FAQ</h3>
+          <p><strong>Need:</strong> Fast troubleshooting without clutter.<br><strong>Decision:</strong> Clean accordion keeping primary learning path lean.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- BLOCK 6: OUTCOMES & REFLECTION -->
+    <section class="wrap section" id="impact" aria-labelledby="impact-heading">
+      <div class="section-heading reveal">
+        <p class="eyebrow">06 / Outcomes &amp; Reflection</p>
+        <h2 id="impact-heading">Impact &amp; Key Takeaways<span>.</span></h2>
+        <p class="hook">How content strategy and UX design transformed complex knowledge into creative empowerment.</p>
+      </div>
+
+      <div class="at-a-glance-grid">
+        <article class="at-a-glance-card reveal" data-delay="1">
+          <span class="glance-icon">🎯</span>
+          <h3>Clarity Over Feature Bloat</h3>
+          <p>Eliminating unnecessary software tools gave beginner creators the confidence to complete their first project without feeling overwhelmed.</p>
+        </article>
+
+        <article class="at-a-glance-card reveal" data-delay="2">
+          <span class="glance-icon">📐</span>
+          <h3>Modular Learning System</h3>
+          <p>The structured one-page architecture can be updated with new platform trends and video tools without redesigning the entire curriculum.</p>
+        </article>
+
+        <article class="at-a-glance-card reveal" data-delay="3">
+          <span class="glance-icon">💡</span>
+          <h3>Worked Examples Drive Transfer</h3>
+          <p>Deconstructing real creator content proved far more effective than abstract explanations in teaching pacing and visual rhythm.</p>
+        </article>
+      </div>
+
+      <!-- Navigation to Next Case -->
+      <div style="text-align: left; margin-top: 3.5rem;" class="reveal">
+        <a class="button button-dark" href="./golden-time.html">
+          Next Case Study: GoldenTime High-Trust Onboarding <span aria-hidden="true">→</span>
+        </a>
+      </div>
+    </section>
+
   </main>
 
-  <footer class="site-footer" id="contact"><div class="wrap footer-grid"><div><p class="footer-callout">Let’s make something <em>useful.</em></p><a class="footer-email" href="mailto:hello@talmatania.com">hello@talmatania.com <span aria-hidden="true">↗</span></a></div><div class="footer-meta"><a href="https://www.linkedin.com/" target="_blank" rel="noreferrer">LinkedIn <span aria-hidden="true">↗</span></a><a href="#main-content">Back to top <span aria-hidden="true">↑</span></a><p>© 2026 Tal Matania.<br>All rights reserved.</p></div></div></footer>
+  <!-- SITE FOOTER -->
+  <footer class="site-footer" id="contact">
+    <div class="wrap footer-grid">
+      <div>
+        <p class="footer-callout">Let’s make something <em>meaningful.</em></p>
+        <a class="footer-email" href="mailto:hello@talmatania.com">hello@talmatania.com <span aria-hidden="true">↗</span></a>
+      </div>
+      <div class="footer-meta">
+        <a href="https://www.linkedin.com/" target="_blank" rel="noreferrer">LinkedIn <span aria-hidden="true">↗</span></a>
+        <a href="#main-content">Back to top <span aria-hidden="true">↑</span></a>
+        <p>© 2026 Tal Matania.<br>All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- BACK TO TOP BUTTON -->
+  <button class="back-to-top" aria-label="Back to top">
+    <svg viewBox="0 0 24 24">
+      <path d="M12 19V5M5 12l7-7 7 7" />
+    </svg>
+  </button>
+
   <script src="../js/main.js"></script>
 </body>
+
 </html>

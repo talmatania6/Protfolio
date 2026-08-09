@@ -53,35 +53,92 @@
     revealItems.forEach((item) => item.classList.add('is-visible'));
   }
 
-  const homeNavLinks = Array.from(document.querySelectorAll('.nav-links a[href^="#"]'));
-  const navSections = homeNavLinks
-    .map((link) => ({ link, section: document.querySelector(link.getAttribute('href')) }))
-    .filter((item) => item.section);
+  // Navigation Active State Spy (Home Nav & Case Subnav)
+  const navTrackers = ['.nav-links a[href^="#"]', '.case-subnav-list a[href^="#"]'];
+  navTrackers.forEach((selector) => {
+    const links = Array.from(document.querySelectorAll(selector));
+    const sections = links
+      .map((link) => ({ link, section: document.querySelector(link.getAttribute('href')) }))
+      .filter((item) => item.section);
 
-  if (navSections.length && 'IntersectionObserver' in window) {
-    const sectionObserver = new IntersectionObserver((entries) => {
-      const visible = entries
-        .filter((entry) => entry.isIntersecting)
-        .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+    if (sections.length && 'IntersectionObserver' in window) {
+      const sectionObserver = new IntersectionObserver((entries) => {
+        const visible = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
 
-      if (!visible) return;
-      homeNavLinks.forEach((link) => link.classList.remove('is-active'));
-      const current = navSections.find((item) => item.section === visible.target);
-      if (current) current.link.classList.add('is-active');
-    }, { threshold: [0.25, 0.5, 0.75], rootMargin: '-18% 0px -55% 0px' });
+        if (!visible) return;
+        links.forEach((link) => link.classList.remove('is-active'));
+        const current = sections.find((item) => item.section === visible.target);
+        if (current) current.link.classList.add('is-active');
+      }, { threshold: [0.2, 0.5, 0.8], rootMargin: '-15% 0px -50% 0px' });
 
-    navSections.forEach((item) => sectionObserver.observe(item.section));
+      sections.forEach((item) => sectionObserver.observe(item.section));
+    }
+  });
+
+  // Global Cursor Spotlight Tracking Glow
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    let glow = document.querySelector('.cursor-glow');
+    if (!glow) {
+      glow = document.createElement('div');
+      glow.className = 'cursor-glow';
+      glow.setAttribute('aria-hidden', 'true');
+      document.body.appendChild(glow);
+    }
+
+    let isMoving = false;
+
+    window.addEventListener('mousemove', (e) => {
+      if (!isMoving) {
+        window.requestAnimationFrame(() => {
+          glow.style.setProperty('--mouse-x', `${e.clientX}px`);
+          glow.style.setProperty('--mouse-y', `${e.clientY}px`);
+          glow.style.setProperty('--glow-opacity', '1');
+          isMoving = false;
+        });
+        isMoving = true;
+      }
+    }, { passive: true });
+
+    document.documentElement.addEventListener('mouseleave', () => {
+      glow.style.setProperty('--glow-opacity', '0');
+    });
+
+    window.addEventListener('blur', () => {
+      glow.style.setProperty('--glow-opacity', '0');
+    });
   }
 
-  // Hero Parallax
-  const hero = document.querySelector('.hero');
+  // Back to Top functionality
+  const backToTop = document.querySelector('.back-to-top');
+  if (backToTop) {
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 500) {
+        backToTop.classList.add('is-visible');
+      } else {
+        backToTop.classList.remove('is-visible');
+      }
+    }, { passive: true });
 
-  if (hero && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    document.addEventListener('mousemove', (e) => {
-      const x = (e.clientX / window.innerWidth) - 0.5;
-      const y = (e.clientY / window.innerHeight) - 0.5;
-      hero.style.setProperty('--mouse-x', x);
-      hero.style.setProperty('--mouse-y', y);
+    backToTop.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+
+  // Accordion Progressive Disclosure (Single-open behavior)
+  const accordionItems = document.querySelectorAll('.accordion-item');
+  if (accordionItems.length) {
+    accordionItems.forEach((item) => {
+      item.addEventListener('toggle', () => {
+        if (item.open) {
+          accordionItems.forEach((other) => {
+            if (other !== item && other.open) {
+              other.open = false;
+            }
+          });
+        }
+      });
     });
   }
 
