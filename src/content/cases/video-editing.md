@@ -83,7 +83,4 @@ impact:
         Deconstructing real creator content proved far more effective than
         abstract explanations in teaching pacing and visual rhythm.
 
-nextCase:
-  href: /cases/golden-time/
-  label: "Next Case Study: GoldenTime High-Trust Onboarding"
 ---

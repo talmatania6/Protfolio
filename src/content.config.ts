@@ -180,7 +180,7 @@ const cases = defineCollection({
     subnav: z.array(link),
     glance: z.array(iconCard),
     impact: sectionHeading.extend({ cards: z.array(iconCard) }),
-    nextCase: link,
+    nextCase: link.optional(),
   }),
 });
 

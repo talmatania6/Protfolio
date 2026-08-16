@@ -79,35 +79,50 @@
 
   // Global Cursor Spotlight Tracking Glow
   if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    let glow = document.querySelector('.cursor-glow');
-    if (!glow) {
-      glow = document.createElement('div');
-      glow.className = 'cursor-glow';
-      glow.setAttribute('aria-hidden', 'true');
-      document.body.appendChild(glow);
-    }
-
-    let isMoving = false;
-
-    window.addEventListener('mousemove', (e) => {
-      if (!isMoving) {
-        window.requestAnimationFrame(() => {
-          glow.style.setProperty('--mouse-x', `${e.clientX}px`);
-          glow.style.setProperty('--mouse-y', `${e.clientY}px`);
-          glow.style.setProperty('--glow-opacity', '1');
-          isMoving = false;
-        });
-        isMoving = true;
+    const heroSection = document.querySelector('.hero');
+    if (heroSection) {
+      let glow = document.querySelector('.cursor-glow');
+      if (!glow) {
+        glow = document.createElement('div');
+        glow.className = 'cursor-glow';
+        glow.setAttribute('aria-hidden', 'true');
+        document.body.appendChild(glow);
       }
-    }, { passive: true });
 
-    document.documentElement.addEventListener('mouseleave', () => {
-      glow.style.setProperty('--glow-opacity', '0');
-    });
+      let isMoving = false;
+      let baseOpacity = 1;
 
-    window.addEventListener('blur', () => {
-      glow.style.setProperty('--glow-opacity', '0');
-    });
+      const updateOpacity = () => {
+        const heroHeight = heroSection.offsetHeight || window.innerHeight;
+        const scrollY = window.scrollY;
+        // Fade out completely when scrolled past the hero section
+        baseOpacity = Math.max(0, 1 - (scrollY / heroHeight));
+        glow.style.setProperty('--glow-opacity', baseOpacity.toString());
+      };
+
+      window.addEventListener('scroll', updateOpacity, { passive: true });
+      updateOpacity();
+
+      window.addEventListener('mousemove', (e) => {
+        if (!isMoving) {
+          window.requestAnimationFrame(() => {
+            glow.style.setProperty('--mouse-x', `${e.clientX}px`);
+            glow.style.setProperty('--mouse-y', `${e.clientY}px`);
+            glow.style.setProperty('--glow-opacity', baseOpacity.toString());
+            isMoving = false;
+          });
+          isMoving = true;
+        }
+      }, { passive: true });
+
+      document.documentElement.addEventListener('mouseleave', () => {
+        glow.style.setProperty('--glow-opacity', '0');
+      });
+
+      window.addEventListener('blur', () => {
+        glow.style.setProperty('--glow-opacity', '0');
+      });
+    }
   }
 
   // Back to Top functionality
