@@ -1,0 +1,293 @@
+---
+import { getEntry } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const entry = await getEntry('cases', 'my-first-shift');
+if (!entry) throw new Error('Missing src/content/cases/my-first-shift.md');
+const { meta, breadcrumb, tags, hero, subnav, glance, impact, nextCase } = entry.data;
+
+const storylineUrl =
+  'https://360.articulate.com/review/content/8308d52e-0a90-4e3b-8485-96bbe8272bff/review';
+---
+
+<BaseLayout
+  title={meta.title}
+  description={meta.description}
+  ogType="article"
+  ogTitle={meta.ogTitle}
+  ogDescription={meta.ogDescription}
+  ogImage={meta.ogImage}
+>
+  <!-- CASE HERO HEADER (LEFT-ALIGNED) -->
+  <header class="wrap" id="overview" aria-labelledby="case-title" style="padding-top: 2.5rem; text-align: left;">
+    <!-- Top Left Breadcrumb Navigation -->
+    <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+      <a href="/">← Portfolio</a>
+      <span class="separator">/</span>
+      <span>{breadcrumb}</span>
+    </nav>
+
+    <div class="reveal">
+      <div class="card-tags" style="margin-bottom: 1rem;">
+        {
+          tags.map((tag) => (
+            <span class={tag.highlight ? 'tag-pill-sm highlight' : 'tag-pill-sm'}>{tag.label}</span>
+          ))
+        }
+      </div>
+
+      <h1 class="hero-name" id="case-title" style="font-size: clamp(2.8rem, 5.5vw, 4.5rem); margin-bottom: 0.75rem;">
+        {hero.title}<span>.</span>
+      </h1>
+
+      <p class="hero-role-title" style="font-size: clamp(1.25rem, 2vw, 1.65rem); color: var(--ink-muted); font-weight: 600; margin-bottom: 1.5rem;">
+        {hero.tagline}
+      </p>
+
+      <p class="hero-value-prop" style="margin-inline: 0; max-width: 820px; font-size: 1.25rem;" set:html={hero.valueProp} />
+
+      <!-- LARGE DEDICATED SHOWCASE MEDIA PLACEHOLDER -->
+      <div class="showcase-media-frame">
+        <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.12); padding-bottom: 1rem; margin-bottom: 1.5rem;">
+          <span style="font-family: var(--display); font-size: 0.85rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--orange);">
+            🍽️ Interactive Storyline Experience
+          </span>
+          <a class="pill-badge dark" href={storylineUrl} target="_blank" rel="noreferrer" style="text-decoration: none;">
+            Open in Articulate Review ↗
+          </a>
+        </div>
+
+        <!-- Video / High-Resolution Image Frame Placeholder -->
+        <div style="background: rgba(0,0,0,0.4); border-radius: var(--radius-md); border: 2px dashed rgba(255,255,255,0.15); min-height: 380px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 2rem; position: relative;">
+          <div style="font-size: 3.5rem; margin-bottom: 1rem;">💻</div>
+          <h3 style="color: #ffffff; font-size: 1.4rem; margin: 0 0 0.5rem;">Interactive Storyline POV Scenarios &amp; Service Simulation</h3>
+          <p style="color: rgba(255,255,255,0.7); max-width: 520px; font-size: 0.95rem; margin: 0 0 1.5rem;">
+            [ Dedicated Showcase Frame for Storyline Branching Prototypes, POV Video Clips &amp; Decision HUD ]
+          </p>
+          <a class="button button-primary" href={storylineUrl} target="_blank" rel="noreferrer">
+            Launch Live Storyline Project <span aria-hidden="true">↗</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- IN-PAGE STICKY SUBNAV WITH ACTIVE HIGHLIGHT -->
+  <nav class="case-subnav" aria-label="Case study navigation">
+    <div class="wrap">
+      <ul class="case-subnav-list">
+        {
+          subnav.map((item, index) => (
+            <li>
+              <a href={item.href} class={index === 0 ? 'is-active' : undefined}>
+                {item.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </nav>
+
+  <!-- 01 / "AT A GLANCE" SECTION (3 DISTINCT CARDS) -->
+  <section class="wrap at-a-glance-section" aria-labelledby="glance-heading">
+    <h2 id="glance-heading" class="sr-only">Project At A Glance</h2>
+    <div class="at-a-glance-grid">
+      {
+        glance.map((card, index) => (
+          <article class="at-a-glance-card reveal" data-delay={index + 1}>
+            <span class="glance-icon" aria-hidden="true">{card.icon}</span>
+            <h3>{card.title}</h3>
+            <p set:html={card.body} />
+          </article>
+        ))
+      }
+    </div>
+  </section>
+
+  <!-- 02 / CONTENT BLOCKS -->
+
+  <!-- BLOCK 1: THE CHALLENGE -->
+  <section class="wrap section" id="challenge" aria-labelledby="challenge-heading" style="padding-top: 2rem;">
+    <div class="split-alternating">
+      <div class="split-text-block reveal">
+        <p class="eyebrow">01 / The Organizational Gap</p>
+        <h2 id="challenge-heading">The Performance Challenge<span>.</span></h2>
+        <p>
+          At Vin and Viande, delivering a high-quality, personal, and precise service experience is core to the restaurant's identity. However, a significant gap emerged between the expected service standard and actual on-the-floor performance.
+        </p>
+        <p>
+          The reality was that many new waiters entered the role with little or no prior experience in hospitality. The ripple effect placed immense pressure on experienced staff, who constantly had to intervene in real time, risking the guest experience.
+        </p>
+        <div class="takeaway-box">
+          <p><strong>Core Problem:</strong> Not a lack of information, but a gap between knowing rules and being prepared to execute them under restaurant pressure.</p>
+        </div>
+      </div>
+
+      <div class="split-visual-frame reveal" data-delay="1">
+        <span style="font-size: 0.75rem; font-weight: 800; color: var(--orange); text-transform: uppercase; letter-spacing: 0.06em;">Floor Diagnostics</span>
+        <h4 style="font-size: 1.2rem; margin: 0.5rem 0 1rem;">Observable Performance Issues</h4>
+        <ul style="padding-left: 1.25rem; margin: 0; font-size: 0.95rem; line-height: 1.6; color: var(--ink);">
+          <li style="margin-bottom: 0.65rem;"><strong>Inconsistent Service Sequence:</strong> Skipping steps in the guest greeting and table opening.</li>
+          <li style="margin-bottom: 0.65rem;"><strong>Costly Ordering Errors:</strong> Misrecording food modifications and dietary requests.</li>
+          <li style="margin-bottom: 0.65rem;"><strong>Flow Breakdown:</strong> Losing timing synchronization between appetizers and mains during rush periods.</li>
+          <li><strong>Task Prioritization Paralysis:</strong> Struggling to decide which guest to attend to first when 4 tables signal simultaneously.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- BLOCK 2: THE LEARNING NEED & AUDIENCE -->
+  <section class="wrap section" id="audience" aria-labelledby="audience-heading">
+    <div class="section-heading reveal">
+      <p class="eyebrow">02 / Design Considerations</p>
+      <h2 id="audience-heading">The Learning Need &amp; Audience<span>.</span></h2>
+      <p class="hook">The learners are young (18–25), working in a fast-paced environment with high sensory demands.</p>
+    </div>
+
+    <div class="split-alternating reverse" style="margin-bottom: 2.5rem;">
+      <div class="split-text-block reveal">
+        <p>
+          To solve the organizational problem, the performance gap was translated into specific behavioral and cognitive objectives:
+        </p>
+        <ul>
+          <li><strong>Complete Service Flow:</strong> Master the end-to-end table journey from welcome to departure.</li>
+          <li><strong>Dynamic Application:</strong> Apply service standards in unpredictable, real-world customer situations.</li>
+          <li><strong>Stress Management:</strong> Prioritize competing table requests during peak rush hours.</li>
+          <li><strong>Mindset &amp; Value:</strong> Understand <em>why</em> accuracy and attentiveness matter to the guest experience.</li>
+        </ul>
+      </div>
+
+      <div class="split-visual-frame reveal" data-delay="1">
+        <span style="font-size: 0.75rem; font-weight: 800; color: var(--orange); text-transform: uppercase; letter-spacing: 0.06em;">Target Learner Profile</span>
+        <h4 style="font-size: 1.2rem; margin: 0.5rem 0 1rem;">Young Hospitality Beginners (18–25)</h4>
+        <p style="font-size: 0.92rem; color: var(--ink-muted); line-height: 1.6; margin: 0;">
+          Digitally fluent with smartphones, but unfamiliar with commercial POS terminals, dining etiquette protocols, or high-pressure multi-table multitasking.
+        </p>
+      </div>
+    </div>
+
+    <!-- 4 Pillars Grid -->
+    <div class="at-a-glance-grid">
+      <article class="at-a-glance-card reveal" data-delay="1">
+        <span class="glance-icon">⏳</span>
+        <h3>Bite-Sized Learning</h3>
+        <p>Content is chunked into short, focused interactive segments matching modern attention spans.</p>
+      </article>
+
+      <article class="at-a-glance-card reveal" data-delay="2">
+        <span class="glance-icon">🎬</span>
+        <h3>Visual &amp; Practical</h3>
+        <p>First-person POV videos and real dining scenarios prioritize observable behaviors over abstract text.</p>
+      </article>
+
+      <article class="at-a-glance-card reveal" data-delay="3">
+        <span class="glance-icon">🧠</span>
+        <h3>Active Decision-Making</h3>
+        <p>Interactive branching requires active participation, mirroring the physical, active nature of the role.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- BLOCK 3: THE LEARNING EXPERIENCE & SERVICE FLOW -->
+  <section class="wrap section" id="experience" aria-labelledby="experience-heading">
+    <div class="split-alternating">
+      <div class="split-text-block reveal">
+        <p class="eyebrow">03 / The Intervention</p>
+        <h2 id="experience-heading">The Learning Experience &amp; Service Flow<span>.</span></h2>
+        <p>
+          The instructional solution was a scenario-based e-learning simulation in <strong>Articulate Storyline</strong>. It follows a new waiter chronologically through an entire dining shift.
+        </p>
+        <p>
+          Chronological mirroring reduces cognitive load and allows the learner to construct an accurate mental sequence: from basic greeting rules to complex crisis prioritization.
+        </p>
+        <div class="takeaway-box">
+          <p><strong>Interaction Mix:</strong> POV videos, decision-based dialogues, interactive menu hotspots, and scenario certification checks.</p>
+        </div>
+      </div>
+
+      <div class="split-visual-frame reveal" data-delay="1" style="background: var(--ink); color: #ffffff;">
+        <span style="font-size: 0.72rem; font-weight: 800; color: #ffaa40; text-transform: uppercase; letter-spacing: 0.08em; display: block; margin-bottom: 0.5rem;">The Chronological Journey</span>
+        <h4 style="color: #ffffff; font-size: 1.2rem; margin: 0 0 1rem;">6 Service Cycle Stages</h4>
+
+        <div style="display: grid; gap: 0.65rem;">
+          <div style="background: rgba(255,255,255,0.06); padding: 0.65rem 0.85rem; border-radius: 6px; font-size: 0.88rem;">
+            <strong style="color: #ffaa40;">01. Welcome &amp; Seating:</strong> First impressions and greeting timing.
+          </div>
+          <div style="background: rgba(255,255,255,0.06); padding: 0.65rem 0.85rem; border-radius: 6px; font-size: 0.88rem;">
+            <strong style="color: #ffaa40;">02. Opening the Table:</strong> Drink orders, specials, and water service.
+          </div>
+          <div style="background: rgba(255,255,255,0.06); padding: 0.65rem 0.85rem; border-radius: 6px; font-size: 0.88rem;">
+            <strong style="color: #ffaa40;">03. Taking the Order:</strong> Modifications, allergy protocols, and POS input.
+          </div>
+          <div style="background: rgba(255,255,255,0.06); padding: 0.65rem 0.85rem; border-radius: 6px; font-size: 0.88rem;">
+            <strong style="color: #ffaa40;">04. Managing Meal Flow:</strong> Pacing between courses and table maintenance.
+          </div>
+          <div style="background: rgba(255,255,255,0.06); padding: 0.65rem 0.85rem; border-radius: 6px; font-size: 0.88rem;">
+            <strong style="color: #ffaa40;">05. Prioritizing Under Pressure:</strong> Handling simultaneous urgent table demands.
+          </div>
+          <div style="background: rgba(255,255,255,0.1); padding: 0.65rem 0.85rem; border-radius: 6px; font-size: 0.88rem; border-left: 3px solid var(--orange);">
+            <strong style="color: #ffffff;">06. Service Certification:</strong> End-to-end POV scenario assessment.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BLOCK 4: KEY DESIGN DECISIONS -->
+  <section class="wrap section" id="decisions" aria-labelledby="decisions-heading">
+    <div class="section-heading reveal">
+      <p class="eyebrow">04 / Storyline Logic</p>
+      <h2 id="decisions-heading">Key Design Decisions<span>.</span></h2>
+      <p class="hook">How instructional goals were translated into Storyline interactions.</p>
+    </div>
+
+    <div class="at-a-glance-grid">
+      <article class="at-a-glance-card reveal" data-delay="1">
+        <span class="glance-icon">🍽️</span>
+        <h3>Realistic Contextualization</h3>
+        <p><strong>Decision:</strong> Grounded standards directly inside dynamic dining scenarios rather than static bullet points.</p>
+      </article>
+
+      <article class="at-a-glance-card reveal" data-delay="2">
+        <span class="glance-icon">🛡️</span>
+        <h3>Safe Failure Sandbox</h3>
+        <p><strong>Decision:</strong> Built branching decision trees allowing learners to make mistakes and receive formative feedback without real guest impact.</p>
+      </article>
+
+      <article class="at-a-glance-card reveal" data-delay="3">
+        <span class="glance-icon">📈</span>
+        <h3>Scaffolded Complexity</h3>
+        <p><strong>Decision:</strong> Began with individual table etiquette before introducing multi-table rush-hour prioritization tasks.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- BLOCK 5: REFLECTION & OUTCOMES -->
+  <section class="wrap section" id="impact" aria-labelledby="impact-heading">
+    <div class="section-heading reveal">
+      <p class="eyebrow">{impact.eyebrow}</p>
+      <h2 id="impact-heading"><Fragment set:html={impact.heading} /><span>.</span></h2>
+      <p class="hook" set:html={impact.hook} />
+    </div>
+
+    <div class="at-a-glance-grid">
+      {
+        impact.cards.map((card, index) => (
+          <article class="at-a-glance-card reveal" data-delay={index + 1}>
+            <span class="glance-icon">{card.icon}</span>
+            <h3>{card.title}</h3>
+            <p set:html={card.body} />
+          </article>
+        ))
+      }
+    </div>
+
+    <!-- Navigation to Next Case -->
+    <div style="text-align: left; margin-top: 3.5rem;" class="reveal">
+      <a class="button button-dark" href={nextCase.href}>
+        {nextCase.label} <span aria-hidden="true">→</span>
+      </a>
+    </div>
+  </section>
+</BaseLayout>

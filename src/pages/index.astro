@@ -1,0 +1,245 @@
+---
+import { getEntry } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const home = await getEntry('home', 'home');
+if (!home) throw new Error('Missing src/content/global/home.md');
+const { meta, hero, projects, philosophy, process, about, toolkit, cvBanner } = home.data;
+
+const site = await getEntry('site', 'site');
+if (!site) throw new Error('Missing src/content/global/site.md');
+---
+
+<BaseLayout
+  title={meta.title}
+  description={meta.description}
+  ogType="website"
+  ogTitle={meta.ogTitle}
+  ogDescription={meta.ogDescription}
+  ogImage={meta.ogImage}
+>
+  <!-- HERO SECTION (100VH FULL VIEWPORT HEIGHT, LEFT-ALIGNED) -->
+  <section class="hero wrap" aria-labelledby="hero-name">
+    <div class="hero-inner">
+      <!-- Subtle Floating Abstract Background Shapes -->
+      <span class="floating-shape shape-1" aria-hidden="true">✦</span>
+      <span class="floating-shape shape-2" aria-hidden="true">✧</span>
+      <span class="floating-shape shape-3" aria-hidden="true">+</span>
+      <span class="floating-shape shape-4" aria-hidden="true">✢</span>
+
+      <div class="reveal">
+        <div class="hero-kicker-badge">
+          <span class="pill-badge" set:html={hero.badge} />
+        </div>
+
+        <h1 id="hero-name" class="hero-name" set:html={hero.heading} />
+
+        <h2 class="hero-role-title" set:html={hero.role} />
+
+        <div class="hero-value-prop">
+          <p set:html={hero.valueProp} />
+        </div>
+
+        <div class="hero-actions">
+          {
+            hero.actions.map((action) => (
+              <a class={`button button-${action.style}`} href={action.href} download={action.download}>
+                {action.label} <span aria-hidden="true">{action.suffix}</span>
+              </a>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 01 / FEATURED PROJECTS (2-COLUMN RECTANGULAR GRID) -->
+  <section class="section wrap" id="projects" aria-labelledby="projects-heading">
+    <div class="section-heading reveal">
+      <p class="eyebrow">{projects.eyebrow}</p>
+      <h2 id="projects-heading"><Fragment set:html={projects.heading} /><span>.</span></h2>
+      <p class="hook" set:html={projects.hook} />
+    </div>
+
+    <div class="projects-grid-2col">
+      {
+        projects.items.map((project) => (
+          <article class="project-card-rectangular reveal" data-delay={project.delay}>
+            <a class="card-preview-frame" href={project.href} aria-label={project.ariaLabel}>
+              <div
+                style={`width: 100%; height: 100%; background: linear-gradient(135deg, ${project.gradient[0]} 0%, ${project.gradient[1]} 100%); display: flex; flex-direction: column; justify-content: space-between; padding: 1.75rem; color: #fff;`}
+              >
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                  <span class="pill-badge dark">{project.badge}</span>
+                  <span style="font-size: 1.4rem;">{project.cornerEmoji}</span>
+                </div>
+                <div>
+                  <div style="font-size: 2.5rem; margin-bottom: 0.35rem;">{project.emojiRow}</div>
+                  <div style="font-family: var(--display); font-weight: 800; font-size: 1.35rem; color: #ffffff;">
+                    {project.previewTitle}
+                  </div>
+                  <p
+                    style="font-size: 0.95rem; color: rgba(255,255,255,0.7); margin: 0.25rem 0 0;"
+                    set:html={project.previewBlurb}
+                  />
+                </div>
+                <div style="display: flex; justify-content: space-between; font-size: 0.8rem; color: rgba(255,255,255,0.6); border-top: 1px solid rgba(255,255,255,0.1); padding-top: 0.65rem;">
+                  <span>{project.footerLeft}</span>
+                  <span>{project.footerRight}</span>
+                </div>
+              </div>
+            </a>
+            <div class="card-content-area">
+              <div>
+                <div class="card-tags">
+                  {
+                    project.tags.map((tag) => (
+                      <span class={tag.highlight ? 'tag-pill-sm highlight' : 'tag-pill-sm'}>
+                        {tag.label}
+                      </span>
+                    ))
+                  }
+                </div>
+                <h3><a href={project.href} set:html={project.title} /></h3>
+                <p set:html={project.description} />
+              </div>
+              <a class="card-cta-link" href={project.href}>
+                View Case Study <span aria-hidden="true">→</span>
+              </a>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+
+  <!-- 02 / PHILOSOPHY & PILLARS -->
+  <section class="section wrap" id="philosophy" aria-labelledby="philosophy-title">
+    <div class="section-heading reveal">
+      <p class="eyebrow">{philosophy.eyebrow}</p>
+      <h2 id="philosophy-title"><Fragment set:html={philosophy.heading} /><span>.</span></h2>
+      <p class="hook" set:html={philosophy.hook} />
+    </div>
+
+    <div class="at-a-glance-grid">
+      {
+        philosophy.pillars.map((pillar, index) => (
+          <article class="at-a-glance-card reveal" data-delay={index + 1}>
+            <span class="glance-icon" aria-hidden="true">{pillar.icon}</span>
+            <h3 set:html={pillar.title} />
+            <p set:html={pillar.body} />
+          </article>
+        ))
+      }
+    </div>
+  </section>
+
+  <!-- 03 / PROCESS & INSTRUCTIONAL CRACKING ACCORDION -->
+  <section class="section wrap" id="process" aria-labelledby="process-title">
+    <div class="section-heading reveal">
+      <p class="eyebrow">{process.eyebrow}</p>
+      <h2 id="process-title"><Fragment set:html={process.heading} /><span>.</span></h2>
+      <p class="hook" set:html={process.hook} />
+    </div>
+
+    <div class="accordion-wrapper reveal" data-delay="1">
+      {
+        process.stages.map((stage, index) => (
+          <details class="accordion-item" open={index === 0}>
+            <summary class="accordion-summary">
+              <div class="accordion-title-wrap">
+                <span class="accordion-number">{stage.number}</span>
+                <span set:html={stage.title} />
+              </div>
+              <span class="accordion-chevron" aria-hidden="true">▼</span>
+            </summary>
+            <div class="accordion-content">
+              <p set:html={stage.body} />
+            </div>
+          </details>
+        ))
+      }
+    </div>
+  </section>
+
+  <!-- 04 / ABOUT ME -->
+  <section class="section wrap" id="about" aria-labelledby="about-title">
+    <div class="section-heading reveal">
+      <p class="eyebrow">{about.eyebrow}</p>
+      <h2 id="about-title"><Fragment set:html={about.heading} /><span>.</span></h2>
+      <p class="hook" set:html={about.hook} />
+    </div>
+
+    <div class="about-bento reveal" data-delay="1">
+      <!-- Left: Portrait Frame -->
+      <div class="portrait-card">
+        <div
+          class="portrait-wrap"
+          style="aspect-ratio: 4/5; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end; background: linear-gradient(145deg, #fbf8f2 0%, #ece5d8 100%); padding: 2rem;"
+        >
+          <div style="font-size: 3.5rem; margin-bottom: 0.75rem;">{about.portrait.emoji}</div>
+          <p style="font-family: var(--display); font-weight: 800; font-size: 1.3rem; margin: 0 0 0.25rem;">
+            {about.portrait.name}
+          </p>
+          <p style="font-size: 0.95rem; color: var(--ink-muted); margin: 0;">{about.portrait.role}</p>
+          <span class="pill-badge" style="margin-top: 1.25rem;">{about.portrait.badge}</span>
+        </div>
+      </div>
+
+      <!-- Right: Story Cards -->
+      <div class="about-narrative">
+        {
+          about.cards.map((card) => (
+            <article class="about-card">
+              <h3 set:html={card.title} />
+              <p set:html={card.body} />
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- 05 / CATEGORIZED TOOLKIT -->
+  <section class="section wrap" aria-labelledby="toolkit-title">
+    <div class="section-heading reveal">
+      <p class="eyebrow">{toolkit.eyebrow}</p>
+      <h2 id="toolkit-title"><Fragment set:html={toolkit.heading} /><span>.</span></h2>
+      <p class="hook" set:html={toolkit.hook} />
+    </div>
+
+    <div class="toolkit-grid reveal" data-delay="1">
+      {
+        toolkit.groups.map((group) => (
+          <article class="toolkit-card">
+            <span class="toolkit-icon" aria-hidden="true">{group.icon}</span>
+            <h3 set:html={group.title} />
+            <ul class="tool-pill-list">
+              {group.tools.map((tool) => <li>{tool}</li>)}
+            </ul>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+
+  <!-- 06 / CV BANNER -->
+  <section class="wrap reveal" aria-label="Download CV Banner">
+    <div class="cv-section">
+      <div class="cv-grid">
+        <div class="cv-text">
+          <h2 set:html={cvBanner.heading} />
+          <p set:html={cvBanner.body} />
+        </div>
+        <a
+          class="button button-dark"
+          href={site.data.cv}
+          download
+          style="background: #ffffff; color: var(--ink); border-color: #ffffff; font-size: 1.05rem; padding: 1rem 2rem;"
+        >
+          {cvBanner.buttonLabel} <span aria-hidden="true">↓</span>
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

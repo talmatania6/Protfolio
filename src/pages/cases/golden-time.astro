@@ -1,0 +1,323 @@
+---
+import { getEntry } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const entry = await getEntry('cases', 'golden-time');
+if (!entry) throw new Error('Missing src/content/cases/golden-time.md');
+const { meta, breadcrumb, tags, hero, subnav, glance, impact, nextCase } = entry.data;
+---
+
+<BaseLayout
+  title={meta.title}
+  description={meta.description}
+  ogType="article"
+  ogTitle={meta.ogTitle}
+  ogDescription={meta.ogDescription}
+  ogImage={meta.ogImage}
+>
+  <!-- CASE HERO HEADER (LEFT-ALIGNED) -->
+  <header class="wrap" id="overview" aria-labelledby="case-title" style="padding-top: 2.5rem; text-align: left;">
+    <!-- Top Left Breadcrumb Navigation -->
+    <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+      <a href="/">← Portfolio</a>
+      <span class="separator">/</span>
+      <span>{breadcrumb}</span>
+    </nav>
+
+    <div class="reveal">
+      <div class="card-tags" style="margin-bottom: 1rem;">
+        {
+          tags.map((tag) => (
+            <span class={tag.highlight ? 'tag-pill-sm highlight' : 'tag-pill-sm'}>{tag.label}</span>
+          ))
+        }
+      </div>
+
+      <h1 class="hero-name" id="case-title" style="font-size: clamp(2.8rem, 5.5vw, 4.5rem); margin-bottom: 0.75rem;">
+        {hero.title}<span>.</span>
+      </h1>
+
+      <p class="hero-role-title" style="font-size: clamp(1.25rem, 2vw, 1.65rem); color: var(--ink-muted); font-weight: 600; margin-bottom: 1.5rem;">
+        {hero.tagline}
+      </p>
+
+      <p class="hero-value-prop" style="margin-inline: 0; max-width: 820px; font-size: 1.25rem;" set:html={hero.valueProp} />
+
+      <!-- LARGE DEDICATED SHOWCASE MEDIA PLACEHOLDER -->
+      <div class="showcase-media-frame">
+        <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.12); padding-bottom: 1rem; margin-bottom: 1.5rem;">
+          <span style="font-family: var(--display); font-size: 0.85rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--orange);">
+            📱 High-Trust Mobile Experience
+          </span>
+          <span class="pill-badge dark">Inclusive Senior UX</span>
+        </div>
+
+        <!-- Video / High-Resolution Image Frame Placeholder -->
+        <div style="background: rgba(0,0,0,0.4); border-radius: var(--radius-md); border: 2px dashed rgba(255,255,255,0.15); min-height: 380px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 2rem; position: relative;">
+          <div style="font-size: 3.5rem; margin-bottom: 1rem;">🌟</div>
+          <h3 style="color: #ffffff; font-size: 1.4rem; margin: 0 0 0.5rem;">GoldenTime Mobile App &amp; Verification Flow</h3>
+          <p style="color: rgba(255,255,255,0.7); max-width: 520px; font-size: 0.95rem; margin: 0;">
+            [ Dedicated Showcase Frame for Senior-Friendly UI Screens, Verification Steps &amp; Badge Mockups ]
+          </p>
+          <div style="display: flex; gap: 1rem; margin-top: 1.5rem; flex-wrap: wrap; justify-content: center;">
+            <span class="pill-badge dark">Accessible Contrast</span>
+            <span class="pill-badge dark">Mutual Safety Shield</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- IN-PAGE STICKY SUBNAV WITH ACTIVE HIGHLIGHT -->
+  <nav class="case-subnav" aria-label="Case study navigation">
+    <div class="wrap">
+      <ul class="case-subnav-list">
+        {
+          subnav.map((item, index) => (
+            <li>
+              <a href={item.href} class={index === 0 ? 'is-active' : undefined}>
+                {item.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </nav>
+
+  <!-- 01 / "AT A GLANCE" SECTION (3 DISTINCT CARDS) -->
+  <section class="wrap at-a-glance-section" aria-labelledby="glance-heading">
+    <h2 id="glance-heading" class="sr-only">Project At A Glance</h2>
+    <div class="at-a-glance-grid">
+      {
+        glance.map((card, index) => (
+          <article class="at-a-glance-card reveal" data-delay={index + 1}>
+            <span class="glance-icon" aria-hidden="true">{card.icon}</span>
+            <h3>{card.title}</h3>
+            <p set:html={card.body} />
+          </article>
+        ))
+      }
+    </div>
+  </section>
+
+  <!-- 02 / CONTENT BLOCKS -->
+
+  <!-- BLOCK 1: OVERVIEW & OPPORTUNITY -->
+  <section class="wrap section" id="overview-opp" aria-labelledby="overview-opp-heading" style="padding-top: 2rem;">
+    <div class="split-alternating">
+      <div class="split-text-block reveal">
+        <p class="eyebrow">01 / The Opportunity</p>
+        <h2 id="overview-opp-heading">Companionship Without Stigma<span>.</span></h2>
+        <p>
+          GoldenTime was born from a mission to address a critical issue facing older adults: daily loneliness. It is a <strong>shared-experience social platform</strong> where seniors can create or join local leisure activities—from a casual coffee meeting to a neighborhood walk or museum visit.
+        </p>
+        <p>
+          It is intentionally <em>not</em> a dating app; it makes low-pressure, platonic companionship feel safe, local, and possible.
+        </p>
+        <div class="takeaway-box">
+          <p><strong>Core Objective:</strong> Build an onboarding journey that balances rigorous identity verification with zero technical friction for older users.</p>
+        </div>
+      </div>
+
+      <div class="split-visual-frame reveal" data-delay="1">
+        <span style="font-size: 0.75rem; font-weight: 800; color: var(--orange); text-transform: uppercase; letter-spacing: 0.06em;">Design Intent</span>
+        <h4 style="font-size: 1.2rem; margin: 0.5rem 0 1rem;">Social Connection vs. Dating Friction</h4>
+
+        <div style="display: grid; gap: 0.85rem;">
+          <div style="background: var(--paper-soft); padding: 1rem; border-radius: 8px; border-left: 3px solid #e05252;">
+            <strong style="display: block; font-size: 0.9rem; color: #e05252; margin-bottom: 0.2rem;">❌ Dating App Patterns</strong>
+            <p style="margin: 0; font-size: 0.88rem; color: var(--ink-muted);">High romantic pressure, superficial swiping, and awkward social expectations.</p>
+          </div>
+
+          <div style="background: var(--paper-soft); padding: 1rem; border-radius: 8px; border-left: 3px solid #38a169;">
+            <strong style="display: block; font-size: 0.9rem; color: #38a169; margin-bottom: 0.2rem;">✓ GoldenTime Shared Activities</strong>
+            <p style="margin: 0; font-size: 0.88rem; color: var(--ink-muted);">Low-pressure, interest-based gatherings anchored in local community safety.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BLOCK 2: RESEARCH INSIGHTS & CHALLENGES -->
+  <section class="wrap section" id="challenges" aria-labelledby="challenges-heading">
+    <div class="section-heading reveal">
+      <p class="eyebrow">02 / Research Insights</p>
+      <h2 id="challenges-heading">The 4 Core Challenges<span>.</span></h2>
+      <p class="hook">Understanding the emotional, psychological, and physical barriers facing older adults online.</p>
+    </div>
+
+    <div class="at-a-glance-grid">
+      <article class="at-a-glance-card reveal" data-delay="1">
+        <span class="glance-icon">🛡️</span>
+        <h3>01. The Safety Gap</h3>
+        <p>For seniors, digital safety is not a feature; it is a dealbreaker. Identity verification needed to earn trust before the first social meetup without feeling invasive.</p>
+      </article>
+
+      <article class="at-a-glance-card reveal" data-delay="2">
+        <span class="glance-icon">⚡</span>
+        <h3>02. Eliminating Error-Phobia</h3>
+        <p>Older adults frequently fear that one wrong tap will permanently break something. Registration had to feel like a warm, conversational guide, not a technical test.</p>
+      </article>
+
+      <article class="at-a-glance-card reveal" data-delay="3">
+        <span class="glance-icon">👁️</span>
+        <h3>03. Radically Inclusive UI</h3>
+        <p>Age-related visual and motor changes make standard mobile elements frustrating. Oversized hit areas and high-contrast typography are foundational requirements.</p>
+      </article>
+
+      <!-- data-delay="4" has no matching rule in styles.css, so this card gets no
+           stagger. Carried over from the old site as-is. -->
+      <article class="at-a-glance-card reveal" data-delay="4">
+        <span class="glance-icon">☕</span>
+        <h3>04. Intent-Driven Positioning</h3>
+        <p>Seniors seek connection while avoiding dating stigma. The product language strictly emphasizes shared daytime activities and companionship.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- BLOCK 3: THE PERSONA (DALIA BAR LEV) -->
+  <section class="wrap section" id="persona" aria-labelledby="persona-heading">
+    <div class="split-alternating">
+      <div class="split-text-block reveal">
+        <p class="eyebrow">03 / User Persona</p>
+        <h2 id="persona-heading">Dalia Bar Lev (70)<span>.</span></h2>
+        <p style="font-size: 1.15rem; font-style: italic; color: var(--orange); margin-bottom: 1.25rem;">
+          “I miss doing things with friends. At my age, I’m left to deal with everything alone.”
+        </p>
+        <p>
+          <strong>Background:</strong> A retired nurse living in Givatayim. Active and social, but her circle has shrunk as peers become busy with grandkids or physical limitations.
+        </p>
+        <ul>
+          <li><strong>The Tech Gap:</strong> Uses WhatsApp and Waze daily, but fears making irreversible mistakes when exploring unfamiliar applications.</li>
+          <li><strong>The Trust Need:</strong> Will not meet anyone unless 100% confident their identity has been verified by the system.</li>
+          <li><strong>Accessibility Need:</strong> Generous touch targets and large typography that don't require changing reading glasses every two minutes.</li>
+        </ul>
+      </div>
+
+      <div class="split-visual-frame reveal" data-delay="1" style="background: var(--ink); color: #ffffff;">
+        <span style="font-size: 0.72rem; font-weight: 800; color: #ffaa40; text-transform: uppercase; letter-spacing: 0.08em; display: block; margin-bottom: 0.5rem;">Persona Snapshot</span>
+        <h4 style="color: #ffffff; font-size: 1.3rem; margin: 0 0 0.5rem;">Dalia Bar Lev</h4>
+        <p style="color: rgba(255,255,255,0.7); font-size: 0.88rem; margin: 0 0 1.25rem;">70 · Retired Nurse · Givatayim</p>
+
+        <div style="background: rgba(255,255,255,0.06); padding: 1rem; border-radius: 8px; margin-bottom: 1rem;">
+          <div style="display: flex; justify-content: space-between; font-size: 0.85rem; margin-bottom: 0.5rem;">
+            <span>Tech Literacy</span>
+            <strong style="color: #ffaa40;">4 / 10</strong>
+          </div>
+          <div style="height: 6px; background: rgba(255,255,255,0.15); border-radius: 3px; overflow: hidden;">
+            <div style="width: 40%; height: 100%; background: var(--orange);"></div>
+          </div>
+        </div>
+
+        <div style="background: rgba(255,255,255,0.06); padding: 0.85rem; border-radius: 8px; font-size: 0.85rem; line-height: 1.5; color: rgba(255,255,255,0.85);">
+          <strong>Core Design Principle:</strong> Safety needs to be visible, reassuring, and woven into every step rather than hidden in a privacy policy.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BLOCK 4: THE VERIFICATION FLOW -->
+  <section class="wrap section" id="verification" aria-labelledby="verification-heading">
+    <div class="split-alternating reverse">
+      <div class="split-text-block reveal">
+        <p class="eyebrow">04 / High-Trust Interaction</p>
+        <h2 id="verification-heading">Bridging the Trust Gap<span>.</span></h2>
+        <p>
+          <strong>The Paradox:</strong> Seniors demand strict identity verification to feel safe, yet taking selfies and submitting documents causes intense technical intimidation.
+        </p>
+        <p>
+          Rather than presenting verification as a bureaucratic chore, GoldenTime frames it as a <strong>Mutual Safety Shield</strong>. Conversational, single-task screens and persistent progress indicators remove fear of the unknown.
+        </p>
+        <div class="takeaway-box">
+          <p><strong>Result:</strong> Turns a stressful camera selfie into a protected, empowering milestone.</p>
+        </div>
+      </div>
+
+      <div class="split-visual-frame reveal" data-delay="1">
+        <span style="font-size: 0.75rem; font-weight: 800; color: var(--orange); text-transform: uppercase; letter-spacing: 0.06em;">The 4-Stage Safety Shield</span>
+        <h4 style="font-size: 1.2rem; margin: 0.5rem 0 1rem;">Verification Stages</h4>
+
+        <div style="display: grid; gap: 0.65rem;">
+          <div style="background: var(--paper-soft); padding: 0.75rem; border-radius: 6px; font-size: 0.88rem;">
+            <strong>01. A Warm Welcome:</strong> Setting safety expectations in conversational language.
+          </div>
+          <div style="background: var(--paper-soft); padding: 0.75rem; border-radius: 6px; font-size: 0.88rem;">
+            <strong>02. Basic Details:</strong> One focused task at a time with roomy touch targets.
+          </div>
+          <div style="background: var(--paper-soft); padding: 0.75rem; border-radius: 6px; font-size: 0.88rem;">
+            <strong>03. Safety Selfie:</strong> Clear visual framing turning a selfie into a mutual shield.
+          </div>
+          <div style="background: var(--paper-soft); padding: 0.75rem; border-radius: 6px; font-size: 0.88rem; border-left: 3px solid var(--orange);">
+            <strong>04. Verified Profile:</strong> Immediate visible gold star reward badge.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BLOCK 5: STEP BY STEP ONBOARDING -->
+  <section class="wrap section" id="experience" aria-labelledby="experience-heading">
+    <div class="section-heading reveal">
+      <p class="eyebrow">05 / The Experience</p>
+      <h2 id="experience-heading">Onboarding, Step by Step<span>.</span></h2>
+      <p class="hook">How each screen was designed to guide, protect, and reward older adults.</p>
+    </div>
+
+    <div class="at-a-glance-grid">
+      <article class="at-a-glance-card reveal" data-delay="1">
+        <span class="glance-icon">👋</span>
+        <h3>Step 01 / Reassure</h3>
+        <p><strong>A Warm Welcome:</strong> Establishes GoldenTime as a trusted community and explains why safety verification protects everyone. No jargon, no rush.</p>
+      </article>
+
+      <article class="at-a-glance-card reveal" data-delay="2">
+        <span class="glance-icon">📝</span>
+        <h3>Step 02 / Guide</h3>
+        <p><strong>One Small Task at a Time:</strong> Chunked fields and prominent progress indicators lower cognitive load. The UI gives context, then gets out of the way.</p>
+      </article>
+
+      <article class="at-a-glance-card reveal" data-delay="3">
+        <span class="glance-icon">🛡️</span>
+        <h3>Step 03 / Protect</h3>
+        <p><strong>Mutual Safety Selfie:</strong> Framed as a collective shield rather than an ID check. Forgiving instructions and large camera controls ease friction.</p>
+      </article>
+
+      <!-- data-delay="4" has no matching rule in styles.css, so this card gets no
+           stagger. Carried over from the old site as-is. -->
+      <article class="at-a-glance-card reveal" data-delay="4">
+        <span class="glance-icon">⭐</span>
+        <h3>Step 04 / Reward</h3>
+        <p><strong>Show Trust:</strong> Dalia receives a verified gold badge—a clear, instant social signal that she and everyone she meets took the exact same safety steps.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- BLOCK 6: OUTCOMES & REFLECTION -->
+  <section class="wrap section" id="impact" aria-labelledby="impact-heading">
+    <div class="section-heading reveal">
+      <p class="eyebrow">{impact.eyebrow}</p>
+      <h2 id="impact-heading"><Fragment set:html={impact.heading} /><span>.</span></h2>
+      <p class="hook" set:html={impact.hook} />
+    </div>
+
+    <div class="at-a-glance-grid">
+      {
+        impact.cards.map((card, index) => (
+          <article class="at-a-glance-card reveal" data-delay={index + 1}>
+            <span class="glance-icon">{card.icon}</span>
+            <h3>{card.title}</h3>
+            <p set:html={card.body} />
+          </article>
+        ))
+      }
+    </div>
+
+    <!-- Navigation to Next Case -->
+    <div style="text-align: left; margin-top: 3.5rem;" class="reveal">
+      <a class="button button-dark" href={nextCase.href}>
+        {nextCase.label} <span aria-hidden="true">→</span>
+      </a>
+    </div>
+  </section>
+</BaseLayout>

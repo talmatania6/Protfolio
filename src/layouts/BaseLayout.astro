@@ -1,0 +1,131 @@
+---
+import { getEntry } from 'astro:content';
+import '../styles/styles.css';
+
+interface Props {
+  title: string;
+  description: string;
+  ogType: 'website' | 'article';
+  ogTitle: string;
+  ogDescription: string;
+  ogImage: string;
+}
+
+// The two screen-reader strings below were inconsistent in the old site — the
+// homepage said "Skip to main content" / "Toggle navigation menu" and the case
+// pages said "Skip to content" / "Toggle navigation". Unified on the more
+// descriptive pair; nothing visual changes.
+const { title, description, ogType, ogTitle, ogDescription, ogImage } = Astro.props;
+
+const site = await getEntry('site', 'site');
+if (!site) throw new Error('Missing src/content/global/site.md');
+const { brand, nav, footer, email, linkedin, themeColor } = site.data;
+
+const canonical = new URL(Astro.url.pathname, Astro.site);
+
+// Homepage sections are local anchors on the homepage and /#anchor elsewhere.
+// Keeping them bare on the homepage matters: the scroll-spy in main.js selects
+// `.nav-links a[href^="#"]`, so a prefixed href would silently lose its
+// active-state highlighting.
+const isHome = Astro.url.pathname === '/';
+const navHref = (item: (typeof nav)[number]) =>
+  item.home && !isHome ? `/${item.href}` : item.href;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="theme-color" content={themeColor} />
+    <link rel="canonical" href={canonical} />
+    <meta property="og:type" content={ogType} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:title" content={ogTitle} />
+    <meta property="og:description" content={ogDescription} />
+    <meta property="og:image" content={ogImage} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" href="/assets/icons/favicon.svg" type="image/svg+xml" />
+    <!-- Must stay inline: styles.css gates the reveal animation on .js, so a
+         deferred module would let every .reveal element flash on first paint. -->
+    <script is:inline>document.documentElement.classList.add('js');</script>
+  </head>
+
+  <body>
+    <div class="cursor-glow" aria-hidden="true"></div>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+
+    <!-- SITE HEADER -->
+    <header class="site-header" data-header>
+      <nav class="site-nav wrap" aria-label="Primary navigation">
+        <a class="brand" href="/" aria-label={`${site.data.author} home`}>
+          <span>{brand.first}</span><span>{brand.second}</span>
+        </a>
+
+        <button
+          class="menu-toggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="primary-menu"
+          data-menu-toggle
+        >
+          <span class="sr-only">Toggle navigation menu</span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </button>
+
+        <div class="nav-links" id="primary-menu" data-menu>
+          {
+            nav.map((item) => (
+              <a href={navHref(item)} download={item.download}>
+                {item.label}
+                {item.suffix && <span aria-hidden="true">{item.suffix}</span>}
+              </a>
+            ))
+          }
+        </div>
+      </nav>
+    </header>
+
+    <main id="main-content">
+      <slot />
+    </main>
+
+    <!-- SITE FOOTER -->
+    <footer class="site-footer" id="contact">
+      <div class="wrap footer-grid">
+        <div>
+          <p class="footer-callout" set:html={footer.callout} />
+          <a class="footer-email" href={`mailto:${email}`}
+            >{email} <span aria-hidden="true">↗</span></a
+          >
+        </div>
+        <div class="footer-meta">
+          <a href={linkedin} target="_blank" rel="noreferrer"
+            >LinkedIn <span aria-hidden="true">↗</span></a
+          >
+          <a href="#main-content">Back to top <span aria-hidden="true">↑</span></a>
+          <p set:html={footer.copyright} />
+        </div>
+      </div>
+    </footer>
+
+    <!-- BACK TO TOP BUTTON -->
+    <button class="back-to-top" aria-label="Back to top">
+      <svg viewBox="0 0 24 24">
+        <path d="M12 19V5M5 12l7-7 7 7" />
+      </svg>
+    </button>
+
+    <script>
+      import '../scripts/main.js';
+    </script>
+  </body>
+</html>
