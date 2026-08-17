@@ -104,6 +104,7 @@ const home = defineCollection({
           emojiRow: z.string(),
           previewTitle: z.string(),
           previewBlurb: z.string(),
+          previewImage: z.string().optional(),
           footerLeft: z.string(),
           footerRight: z.string(),
           tags: z.array(tag),
@@ -179,8 +180,59 @@ const cases = defineCollection({
     // button), so it stays as verbatim markup in the page.
     subnav: z.array(link),
     glance: z.array(iconCard),
-    impact: sectionHeading.extend({ cards: z.array(iconCard) }),
+    impact: sectionHeading.extend({ cards: z.array(iconCard) }).optional(),
     nextCase: link.optional(),
+    
+    problem: z.object({
+      eyebrow: z.string(),
+      heading: z.string(),
+      context: z.string(),
+      body: z.string(),
+    }).optional(),
+
+    challenge: z.object({
+      eyebrow: z.string(),
+      heading: z.string(),
+      body: z.string(),
+      takeaway: z.string(),
+      problems: z.array(z.string()).optional(),
+    }).optional(),
+
+    learningSolution: z.object({
+      eyebrow: z.string(),
+      heading: z.string(),
+      context: z.string(),
+      body: z.string(),
+    }).optional(),
+
+    contentStrategy: z.object({
+      eyebrow: z.string(),
+      heading: z.string(),
+      body: z.string(),
+      architecture: z.string(),
+      decisions: z.array(z.object({
+        title: z.string(),
+        body: z.string(),
+      })),
+    }).optional(),
+
+    experience: z.object({
+      eyebrow: z.string(),
+      heading: z.string(),
+      body: z.string().optional(),
+      interactiveVideo: z.object({ heading: z.string(), body: z.string() }),
+      learnPractice: z.object({ heading: z.string(), body: z.string() }),
+      knowledgeCheck: z.object({ heading: z.string(), body: z.string() }),
+      prioritization: z.object({ heading: z.string(), body: z.string() }),
+      progression: z.object({ heading: z.string(), body: z.string() }),
+    }).optional(),
+
+    assessment: z.object({
+      eyebrow: z.string(),
+      heading: z.string(),
+      body: z.string(),
+      techOutput: z.string().optional(),
+    }).optional(),
   }),
 });
 

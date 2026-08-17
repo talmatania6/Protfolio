@@ -86,6 +86,7 @@ projects:
       ariaLabel: My First Shift Case Study
       delay: 1
       gradient: ["#221a15", "#140d09"]
+      previewImage: /assets/images/my-first-shift-hero.png
       badge: Simulation · E-Learning
       cornerEmoji: "🍽️"
       emojiRow: 🍷 📋 ⚡
