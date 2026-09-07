@@ -40,7 +40,7 @@ glance:
   - icon: 🛠️
     title: Tools
     body: >-
-      Articulate Storyline 360, Video Production &amp; Editing, Figma.
+      Articulate Storyline 360, CapCut, Figma, Canva, HeyGen, ChatGPT.
   - icon: 🎯
     title: Solution
     body: >-
@@ -50,15 +50,15 @@ problem:
   eyebrow: "01 / The Problem"
   heading: "The Onboarding Reality"
   context: >-
-    After working at the restaurant for two years, I repeatedly saw the same onboarding challenge: new waiters were expected to learn a detailed service process while already performing it during live shifts.
+    Vin & Viande is a chef restaurant in Petah Tikva with frequent employee turnover, creating a recurring need to onboard new waiters quickly and consistently. After working at the restaurant for two years, I repeatedly saw the same onboarding challenge: new waiters were expected to learn a detailed service process while already performing it during live shifts.
   body: >-
     The restaurant maintains a high and consistent service standard, but many new waiters begin with limited or no previous restaurant experience. This creates inconsistencies in service, ordering mistakes, difficulty maintaining the meal flow, and additional pressure on experienced staff who need to correct mistakes in real time.
 
 challenge:
-  eyebrow: "02 / The Challenge"
+  eyebrow: "02 / Performance Gap"
   heading: "The Challenge"
   body: >-
-    The instructional challenge was to move beyond teaching service rules. New waiters needed to recognize the correct sequence, make decisions in context, prioritize competing tasks, and apply the restaurant’s standards confidently during busy service.
+    The instructional challenge was to move beyond teaching service rules. New waiters needed to recognize the correct sequence, make decisions in context, prioritize competing tasks, and apply the restaurant’s standards confidently during busy service. The module is currently used at Vin & Viande as part of the onboarding process for new waiters.
   takeaway: "The problem was not simply a lack of information. Learners needed to perform the service process correctly in real situations."
   problems:
     - Follow the full service sequence correctly.

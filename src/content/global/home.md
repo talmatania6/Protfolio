@@ -93,16 +93,16 @@ projects:
       previewTitle: My First Shift
       previewBlurb: Interactive restaurant service onboarding simulation.
       footerLeft: Storyline 360
-      footerRight: Branching Scenarios
+      footerRight: Interactive Scenarios
       tags:
         - { label: Storyline 360, highlight: true }
-        - { label: Branching Logic }
+        - { label: Interactive Scenarios }
         - { label: Staff Onboarding }
       title: "My First Shift: Service Onboarding"
       description: >-
-        An authentic branching scenario simulation that prepares new restaurant
-        waiters to manage rush-hour guest dynamics with confidence and safe
-        pedagogical failure.
+        A realistic scenario-based onboarding experience that prepares new restaurant
+        waiters to handle service situations, prioritize tasks, and build confidence
+        before their first live shifts.
 
     - href: /cases/video-editing/
       ariaLabel: Video Editing Case Study
