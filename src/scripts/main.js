@@ -55,14 +55,40 @@
 
   // Navigation Active State Spy (Home Nav & Case Subnav)
   const navTrackers = ['.nav-links a[href^="#"]', '.case-subnav-list a[href^="#"]'];
+  let isNavClickScrolling = false;
+  let scrollTimeout;
+
   navTrackers.forEach((selector) => {
     const links = Array.from(document.querySelectorAll(selector));
     const sections = links
       .map((link) => ({ link, section: document.querySelector(link.getAttribute('href')) }))
       .filter((item) => item.section);
 
+    // Add click handler to override observer during smooth scroll
+    links.forEach((link) => {
+      link.addEventListener('click', (e) => {
+        const targetId = link.getAttribute('href');
+        const targetSection = document.querySelector(targetId);
+        if (targetSection) {
+          isNavClickScrolling = true;
+          
+          // Instantly highlight clicked link
+          links.forEach((l) => l.classList.remove('is-active'));
+          link.classList.add('is-active');
+
+          // Reset the flag after scroll completes (fallback timeout)
+          clearTimeout(scrollTimeout);
+          scrollTimeout = setTimeout(() => {
+            isNavClickScrolling = false;
+          }, 1000);
+        }
+      });
+    });
+
     if (sections.length && 'IntersectionObserver' in window) {
       const sectionObserver = new IntersectionObserver((entries) => {
+        if (isNavClickScrolling) return;
+
         const visible = entries
           .filter((entry) => entry.isIntersecting)
           .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];

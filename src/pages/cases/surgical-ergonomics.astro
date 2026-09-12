@@ -4,7 +4,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 
 const entry = await getEntry('cases', 'surgical-ergonomics');
 if (!entry) throw new Error('Missing src/content/cases/surgical-ergonomics.md');
-const { meta, breadcrumb, tags, hero, subnav, glance, impact, nextCase } = entry.data;
+const { meta, breadcrumb, tags, hero, subnav, glance, evidence, problem, challenge, learningSolution, contentStrategy, experience, justInTime, visualGuide, reflection, nextCase } = entry.data;
 ---
 
 <BaseLayout
@@ -15,9 +15,8 @@ const { meta, breadcrumb, tags, hero, subnav, glance, impact, nextCase } = entry
   ogDescription={meta.ogDescription}
   ogImage={meta.ogImage}
 >
-  <!-- CASE HERO HEADER (LEFT-ALIGNED) -->
+  <!-- CASE HERO HEADER -->
   <header class="wrap" id="overview" aria-labelledby="case-title" style="padding-top: 2.5rem; text-align: left;">
-    <!-- Top Left Breadcrumb Navigation -->
     <nav class="breadcrumb-nav" aria-label="Breadcrumb">
       <a href="/">← Portfolio</a>
       <span class="separator">/</span>
@@ -25,12 +24,17 @@ const { meta, breadcrumb, tags, hero, subnav, glance, impact, nextCase } = entry
     </nav>
 
     <div class="reveal">
-      <div class="card-tags" style="margin-bottom: 1rem;">
-        {
-          tags.map((tag) => (
-            <span class={tag.highlight ? 'tag-pill-sm highlight' : 'tag-pill-sm'}>{tag.label}</span>
-          ))
-        }
+      <div class="hero-meta-row" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.5rem;">
+        <div class="card-tags">
+          {
+            tags.map((tag) => (
+              <span class={tag.highlight ? 'tag-pill-sm highlight' : 'tag-pill-sm'}>{tag.label}</span>
+            ))
+          }
+        </div>
+        <a class="button button-primary" href="https://ergoapp-bgwt.onrender.com/" target="_blank" rel="noopener noreferrer">
+          View Live App <span aria-hidden="true">↗</span>
+        </a>
       </div>
 
       <h1 class="hero-name" id="case-title" style="font-size: clamp(2.8rem, 5.5vw, 4.5rem); margin-bottom: 0.75rem;">
@@ -41,37 +45,18 @@ const { meta, breadcrumb, tags, hero, subnav, glance, impact, nextCase } = entry
         {hero.tagline}
       </p>
 
-      <p class="hero-value-prop" style="margin-inline: 0; max-width: 820px; font-size: 1.25rem;" set:html={hero.valueProp} />
+      <p class="hero-value-prop" style="margin-inline: 0; max-width: 820px; font-size: 1.15rem; line-height: 1.6; margin-bottom: 1.5rem;" set:html={hero.valueProp} />
 
-      <!-- LARGE DEDICATED SHOWCASE MEDIA PLACEHOLDER -->
-      <div class="showcase-media-frame">
-        <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.12); padding-bottom: 1rem; margin-bottom: 1.5rem;">
-          <span style="font-family: var(--display); font-size: 0.85rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--orange);">
-            📱 Clinical App Showcase &amp; Video Modules
-          </span>
-          <span class="pill-badge dark">Mobile-First Microlearning</span>
-        </div>
-
-        <!-- Video / High-Resolution Image Frame Placeholder -->
-        <div style="background: rgba(0,0,0,0.4); border-radius: var(--radius-md); border: 2px dashed rgba(255,255,255,0.15); min-height: 380px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 2rem; position: relative;">
-          <div style="font-size: 3.5rem; margin-bottom: 1rem;">🩺</div>
-          <h3 style="color: #ffffff; font-size: 1.4rem; margin: 0 0 0.5rem;">Surgical Ergonomics Mobile Interface &amp; OR Media</h3>
-          <p style="color: rgba(255,255,255,0.7); max-width: 520px; font-size: 0.95rem; margin: 0;">
-            [ Dedicated Showcase Frame for App Screenshots, OR Demonstrations, and HeyGen AI Avatar Clips ]
-          </p>
-          <div style="display: flex; gap: 1rem; margin-top: 1.5rem; flex-wrap: wrap; justify-content: center;">
-            <span class="pill-badge dark">7 Clinical Modules</span>
-            <span class="pill-badge dark">AI Digital Instructor</span>
-          </div>
-        </div>
+      <div style="display: flex; justify-content: center; align-items: center; margin: -3rem auto 3rem;">
+        <img src="/assets/projects/surgical-ergonomics/surgical-ergonomics-hero.png" alt="Surgical Ergonomics Companion Hero mockup" style="width: 100%; max-width: 850px; height: auto; display: block;" />
       </div>
     </div>
   </header>
 
-  <!-- IN-PAGE STICKY SUBNAV WITH ACTIVE HIGHLIGHT -->
+  <!-- IN-PAGE STICKY SUBNAV -->
   <nav class="case-subnav" aria-label="Case study navigation">
     <div class="wrap">
-      <ul class="case-subnav-list">
+      <ul class="case-subnav-list custom-subnav">
         {
           subnav.map((item, index) => (
             <li>
@@ -85,7 +70,7 @@ const { meta, breadcrumb, tags, hero, subnav, glance, impact, nextCase } = entry
     </div>
   </nav>
 
-  <!-- 01 / "AT A GLANCE" SECTION (3 DISTINCT CARDS) -->
+  <!-- AT A GLANCE -->
   <section class="wrap at-a-glance-section" aria-labelledby="glance-heading">
     <h2 id="glance-heading" class="sr-only">Project At A Glance</h2>
     <div class="at-a-glance-grid">
@@ -101,289 +86,733 @@ const { meta, breadcrumb, tags, hero, subnav, glance, impact, nextCase } = entry
     </div>
   </section>
 
-  <!-- 02 / CONTENT BLOCKS -->
-
-  <!-- BLOCK 1: WHY THIS MATTERS (DATA & CONTEXT) -->
-  <section class="wrap section" id="context" aria-labelledby="context-heading" style="padding-top: 2rem;">
-    <div class="section-heading reveal">
-      <p class="eyebrow">01 / The Context</p>
-      <h2 id="context-heading">Why This Project Matters<span>.</span></h2>
-      <p class="hook">Surgeons face a severe occupational hazard that directly impacts their longevity and clinical practice.</p>
-    </div>
-
-    <!-- Stats Grid -->
-    <div class="at-a-glance-grid reveal" data-delay="1">
-      <article class="at-a-glance-card">
-        <span style="font-family: var(--display); font-size: clamp(2.4rem, 4.5vw, 3.5rem); font-weight: 900; color: var(--orange); line-height: 1; display: block; margin-bottom: 0.5rem;">76%</span>
-        <p><strong>European surgeons</strong> report work-related musculoskeletal disorders during their career.</p>
-      </article>
-
-      <article class="at-a-glance-card">
-        <span style="font-family: var(--display); font-size: clamp(2.4rem, 4.5vw, 3.5rem); font-weight: 900; color: var(--orange); line-height: 1; display: block; margin-bottom: 0.5rem;">52%</span>
-        <p><strong>Experience lower back pain</strong> from continuous, awkward static standing postures.</p>
-      </article>
-
-      <article class="at-a-glance-card">
-        <span style="font-family: var(--display); font-size: clamp(2.4rem, 4.5vw, 3.5rem); font-weight: 900; color: var(--orange); line-height: 1; display: block; margin-bottom: 0.5rem;">51%</span>
-        <p><strong>Experience chronic neck pain</strong> caused by unadjusted surgical monitors and tables.</p>
-      </article>
-    </div>
-
-    <div class="split-alternating" style="margin-top: 2.5rem;">
-      <div class="split-text-block reveal">
-        <p>
-          Prolonged static posture, awkward positioning, and repetitive movements make musculoskeletal disorders one of the most common occupational challenges faced by surgeons today.
-        </p>
-        <p>
-          Additionally, <strong>43%</strong> of surgeons experience severe shoulder pain, and <strong>12%</strong> report that physical pain has directly hindered or cut short their surgical operating career.
-        </p>
-        <div class="takeaway-box">
-          <p><strong>Key Insight:</strong> The issue was not a lack of theoretical recommendations—it was a performance transfer problem in high-stress operating environments.</p>
-        </div>
-      </div>
-
-      <div class="split-visual-frame reveal" data-delay="1">
-        <span style="font-size: 0.75rem; font-weight: 800; color: var(--orange); text-transform: uppercase; letter-spacing: 0.06em;">Empirical Research Base</span>
-        <h4 style="font-size: 1.2rem; margin: 0.5rem 0 1rem;">Primary Research Sources</h4>
-        <ul style="padding-left: 1.25rem; margin: 0; font-size: 0.95rem; line-height: 1.6; color: var(--ink);">
-          <li style="margin-bottom: 0.75rem;"><strong>PMC Systematic Review (2025):</strong> Meta-analysis on work-related musculoskeletal disorders among European surgeons.</li>
-          <li style="margin-bottom: 0.75rem;"><strong>JAMA Surgery:</strong> Systematic review analyzing physical symptoms and ergonomic interventions.</li>
-          <li><strong>Surgical Ergonomics Review (2024):</strong> Behavioral patterns in modern laparoscopic and robotic ORs.</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- BLOCK 2: THE CHALLENGE & LEARNING OPPORTUNITY -->
-  <section class="wrap section" id="challenge" aria-labelledby="challenge-heading">
-    <div class="split-alternating reverse">
-      <div class="split-text-block reveal">
-        <p class="eyebrow">02 / The Reality</p>
-        <h2 id="challenge-heading">The Performance Challenge<span>.</span></h2>
-        <p>
-          Many surgeons spend hours maintaining highly demanding static postures during surgical procedures. Despite existing ergonomic guidelines, incorrect body positioning quickly becomes habitual under operating pressure.
-        </p>
-        <p>
-          The challenge was not the absence of information. It was translating ergonomic recommendations into practical, instinctual behaviors inside the operating room. This is a <strong>performance problem</strong>, not simply an educational one.
-        </p>
-
-        <div class="takeaway-box">
-          <p><strong>Core Learning Opportunity:</strong> Shift from passive theory to behavioral change through 3 core cognitive pillars: <em>Recognize</em>, <em>Compare</em>, and <em>Apply</em>.</p>
-        </div>
-      </div>
-
-      <div class="split-visual-frame reveal" data-delay="1">
-        <span style="font-size: 0.75rem; font-weight: 800; color: var(--orange); text-transform: uppercase; letter-spacing: 0.06em;">Instructional Triad</span>
-        <h4 style="font-size: 1.25rem; margin: 0.5rem 0 1rem;">Behavioral Transformation Pillars</h4>
-
-        <div style="display: grid; gap: 0.85rem;">
-          <div style="display: flex; gap: 0.75rem; align-items: flex-start; background: var(--paper-soft); padding: 0.85rem; border-radius: 8px;">
-            <span style="font-size: 1.25rem;">👁️</span>
-            <div>
-              <strong style="font-size: 0.95rem; display: block;">1. Recognize</strong>
-              <p style="margin: 0; font-size: 0.88rem; color: var(--ink-muted);">Help surgeons self-diagnose incorrect posture and bad habits in real time.</p>
-            </div>
+  <!-- EVIDENCE & PROBLEM SECTION -->
+  {(evidence || problem) && (
+    <section class="wrap section" id="problem" aria-labelledby="problem-heading" style="padding-top: 4rem;">
+      {evidence && (
+        <div style="margin-bottom: 5rem;">
+          <div class="section-heading reveal">
+            <p class="eyebrow">{evidence.eyebrow}</p>
+            <h2 id="problem-heading">{evidence.heading}<span>.</span></h2>
+            <p class="hook" style="font-size: 1.15rem; line-height: 1.65; max-width: 800px;" set:html={evidence.intro} />
           </div>
 
-          <div style="display: flex; gap: 0.75rem; align-items: flex-start; background: var(--paper-soft); padding: 0.85rem; border-radius: 8px;">
-            <span style="font-size: 1.25rem;">⚖️</span>
-            <div>
-              <strong style="font-size: 0.95rem; display: block;">2. Compare</strong>
-              <p style="margin: 0; font-size: 0.88rem; color: var(--ink-muted);">Contrast habitual positioning with recommended techniques through side-by-side OR visuals.</p>
-            </div>
+          <div class="evidence-data-strip reveal" data-delay="1">
+            {evidence.stats.map((stat) => {
+              const valueHTML = stat.value.includes('ONLY') 
+                ? `<span style="font-size: 0.4em; display: block; line-height: 1; letter-spacing: 0.05em; color: var(--ink-muted); margin-bottom: 0.2rem;">ONLY</span>${stat.value.replace('ONLY ', '')}` 
+                : stat.value;
+                
+              return (
+                <div class="data-strip-item">
+                  <span class="data-value" set:html={valueHTML}></span>
+                  <p class="data-desc">{stat.description}</p>
+                </div>
+              );
+            })}
           </div>
 
-          <div style="display: flex; gap: 0.75rem; align-items: flex-start; background: var(--paper-soft); padding: 0.85rem; border-radius: 8px;">
-            <span style="font-size: 1.25rem;">🔄</span>
-            <div>
-              <strong style="font-size: 0.95rem; display: block;">3. Apply</strong>
-              <p style="margin: 0; font-size: 0.88rem; color: var(--ink-muted);">Empower clinicians to apply healthy posture adjustments right before scrubbing in.</p>
+          {evidence.takeaway && (
+            <div class="reveal evidence-takeaway">
+              <p>{evidence.takeaway}</p>
+            </div>
+          )}
+
+          {evidence.sources && (
+            <div class="reveal evidence-sources">
+              <p>Sources</p>
+              <ul>
+                {evidence.sources.map((src) => (
+                  <li>{src}</li>
+                ))}
+              </ul>
+            </div>
+          )}
+        </div>
+      )}
+
+      {problem && (
+        <div class="split-layout">
+          <div class="split-text-block reveal">
+            <p class="eyebrow">{problem.eyebrow}</p>
+            <h3 style="font-size: 2.2rem; font-family: var(--display); margin-bottom: 1.5rem; letter-spacing: -0.02em;">{problem.heading}</h3>
+            <p style="font-size: 1.15rem; line-height: 1.65; margin-bottom: 1.5rem; color: var(--ink-muted);" set:html={problem.context} />
+            <p style="font-size: 1.1rem; line-height: 1.65;" set:html={problem.body} />
+          </div>
+          
+          <div class="split-visual-frame reveal" data-delay="1">
+            <div class="naked-media" style="max-width: 550px; width: 100%;">
+              <video class="case-video" controls playsinline preload="metadata">
+                <source src="/assets/projects/surgical-ergonomics/surgical-ergonomics-posture-demo.mp4" type="video/mp4" />
+              </video>
             </div>
           </div>
         </div>
-      </div>
-    </div>
-  </section>
+      )}
+    </section>
+  )}
 
-  <!-- BLOCK 3: WHY MICROLEARNING & THE SOLUTION -->
-  <section class="wrap section" id="solution" aria-labelledby="solution-heading">
-    <div class="section-heading reveal">
-      <p class="eyebrow">03 / The Intervention</p>
-      <h2 id="solution-heading">Why Microlearning &amp; The 7 Modules<span>.</span></h2>
-      <p class="hook">Surgeons have extremely limited availability. Traditional hour-long lectures fail; bite-sized microlearning succeeds.</p>
-    </div>
-
-    <div class="split-alternating" style="margin-bottom: 3rem;">
-      <div class="split-text-block reveal">
-        <p>
-          Lengthy training sessions are impossible for busy surgical teams to attend and even harder to revisit when a quick refresher is needed.
-        </p>
-        <p>
-          By designing a <strong>mobile-first microlearning companion</strong>, surgeons can consume focused, 90-second instructional demonstrations immediately before a case or between procedures, fitting seamlessly into the clinical workflow.
-        </p>
-      </div>
-
-      <div class="split-visual-frame reveal" data-delay="1">
-        <div style="display: grid; gap: 0.85rem;">
-          <div style="background: var(--paper-soft); padding: 1rem; border-radius: 8px; border-left: 3px solid #e05252;">
-            <strong style="display: block; font-size: 0.9rem; color: #e05252; margin-bottom: 0.2rem;">❌ Traditional Clinical Training</strong>
-            <p style="margin: 0; font-size: 0.88rem; color: var(--ink-muted);">Long, inflexible classroom lectures that take surgeons away from patient care.</p>
+  <!-- THE CHALLENGE -->
+  {challenge && (
+    <section class="wrap section" id="challenge" aria-labelledby="challenge-heading" style="padding-top: 4.5rem;">
+      <div class="split-layout" style="flex-direction: row-reverse;">
+        <div class="split-text-block reveal">
+          <p class="eyebrow">{challenge.eyebrow}</p>
+          <h2 id="challenge-heading" style="margin-bottom: 1.5rem;">{challenge.heading}<span>.</span></h2>
+          <p style="font-size: 1.1rem; line-height: 1.65; margin-bottom: 1.5rem;" set:html={challenge.body} />
+          
+          <div class="takeaway-box" style="margin-bottom: 2rem;">
+            <p style="font-size: 1.05rem;"><strong>{challenge.takeaway}</strong></p>
           </div>
+        </div>
 
-          <div style="background: var(--paper-soft); padding: 1rem; border-radius: 8px; border-left: 3px solid #38a169;">
-            <strong style="display: block; font-size: 0.9rem; color: #38a169; margin-bottom: 0.2rem;">✓ Just-in-Time Microlearning</strong>
-            <p style="margin: 0; font-size: 0.88rem; color: var(--ink-muted);">Short, highly targeted video modules consumed on mobile before scrubbing in.</p>
+        <div class="split-visual-frame reveal" data-delay="1" style="display: flex; flex-direction: column; justify-content: center; align-items: flex-start;">
+          <span style="font-size: 0.75rem; font-weight: 800; color: var(--orange); text-transform: uppercase; letter-spacing: 0.06em;">Target Goals</span>
+          <h4 style="font-size: 1.25rem; margin: 0.5rem 0 1rem;">Performance Objectives</h4>
+          {challenge.problems && (
+            <ul style="padding-left: 1.25rem; margin: 0; font-size: 1.05rem; line-height: 1.6; color: var(--ink);">
+              {challenge.problems.map((prob) => (
+                <li style="margin-bottom: 0.75rem;">{prob}</li>
+              ))}
+            </ul>
+          )}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- THE LEARNING SOLUTION -->
+  {learningSolution && (
+    <section class="wrap section" id="solution" aria-labelledby="solution-heading" style="padding-top: 4.5rem;">
+      <div class="split-layout">
+        <div class="split-text-block reveal">
+          <p class="eyebrow">{learningSolution.eyebrow}</p>
+          <h2 id="solution-heading">{learningSolution.heading}<span>.</span></h2>
+          <p class="hook" style="font-size: 1.15rem; line-height: 1.65; color: var(--ink-muted); margin-bottom: 1.5rem;" set:html={learningSolution.context} />
+          <p style="font-size: 1.1rem; line-height: 1.65;" set:html={learningSolution.body} />
+        </div>
+        
+        <div class="split-visual-frame reveal" data-delay="1" style="justify-content: center;">
+          <div class="css-iphone-mockup zoomable-container" style="max-width: 320px; width: 100%;">
+            <div class="iphone-screen">
+              <img src="/assets/projects/surgical-ergonomics/surgical-ergonomics-modules.jpeg" alt="Module selection screen" class="case-media zoomable-image" loading="lazy" decoding="async" tabindex="0" aria-label="Zoom image" />
+            </div>
+            <button class="zoom-button" aria-label="Zoom image" tabindex="-1">🔍</button>
           </div>
         </div>
       </div>
-    </div>
+    </section>
+  )}
 
-    <!-- The 7 Modules Grid -->
-    <h3 style="font-size: 1.5rem; margin-bottom: 1.5rem;" class="reveal">The 7 Focused Instructional Modules:</h3>
-    <div class="at-a-glance-grid">
-      <article class="at-a-glance-card reveal" data-delay="1">
-        <span class="glance-icon">📏</span>
-        <h3>1. Surgeon Height Discrepancies</h3>
-        <p>Strategies for sharing an operating table when surgical team members vary significantly in physical height.</p>
-      </article>
-
-      <article class="at-a-glance-card reveal" data-delay="2">
-        <span class="glance-icon">🛏️</span>
-        <h3>2. Adjusting the OR Table</h3>
-        <p>Optimizing the table height, tilt, and angle to eliminate chronic stooping, hyper-extension, or overreaching.</p>
-      </article>
-
-      <article class="at-a-glance-card reveal" data-delay="3">
-        <span class="glance-icon">🖥️</span>
-        <h3>3. Surgical Monitor Angles</h3>
-        <p>Positioning laparoscopic and endoscopic monitors directly in the line of sight to prevent cervical spine compression.</p>
-      </article>
-
-      <article class="at-a-glance-card reveal" data-delay="1">
-        <span class="glance-icon">🧍</span>
-        <h3>4. Correct Postural Alignment</h3>
-        <p>Establishing the foundational neutral spine and shoulder positions for prolonged static standing procedures.</p>
-      </article>
-
-      <article class="at-a-glance-card reveal" data-delay="2">
-        <span class="glance-icon">🔬</span>
-        <h3>5. Endoscopic Procedures</h3>
-        <p>Ergonomic techniques for managing specialized tools, grip fatigue, and arm positioning during keyhole surgery.</p>
-      </article>
-
-      <article class="at-a-glance-card reveal" data-delay="3">
-        <span class="glance-icon">👁️‍🗨️</span>
-        <h3>6. Microscopic Procedures</h3>
-        <p>Maintaining high-magnification visual focus without sacrificing head alignment or neck stability.</p>
-      </article>
-    </div>
-
-    <div class="at-a-glance-card reveal" data-delay="1" style="margin-top: 1.5rem; max-width: 600px;">
-      <span class="glance-icon">👣</span>
-      <h3>7. The Pedal Dance</h3>
-      <p>Managing multiple electrocautery and suction foot pedals safely while maintaining balance and reducing lower limb fatigue.</p>
-    </div>
-  </section>
-
-  <!-- BLOCK 4: MEDIA PRODUCTION & AI GUIDE -->
-  <section class="wrap section" id="production" aria-labelledby="production-heading">
-    <div class="split-alternating">
-      <div class="split-text-block reveal">
-        <p class="eyebrow">04 / Video Craft &amp; Technology</p>
-        <h2 id="production-heading">Media Production &amp; The AI Guide<span>.</span></h2>
-        <p>
-          Filming took place directly inside a live operating room alongside an ergonomics specialist and an experienced surgeon. Demonstrations intentionally captured both the <strong>incorrect posture</strong> and the <strong>recommended posture</strong> in realistic clinical settings.
-        </p>
-        <p>
-          To unify the 7 micro-modules, I integrated an <strong>AI-generated digital instructor</strong>. Rather than using generic voiceover, an AI surgeon character was generated, styled, and animated in HeyGen to deliver consistent, authoritative guidance before each live-action demonstration.
-        </p>
-        <ul>
-          <li><strong>Authentic Visual Contrast:</strong> Comparing flawed habits with correct postures side-by-side enhances schema recognition.</li>
-          <li><strong>Cognitive Editing in Camtasia:</strong> Trimmed dead time, added visual callout overlays, and paced cuts to respect the surgeon's attention span.</li>
-          <li><strong>Cohesive AI Persona:</strong> Builds trust across all sessions with continuous expert presence.</li>
-        </ul>
-
-        <div class="takeaway-box">
-          <p><strong>Instructional Win:</strong> High production credibility matched with crisp, cognitive-load-conscious editing.</p>
-        </div>
+  <!-- CONTENT STRATEGY -->
+  {contentStrategy && (
+    <section class="wrap section" id="strategy" aria-labelledby="strategy-heading" style="padding-top: 4.5rem;">
+      <div class="section-heading reveal">
+        <p class="eyebrow">{contentStrategy.eyebrow}</p>
+        <h2 id="strategy-heading">{contentStrategy.heading}<span>.</span></h2>
+        <p class="hook" style="font-size: 1.15rem; line-height: 1.65; max-width: 800px;" set:html={contentStrategy.body} />
       </div>
 
-      <div class="split-visual-frame reveal" data-delay="1" style="background: var(--ink); color: #ffffff;">
-        <span style="font-size: 0.72rem; font-weight: 800; color: #ffaa40; text-transform: uppercase; letter-spacing: 0.08em; display: block; margin-bottom: 0.5rem;">Production Pipeline</span>
-        <h4 style="color: #ffffff; font-size: 1.2rem; margin: 0 0 1rem;">OR Observation → AI Animated Guide</h4>
-
-        <div style="display: grid; gap: 0.75rem;">
-          <div style="background: rgba(255,255,255,0.06); padding: 0.85rem; border-radius: 8px;">
-            <strong style="color: #ffaa40; font-size: 0.88rem; display: block;">01. Live OR Filming</strong>
-            <p style="margin: 0; font-size: 0.82rem; color: rgba(255,255,255,0.7);">Capturing real table heights, monitor placements, and bad habit comparisons.</p>
-          </div>
-          <div style="background: rgba(255,255,255,0.06); padding: 0.85rem; border-radius: 8px;">
-            <strong style="color: #ffaa40; font-size: 0.88rem; display: block;">02. HeyGen AI Animation</strong>
-            <p style="margin: 0; font-size: 0.82rem; color: rgba(255,255,255,0.7);">Generating lifelike narration from a consistent digital surgeon mentor.</p>
-          </div>
-          <div style="background: rgba(255,255,255,0.06); padding: 0.85rem; border-radius: 8px;">
-            <strong style="color: #ffaa40; font-size: 0.88rem; display: block;">03. Instructional Editing</strong>
-            <p style="margin: 0; font-size: 0.82rem; color: rgba(255,255,255,0.7);">Camtasia editing optimized for cognitive load reduction and rapid recall.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- BLOCK 5: KEY DESIGN DECISIONS -->
-  <section class="wrap section" id="decisions" aria-labelledby="decisions-heading">
-    <div class="section-heading reveal">
-      <p class="eyebrow">05 / Strategic Choices</p>
-      <h2 id="decisions-heading">Key Design Decisions<span>.</span></h2>
-      <p class="hook">Every structural choice was engineered to maximize behavioral retention and respect surgeon time.</p>
-    </div>
-
-    <div class="at-a-glance-grid">
-      <article class="at-a-glance-card reveal" data-delay="1">
-        <span class="glance-icon">⏱️</span>
-        <h3>Format: Microlearning</h3>
-        <p><strong>Decision:</strong> 7 hyper-focused 90-second modules.<br><strong>Why:</strong> Surgeons cannot attend long courses.<br><strong>Impact:</strong> 100% completion rates with just-in-time usability.</p>
-      </article>
-
-      <article class="at-a-glance-card reveal" data-delay="2">
-        <span class="glance-icon">⚖️</span>
-        <h3>Cognitive Strategy: Comparison</h3>
-        <p><strong>Decision:</strong> Side-by-side incorrect vs. correct video demonstrations.<br><strong>Why:</strong> Self-recognition is the first step to behavioral change.<br><strong>Impact:</strong> Bridged theory into self-awareness.</p>
-      </article>
-
-      <article class="at-a-glance-card reveal" data-delay="3">
-        <span class="glance-icon">🏥</span>
-        <h3>Media: Authentic OR Footage</h3>
-        <p><strong>Decision:</strong> Filmed inside active operating rooms with real gear.<br><strong>Why:</strong> Studio settings lack authentic clinical constraints.<br><strong>Impact:</strong> Unconditional credibility with expert clinicians.</p>
-      </article>
-    </div>
-  </section>
-
-  <!-- BLOCK 6: REFLECTION & OUTCOMES -->
-  <section class="wrap section" id="impact" aria-labelledby="impact-heading">
-    <div class="section-heading reveal">
-      <p class="eyebrow">{impact.eyebrow}</p>
-      <h2 id="impact-heading"><Fragment set:html={impact.heading} /><span>.</span></h2>
-      <p class="hook" set:html={impact.hook} />
-    </div>
-
-    <div class="at-a-glance-grid">
-      {
-        impact.cards.map((card, index) => (
-          <article class="at-a-glance-card reveal" data-delay={index + 1}>
-            <span class="glance-icon">{card.icon}</span>
-            <h3>{card.title}</h3>
-            <p set:html={card.body} />
+      <div class="process-grid" style="margin-bottom: 2rem;">
+        {contentStrategy.decisions.map((decision, index) => (
+          <article class="process-card reveal" data-delay={index + 1}>
+            <div class="process-number">
+              <span>0{index + 1}</span>
+            </div>
+            <div class="process-content">
+              <h3>{decision.title}</h3>
+              <p set:html={decision.body} />
+            </div>
           </article>
-        ))
-      }
-    </div>
+        ))}
+      </div>
+    </section>
+  )}
 
-    <!-- Navigation to Next Case -->
-    <div style="text-align: left; margin-top: 3.5rem;" class="reveal">
-      <a class="button button-dark" href={nextCase.href}>
-        {nextCase.label} <span aria-hidden="true">→</span>
-      </a>
+  <!-- THE LEARNING EXPERIENCE -->
+  {experience && (
+    <section class="wrap section" id="experience" aria-labelledby="experience-heading" style="padding-top: 4.5rem;">
+      <div class="split-layout">
+        <div class="split-text-block reveal">
+          <p class="eyebrow">{experience.eyebrow}</p>
+          <h2 id="experience-heading">{experience.heading}<span>.</span></h2>
+          {experience.body && <p class="hook" style="font-size: 1.15rem; line-height: 1.65; margin-bottom: 1.5rem;" set:html={experience.body} />}
+          {experience.flow && <div style="font-size: 1.1rem; line-height: 1.65;" set:html={experience.flow} />}
+        </div>
+        
+        <div class="split-visual-frame reveal" data-delay="1" style="justify-content: center;">
+          <div class="css-iphone-mockup" style="max-width: 320px; width: 100%;">
+            <div class="iphone-screen">
+              <video class="case-video" controls playsinline preload="metadata">
+                <source src="/assets/projects/surgical-ergonomics/surgical-ergonomics-full-flow.mp4" type="video/mp4" />
+              </video>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- JUST-IN-TIME ACCESS -->
+  {justInTime && (
+    <section class="wrap section" id="just-in-time" aria-labelledby="jit-heading" style="padding-top: 4.5rem;">
+      <div class="split-layout" style="flex-direction: row-reverse;">
+        <div class="split-text-block reveal">
+          <p class="eyebrow">{justInTime.eyebrow}</p>
+          <h2 id="jit-heading">{justInTime.heading}<span>.</span></h2>
+          <p style="font-size: 1.15rem; line-height: 1.65; margin-bottom: 1.5rem;" set:html={justInTime.body} />
+          {justInTime.followUp && <p style="font-size: 1.1rem; line-height: 1.65; color: var(--ink-muted);" set:html={justInTime.followUp} />}
+        </div>
+        
+        <div class="split-visual-frame reveal" data-delay="1" style="justify-content: flex-start;">
+          <!-- Structure ready for future visual asset -->
+        </div>
+      </div>
+    </section>
+  )}
+
+
+  <!-- THE VISUAL GUIDE -->
+  {visualGuide && (
+    <section class="wrap section" id="guide" aria-labelledby="guide-heading" style="padding-top: 4.5rem;">
+      <div class="split-layout">
+        <div class="split-text-block reveal">
+          <p class="eyebrow">{visualGuide.eyebrow}</p>
+          <h2 id="guide-heading" style="margin-bottom: 1.5rem;">{visualGuide.heading}<span>.</span></h2>
+          <p style="font-size: 1.15rem; line-height: 1.65; margin-bottom: 1.5rem; color: var(--ink-muted);" set:html={visualGuide.body} />
+          <p style="font-size: 1.1rem; line-height: 1.65;" set:html={visualGuide.impact} />
+        </div>
+        
+        <div class="split-visual-frame reveal" data-delay="1">
+          <div class="naked-media zoomable-container" style="max-width: 320px; width: 100%;">
+            <img src="/assets/projects/surgical-ergonomics/surgical-ergonomics-heygen-avatar.png" alt="AI Visual Guide Character" class="case-media zoomable-image" loading="lazy" decoding="async" tabindex="0" aria-label="Zoom image" />
+            <button class="zoom-button" aria-label="Zoom image" tabindex="-1">🔍</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- REFLECTION -->
+  {reflection && (
+    <section class="wrap section" id="reflection" aria-labelledby="reflection-heading" style="padding-top: 4.5rem;">
+      <div class="section-heading reveal">
+        <p class="eyebrow">{reflection.eyebrow}</p>
+        <h2 id="reflection-heading">{reflection.heading}<span>.</span></h2>
+        <p class="hook" style="font-size: 1.15rem; line-height: 1.65; max-width: 800px;" set:html={reflection.body} />
+      </div>
+
+      <!-- Navigation to Next Case -->
+      {nextCase && (
+        <div style="text-align: left; margin-top: 6rem;" class="reveal">
+          <a class="button button-dark" href={nextCase.href}>
+            {nextCase.label} <span aria-hidden="true">→</span>
+          </a>
+        </div>
+      )}
+    </section>
+  )}
+
+  <!-- LIGHTBOX MODAL -->
+  <div id="image-lightbox" class="lightbox-modal" aria-hidden="true">
+    <div class="lightbox-backdrop" aria-label="Close modal"></div>
+    <div class="lightbox-content" role="dialog" aria-modal="true" aria-label="Enlarged screenshot">
+      <button class="lightbox-close" aria-label="Close zoom">✕</button>
+      <img id="lightbox-image" src="" alt="Enlarged screenshot" />
     </div>
-  </section>
+  </div>
 </BaseLayout>
+
+<script>
+  // Lightbox Implementation
+  const lightbox = document.getElementById('image-lightbox');
+  const lightboxImg = document.getElementById('lightbox-image');
+  const closeBtn = document.querySelector('.lightbox-close');
+  const backdrop = document.querySelector('.lightbox-backdrop');
+  const zoomables = document.querySelectorAll('.zoomable-image');
+  const zoomButtons = document.querySelectorAll('.zoom-button');
+  
+  let previouslyFocusedElement = null;
+
+  function openLightbox(src) {
+    previouslyFocusedElement = document.activeElement;
+    if (lightboxImg && lightbox) {
+      lightboxImg.src = src;
+      lightbox.setAttribute('aria-hidden', 'false');
+      lightbox.classList.add('is-open');
+      document.body.style.overflow = 'hidden'; // Prevent scrolling
+      if (closeBtn) closeBtn.focus();
+    }
+  }
+
+  function closeLightbox() {
+    if (lightbox) {
+      lightbox.setAttribute('aria-hidden', 'true');
+      lightbox.classList.remove('is-open');
+      document.body.style.overflow = ''; 
+      if (previouslyFocusedElement) {
+        previouslyFocusedElement.focus();
+      }
+    }
+  }
+
+  // Bind click/keyboard events to zoomable images and buttons
+  zoomables.forEach(img => {
+    img.addEventListener('click', () => openLightbox(img.src));
+    img.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        openLightbox(img.src);
+      }
+    });
+  });
+
+  zoomButtons.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      const img = btn.previousElementSibling;
+      if (img && img.tagName === 'IMG') {
+        openLightbox(img.src);
+      }
+    });
+  });
+
+  // Close events
+  closeBtn?.addEventListener('click', closeLightbox);
+  backdrop?.addEventListener('click', closeLightbox);
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && lightbox && lightbox.classList.contains('is-open')) {
+      closeLightbox();
+    }
+  });
+</script>
+
+<style>
+  /* SUBNAV REFINEMENT */
+  .custom-subnav {
+    flex-wrap: nowrap !important;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none; /* Firefox */
+  }
+  .custom-subnav::-webkit-scrollbar {
+    display: none;
+  }
+  .custom-subnav li {
+    white-space: nowrap;
+  }
+  @media (min-width: 900px) {
+    .custom-subnav {
+      justify-content: center !important;
+      gap: 1.5rem !important;
+    }
+    .custom-subnav a {
+      font-size: 0.9rem !important;
+      padding: 0.5rem 0.2rem !important;
+    }
+  }
+  @media (min-width: 1024px) {
+    .custom-subnav {
+      gap: 2rem !important;
+    }
+    .custom-subnav a {
+      font-size: 0.95rem !important;
+    }
+  }
+
+  /* EDITORIAL SPLIT LAYOUT */
+  .split-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    align-items: center;
+  }
+  .split-text-block {
+    width: 100%;
+    max-width: 700px;
+  }
+  .split-visual-frame {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    border-radius: 0 !important;
+    overflow: visible;
+  }
+  @media (min-width: 900px) {
+    .split-layout {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+    }
+    .split-text-block {
+      flex: 1 1 55%;
+      max-width: 600px;
+    }
+    .split-visual-frame {
+      flex: 1 1 45%;
+      justify-content: flex-start;
+    }
+    /* When reversed, put image close to text on the right */
+    .split-layout[style*="row-reverse"] .split-visual-frame {
+      justify-content: flex-end;
+    }
+  }
+
+  /* IPHONE MOCKUP CSS */
+  .css-iphone-mockup {
+    position: relative;
+    border: 10px solid #1a1a1a;
+    border-radius: 40px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1), inset 0 0 0 3px #333;
+    background: #000;
+    overflow: hidden;
+  }
+  /* Dynamic notch */
+  .css-iphone-mockup::before {
+    content: '';
+    position: absolute;
+    top: -1px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40%;
+    height: 24px;
+    background: #1a1a1a;
+    border-bottom-left-radius: 16px;
+    border-bottom-right-radius: 16px;
+    z-index: 10;
+  }
+  .iphone-screen {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 9 / 19.5;
+    background: #fff;
+    overflow: hidden;
+    border-radius: 30px;
+  }
+  .iphone-screen video, .iphone-screen img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+  }
+
+  /* PROCESS CARDS GRID */
+  .process-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  @media (min-width: 600px) {
+    .process-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+    }
+  }
+  @media (min-width: 1024px) {
+    .process-grid {
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+    }
+  }
+
+  .process-card {
+    background: var(--paper, #ffffff);
+    padding: 2rem 1.5rem;
+    border-radius: 20px;
+    border: 1px solid var(--line, rgba(26,26,26,0.08));
+    box-shadow: 0 8px 24px rgba(0,0,0,0.03);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease), border-color 0.35s var(--ease);
+    height: 100%;
+    cursor: default;
+  }
+  
+  .process-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+    border-color: rgba(239, 108, 53, 0.3);
+  }
+
+  .process-number {
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 3rem;
+    height: 3rem;
+    background: rgba(239, 108, 53, 0.1);
+    color: var(--orange);
+    border-radius: 12px;
+    font-family: var(--display);
+    font-size: 1.15rem;
+    font-weight: 700;
+  }
+
+  .process-content h3 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    color: var(--ink);
+    letter-spacing: 0.01em;
+  }
+
+  .process-content p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--ink-muted);
+    margin: 0;
+  }
+
+  /* EVIDENCE DATA STRIP */
+  .evidence-data-strip {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    margin-top: 3.5rem;
+    padding: 2.5rem 0;
+    border-top: 1px solid var(--line, rgba(26,26,26,0.08));
+    border-bottom: 1px solid var(--line, rgba(26,26,26,0.08));
+  }
+  
+  @media (min-width: 600px) {
+    .evidence-data-strip {
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem 2rem;
+    }
+  }
+  
+  @media (min-width: 900px) {
+    .evidence-data-strip {
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+      padding: 3.5rem 0;
+    }
+    .data-strip-item:not(:last-child) {
+      border-right: 1px solid var(--line, rgba(26,26,26,0.08));
+      padding-right: 1.5rem;
+    }
+  }
+
+  .data-strip-item {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+
+  .data-value {
+    font-family: var(--display);
+    font-size: clamp(3rem, 4vw, 4rem);
+    font-weight: 800;
+    color: var(--orange);
+    line-height: 1;
+    margin-bottom: 1rem;
+    display: block;
+  }
+
+  .data-desc {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: var(--ink);
+    margin: 0;
+  }
+
+  .evidence-takeaway {
+    text-align: center;
+    margin: 3.5rem auto 0;
+    max-width: 750px;
+  }
+  
+  .evidence-takeaway p {
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--ink);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .evidence-takeaway p::after {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 3px;
+    background: var(--orange);
+    margin: 1.5rem auto 0;
+    border-radius: 2px;
+  }
+
+  .evidence-sources {
+    text-align: center;
+    margin-top: 3.5rem;
+    font-size: 0.8rem;
+    color: var(--ink-muted);
+  }
+  .evidence-sources p {
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin: 0 0 0.5rem 0;
+  }
+  .evidence-sources ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+  }
+
+
+  /* GENERAL MEDIA STYLES */
+  .naked-media {
+    background: transparent !important;
+    border: none !important;
+    border-radius: var(--radius-md, 14px);
+    overflow: hidden;
+    box-shadow: none !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 0 !important;
+  }
+  
+  .case-media {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: contain;
+  }
+  
+  .case-video {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: inherit;
+  }
+
+  /* Lightbox / Zoom Functionality */
+  .zoomable-container {
+    position: relative;
+    cursor: zoom-in;
+  }
+
+  .zoomable-image {
+    transition: transform 0.3s ease;
+  }
+  
+  .zoomable-image:focus {
+    outline: 2px solid var(--orange, #ff6b35);
+    outline-offset: -2px;
+  }
+
+  .zoom-button {
+    position: absolute;
+    bottom: 12px;
+    right: 12px;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: zoom-in;
+    opacity: 0;
+    transition: opacity 0.2s ease, background 0.2s ease;
+    pointer-events: none; /* Let the container handle the click */
+  }
+
+  .zoomable-container:hover .zoom-button {
+    opacity: 1;
+  }
+  
+  .zoomable-container:hover .zoomable-image {
+    transform: scale(1.02);
+  }
+
+  .lightbox-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+  }
+
+  .lightbox-modal.is-open {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .lightbox-backdrop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(10, 10, 10, 0.9);
+    cursor: zoom-out;
+  }
+
+  .lightbox-content {
+    position: relative;
+    z-index: 10000;
+    max-width: 90vw;
+    max-height: 90vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .lightbox-content img {
+    max-width: 100%;
+    max-height: 90vh;
+    border-radius: 8px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+    object-fit: contain;
+  }
+
+  .lightbox-close {
+    position: absolute;
+    top: -40px;
+    right: 0;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+    line-height: 1;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+  }
+
+  .lightbox-close:hover, .lightbox-close:focus {
+    opacity: 1;
+    outline: none;
+  }
+  
+  @media (min-width: 768px) {
+    .lightbox-close {
+      top: -20px;
+      right: -50px;
+    }
+  }
+</style>

@@ -190,6 +190,19 @@ const cases = defineCollection({
       body: z.string(),
     }).optional(),
 
+    evidence: z.object({
+      eyebrow: z.string(),
+      heading: z.string(),
+      intro: z.string(),
+      stats: z.array(z.object({
+        value: z.string(),
+        description: z.string(),
+      })),
+      supportingText: z.string().optional(),
+      takeaway: z.string().optional(),
+      sources: z.array(z.string()).optional(),
+    }).optional(),
+
     challenge: z.object({
       eyebrow: z.string(),
       heading: z.string(),
@@ -220,11 +233,19 @@ const cases = defineCollection({
       eyebrow: z.string(),
       heading: z.string(),
       body: z.string().optional(),
+      flow: z.string().optional(),
       interactiveVideo: z.object({ heading: z.string(), body: z.string() }),
       learnPractice: z.object({ heading: z.string(), body: z.string() }),
       knowledgeCheck: z.object({ heading: z.string(), body: z.string() }),
       prioritization: z.object({ heading: z.string(), body: z.string() }),
       progression: z.object({ heading: z.string(), body: z.string() }),
+    }).optional(),
+    
+    justInTime: z.object({
+      eyebrow: z.string(),
+      heading: z.string(),
+      body: z.string(),
+      followUp: z.string().optional(),
     }).optional(),
 
     assessment: z.object({
