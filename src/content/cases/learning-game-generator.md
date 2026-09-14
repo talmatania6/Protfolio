@@ -6,81 +6,51 @@
 # so write tags and entities (&amp;) in those. Every other field is escaped on
 # output, so write a plain "&" there.
 meta:
-  title: "Plane It Right: Instructional Cracking & AI-Driven Learning — Tal Matania"
+  title: "Plane It Right: A Dual-Sided Learning System — Tal Matania"
   description: >-
-    Case study of Plane It Right: A dual-sided educational sorting environment
-    and AI generator focusing on instructional cracking, pedagogical logic, and
-    AI integration.
-  ogTitle: "Plane It Right: Instructional Cracking & AI-Driven Learning — Tal Matania"
+    Plane It Right is a dual-sided learning product that combines an educator-facing authoring system with an interactive sorting game.
+  ogTitle: "Plane It Right: A Dual-Sided Learning System — Tal Matania"
   ogDescription: >-
-    A dual-sided learning environment consisting of an interactive sorting game
-    for learners and an AI-powered content generator for educators.
-  ogImage: /assets/projects/game-generator/game-generator-hero.svg
+    Plane It Right is a dual-sided learning product that combines an educator-facing authoring system with an interactive sorting game.
+  ogImage: /assets/projects/plane-it-right/plane-it-right-player-mockup.png
 
 breadcrumb: Plane It Right
 
 tags:
-  - { label: Flagship Case Study, highlight: true }
-  - { label: Instructional Cracking }
-  - { label: Unity C# }
-  - { label: Generative AI }
+  - { label: Game-Based Learning, highlight: true }
+  - { label: Instructional Design }
+  - { label: AI-Assisted Authoring }
+  - { label: Unity Development }
+  - { label: C# Development }
 
 hero:
   title: Plane It Right
-  tagline: A Dual-Sided Educational Sorting Environment & AI Generator
+  tagline: A dual-sided learning game that turns category-based knowledge into active practice.
   valueProp: >-
-    How I transformed dry categorical taxonomy quizzes into a high-retention
-    airport luggage conveyor simulation—baking cognitive science into every
-    interaction mechanic and eliminating educator authoring friction with
-    in-editor generative AI.
+    Plane It Right is a dual-sided learning product that combines an educator-facing authoring system with an interactive sorting game. Educators can create and publish customized content, while learners practice rapid classification through a dynamic airport-themed experience.
 
 subnav:
   - { href: "#overview", label: Overview }
+  - { href: "#problem", label: The Problem }
   - { href: "#challenge", label: The Challenge }
-  - { href: "#cracking", label: Instructional Cracking }
-  - { href: "#ai-solution", label: "AI & Generator" }
-  - { href: "#impact", label: Pedagogical Impact }
+  - { href: "#solution", label: The Learning Solution }
+  - { href: "#instructional-design", label: Instructional Design }
+  - { href: "#ai-development", label: "AI & Development" }
+  - { href: "#experience", label: The Learning Experience }
 
 glance:
   - icon: 👤
     title: Role
     body: >-
-      <strong>Instructional Designer &amp; Unity Programmer:</strong> Owned the
-      complete pipeline—from pedagogical gap analysis and game mechanics design
-      to Unity C# coding and AI schema integration.
+      <strong>Instructional Designer &amp; Developer:</strong> Learning mechanics, authoring logic, game interaction design, and major responsibility for the project’s programming and technical implementation.
   - icon: 🛠️
-    title: Deliverables & Tools
+    title: Tools
     body: >-
-      <strong>Unity (C#)</strong> (WebGL Game Engine), <strong>Generative
-      AI</strong> (Structured Schema Pipelines), <strong>Figma</strong> (UI/UX
-      Prototypes), <strong>JSON APIs</strong>.
+      Unity, C#, Razor / Web Development, Generative AI, APIs, Figma, Canva
   - icon: 🎯
-    title: Outcome
+    title: Solution
     body: >-
-      <strong>Dual-Sided Learning Platform:</strong> A standalone sorting
-      simulation boosting retrieval automaticity and a zero-friction AI
-      authoring tool reducing quiz prep to under 30 seconds.
-
-impact:
-  eyebrow: 04 / Results & Reflection
-  heading: Impact &amp; Key Takeaways
-  hook: How bridging pedagogy and technical development created a scalable learning asset.
-  cards:
-    - icon: 📈
-      title: Measurable Recall Fluency
-      body: >-
-        Learners demonstrated improved classification speed and lower error
-        rates after just two 5-minute sessions.
-    - icon: ⚡
-      title: Zero Authoring Friction
-      body: >-
-        Non-technical instructors generated and launched customized classroom
-        modules in minutes with no code.
-    - icon: 💡
-      title: Full-Stack Instructional Value
-      body: >-
-        Handling both learning design and game programming ensured pedagogical
-        nuances were never lost in translation.
+      A synchronized two-sided system that connects an educator authoring environment with a learner-facing sorting game.
 
 nextCase:
   href: /cases/surgical-ergonomics/

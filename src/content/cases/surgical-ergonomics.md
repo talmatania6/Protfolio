@@ -11,7 +11,7 @@ meta:
     Instructional design case study: A mobile microlearning app for improving ergonomic awareness in the operating room.
   ogTitle: Surgical Ergonomics Companion — Tal Matania
   ogDescription: >-
-    A mobile learning app designed for surgeons at Rambam Health Care Campus, offering short, focused ergonomics videos supported by an illustrated AI guide.
+    A mobile learning app designed for surgeons at Rambam Health Care Campus, offering short, focused ergonomics videos supported by an illustrated AI character guide.
   ogImage: /assets/projects/surgical-ergonomics/surgical-ergonomics-hero.png
 
 breadcrumb: Surgical Ergonomics
@@ -27,7 +27,7 @@ hero:
   title: Surgical Ergonomics Companion
   tagline: Mobile microlearning for improving ergonomic awareness in the operating room
   valueProp: >-
-    A mobile learning app designed for surgeons at Rambam Health Care Campus, offering short, focused ergonomics videos supported by an illustrated AI guide to encourage healthier posture and safer working habits in the operating room.
+    A mobile learning app designed for surgeons at Rambam Health Care Campus, offering short, focused ergonomics videos supported by an illustrated AI character guide to encourage healthier posture and safer working habits in the operating room.
 
 subnav:
   - { href: "#overview", label: Overview }
@@ -47,16 +47,16 @@ glance:
   - icon: 🛠️
     title: Tools
     body: >-
-      Camtasia, HeyGen, Figma, Canva, AI tools, AI-assisted coding / development
+      Camtasia, HeyGen, Figma, Canva, AI tools, Google AI Studio, AI-assisted coding / development, Render — Website deployment platform
   - icon: 🎯
     title: Solution
     body: >-
       A mobile microlearning app featuring 7 short ergonomics topics, each accessible through a visual navigation screen and supported by short instructional videos.
 
 evidence:
-  eyebrow: 01 / Why This Matters
-  heading: The Evidence Behind the Problem
-  intro: "Before designing the solution, I wanted to ground the challenge in evidence. Research consistently shows that ergonomic strain is common among surgeons, affects their work, and is often not addressed through formal training."
+  eyebrow: 01 / The Problem
+  heading: The Problem, by the Numbers
+  intro: "Before designing the solution, I wanted to first understand the problem and its impact. Research consistently shows that ergonomic strain is common among surgeons, affects their work, and is often not addressed through formal training."
   stats:
     - value: "90%"
       description: "of surgeons performing minimally invasive surgery reported musculoskeletal disorders."
@@ -72,39 +72,39 @@ evidence:
     - "Aaron et al., PLOS One, 2021"
 
 problem:
-  eyebrow: 02 / The Problem
+  eyebrow: ""
   heading: The Ergonomic Reality
   context: >-
-    This project was created for surgeons at Rambam Health Care Campus, where ergonomic strain during surgery is an important occupational concern. Surgeons often maintain demanding postures for long periods, while focusing primarily on the procedure itself rather than on their own body positioning.
+    This project was created for surgeons at Rambam Health Care Campus, where ergonomic strain during surgery is an important occupational concern. The instructional need was to help surgeons reduce musculoskeletal strain and injury caused by prolonged, repetitive, and awkward working postures in the operating room.
   body: >-
-    Although ergonomic recommendations exist, translating them into daily surgical practice remains a challenge. The need was not simply to provide information, but to make ergonomic guidance more accessible, practical, and easy to revisit in context.
+    The challenge was not simply a lack of knowledge. Small ergonomic habits can repeat throughout procedures and accumulate over years of practice, increasing physical strain over time. The project therefore focused on common surgical scenarios where practical ergonomic guidance could have the greatest relevance to everyday clinical work.
 
 challenge:
-  eyebrow: 03 / The Challenge
+  eyebrow: 02 / The Challenge
   heading: The Challenge
   body: >-
-    The source material included lengthy clinical recordings, often 30–60 minutes each. A major part of the instructional design process was analyzing this material, identifying the essential ergonomic messages, and transforming it into concise learning units that could be understood and applied quickly.<br><br>For a busy surgical audience, the content needed to remain clinically meaningful without becoming another lengthy training experience.
+    <div class="content-block"><h4 class="content-block-subheading">Audience &amp; Context</h4><p>The audience included both surgeons and surgical residents across different levels of experience. Because they work in a fast-paced clinical environment, the solution needed to be immediately accessible, easy to navigate, and useful without requiring learners to complete a full course.</p></div><div class="content-block"><h4 class="content-block-subheading">Performance Gap</h4><p>Together with the project’s clinical lead, the audience and working context were analyzed to identify the performance gap between recommended ergonomic practice and what actually happens during surgery.</p></div><div class="content-block"><h4 class="content-block-subheading">Clinical Collaboration</h4><p>The project was developed in collaboration with clinical and ergonomics experts. Content expertise came from an external ergonomics consultant brought into Rambam, alongside a Rambam researcher with clinical research experience in surgeon ergonomics. The project was clinically led by a head-and-neck surgeon, who helped define the target audience, working conditions, common surgical scenarios, and key performance gaps.</p></div>
   takeaway: >-
     The challenge was not only to teach ergonomic principles, but to make them easy to access and apply in real operating-room conditions.
   problems:
-    - fit into a busy clinical context
-    - provide quick access to specific ergonomic topics
-    - present information in a highly visual and practical format
-    - support just-in-time learning rather than lengthy formal training
+    - Fit into a busy clinical context
+    - Provide quick access to specific ergonomic topics
+    - Present information in a highly visual and practical format
+    - Support just-in-time learning rather than lengthy formal training
 
 learningSolution:
-  eyebrow: 04 / The Learning Solution
+  eyebrow: 03 / The Learning Solution
   heading: The Learning Solution
   context: >-
     To address this challenge, I designed a mobile learning app that delivers ergonomic guidance through seven short, focused learning topics. Each topic is presented visually and opens a short video explanation, allowing learners to quickly access the guidance most relevant to them.
   body: >-
-    The app opens with a short introductory video featuring an illustrated guide character, and then transitions into the main learning interface. From there, users can choose one of seven topics, each linked to a dedicated ergonomics video. Each video remains under two minutes in length in order to support quick, digestible learning.
+    The app opens with a short introductory video featuring an illustrated guide character, and then transitions into the main learning interface. From there, users can choose one of seven topics, each linked to a dedicated ergonomics video. Each video remains under two minutes in length in order to support quick, digestible learning.<br><br><strong>Why an App?</strong><br>The learning needed to be available whenever the need arose—not locked inside a one-time training experience. A mobile app allowed the content to remain accessible, non-linear, quick to consume, and available at the point of need. Surgeons could choose the relevant procedure or topic and immediately access a short piece of guidance instead of searching through a full course.
 
 contentStrategy:
-  eyebrow: 05 / Content Strategy
-  heading: From Clinical Footage to Microlearning
+  eyebrow: 04 / Content Strategy
+  heading: Point-of-Need Microlearning
   body: >-
-    The original content was not created as training material. I received long clinical recordings containing demonstrations, explanations and repeated information. I reviewed the footage, identified the key ergonomic behaviors, and reorganized the material into seven focused learning topics.<br><br>Each topic was then reduced to a short instructional video of no more than two minutes. The goal was to preserve the essential professional guidance while removing unnecessary detail and making each learning unit easy to access and understand.
+    The content strategy was intentionally designed around point-of-need learning rather than a traditional one-time course. Instead of asking surgeons to move through a linear training program, the content was organized so they could access the specific guidance they needed, when they needed it.<br><br>The most common surgical scenarios were selected, and the expert content was analyzed to identify the essential ergonomic actions for each one. The information was then reduced into short, focused videos that communicate practical guidance quickly and clearly. This required translating specialist clinical knowledge into concise, action-oriented microlearning that could work for both residents and experienced surgeons.<br><br><span style="display: block; font-size: 1.25rem; font-weight: 600; color: var(--orange); margin-top: 1.5rem; padding-left: 1rem; border-left: 4px solid var(--orange);">"The goal was not to create another course. It was to make the right information available at the exact moment it could be useful."</span>
   architecture: >-
     The learning experience is organized around seven focused ergonomics topics. Rather than requiring learners to complete a linear course, each topic can be accessed independently based on the surgeon’s immediate need.
   decisions:
@@ -127,7 +127,7 @@ experience:
     • An illustrated guide introduces and supports the learner.<br>
     • The app provides quick access to focused ergonomic topics.<br>
     • Each topic opens a concise video combining selected clinical footage, narration, and subtitles.<br>
-    • The final result was designed to help surgeons access the right information quickly and in context.
+    • The final result was designed to help surgeons access the right information quickly and in context.<br><br><strong>Measuring Success</strong><br>Success was defined beyond content completion. The long-term organizational goal was to contribute to fewer surgeon absences caused by musculoskeletal problems by supporting better ergonomic habits during clinical work.
   interactiveVideo:
     heading: "Video-Based Guidance"
     body: "Each ergonomics topic opens a short instructional video that connects ergonomic recommendations to realistic operating-room situations."
@@ -145,15 +145,15 @@ experience:
     body: "An illustrated guide character creates continuity from the opening introduction through the instructional videos."
 
 justInTime:
-  eyebrow: 07 / Point-of-Need Access
-  heading: Just-in-Time Access
+  eyebrow: 05 / Learning at the Point of Need
+  heading: Learning at the Point of Need
   body: >-
-    To make the learning experience easier to access in context, I also designed a supporting poster placed outside operating rooms. The poster includes a QR code that surgeons can scan on their phones to immediately open the app before entering surgery.<br><br>This creates a just-in-time learning touchpoint that supports quick memory refresh and makes the ergonomic guidance available at the point of need. The goal was to reduce friction and make the learning content easy to revisit in the moment it is most relevant.
+    The learning experience extends beyond the app itself.<br><br>A QR poster placed near the operating-room environment creates a direct entry point to the learning experience, allowing surgeons and surgical residents to access relevant ergonomic guidance at the moment it may be most useful.<br><br>Instead of relying on learners to remember and return to a traditional course, the intervention brings the learning closer to the clinical workflow — connecting the physical workplace directly to short, actionable mobile guidance.
   followUp: >-
-    This extension turned the app into more than a standalone learning product. It became a practical performance-support tool, available directly in the work environment and aligned with the fast pace of clinical practice.
+    See it. Scan it. Apply it.
 
 visualGuide:
-  eyebrow: 08 / Media & AI Production
+  eyebrow: 07 / Media & AI Production
   heading: Media & AI Production
   body: >-
     To create a consistent learning experience, I combined real clinical footage with AI-supported media production. The illustrated guide was animated and voiced using HeyGen, while the instructional videos were edited in Camtasia with narration, subtitles and focused visual sequencing.<br><br>The guide character was not used only as a decorative element. It created continuity across the app and helped connect multiple short videos into one recognizable learning experience.
@@ -161,7 +161,7 @@ visualGuide:
     I also developed the web application that delivers the learning content, using AI-assisted coding to translate the instructional concept and interface design into a working digital product.
 
 reflection:
-  eyebrow: 09 / Reflection
+  eyebrow: 08 / Reflection
   heading: Reflection
   body: >-
     This project strengthened my ability to translate specialized professional knowledge into an accessible digital learning experience. It required balancing clinical credibility, concise instructional design, and a friendly visual approach. It also deepened my experience in creating learning products that combine UX thinking, video-based instruction, and AI-supported media.

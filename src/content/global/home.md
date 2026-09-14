@@ -14,16 +14,12 @@ meta:
 
 hero:
   badge: ● Open to Instructional Design &amp; Learning Tech Opportunities
-  heading: Hi, I'm <span class="marker-underline">Tal Matania</span>
+  heading: <span class="handwritten-accent">Hi!</span> I’m <span class="marker-underline">Tal Matania</span>
   role: >-
-    and I'm an <span class="highlight-orange">Instructional Designer</span> and a
-    <span class="highlight-orange">learning technologies</span> student.
+    <span class="highlight-orange">Instructional Designer</span> &
+    <span class="highlight-orange">Learning Technologies</span> student.
   valueProp: >-
-    I blend <strong>pedagogical strategy</strong> with <strong>engaging
-    interactive design</strong> and technical execution. My focus is on creating
-    high-retention learning simulations, clinical microlearning, and game-based
-    environments that make complex knowledge intuitive. Every experience is
-    engineered to bridge cognitive theory with measurable real-world performance.
+    I turn complex content into clear, engaging learning experiences.
   actions:
     - { style: primary, href: "#projects", label: See My Work, suffix: "↓" }
     - style: ghost
@@ -39,32 +35,11 @@ projects:
     A curated look at interactive learning games, clinical microlearning
     companions, and AI-powered educational systems.
   items:
-    - href: /cases/learning-game-generator/
-      ariaLabel: Plane It Right Case Study
-      delay: 1
-      gradient: ["#1f1d1a", "#111110"]
-      badge: Flagship Platform
-      cornerEmoji: "✈️"
-      emojiRow: 🧳 🏷️ ⚡
-      previewTitle: Plane It Right
-      previewBlurb: Airport luggage sorting simulation &amp; AI content authoring suite.
-      footerLeft: Dual-Sided Architecture
-      footerRight: Unity WebGL + AI
-      tags:
-        - { label: Unity C#, highlight: true }
-        - { label: Generative AI, highlight: true }
-        - { label: Instructional Cracking }
-        - { label: Game-Based }
-      title: "Plane It Right: Learning Game &amp; AI Generator"
-      description: >-
-        An interactive sorting game for learners paired with a no-code AI
-        generator for educators—transforming dry taxonomy memorization into rapid
-        retrieval automaticity.
-
     - href: /cases/surgical-ergonomics/
       ariaLabel: Surgical Ergonomics Case Study
-      delay: 2
+      delay: 1
       gradient: ["#101c24", "#081016"]
+      previewImage: /assets/projects/surgical-ergonomics/intro-ergo.png
       badge: Rambam Medical Center
       cornerEmoji: "🏥"
       emojiRow: 🩺 📱 📐
@@ -84,7 +59,7 @@ projects:
 
     - href: /cases/my-first-shift/
       ariaLabel: My First Shift Case Study
-      delay: 1
+      delay: 2
       gradient: ["#221a15", "#140d09"]
       previewImage: /assets/images/my-first-shift-hero.png
       badge: Simulation · E-Learning
@@ -104,26 +79,48 @@ projects:
         waiters to handle service situations, prioritize tasks, and build confidence
         before their first live shifts.
 
-    - href: /cases/video-editing/
-      ariaLabel: Video Editing Case Study
-      delay: 2
-      gradient: ["#1d1726", "#0d0914"]
-      badge: Content Architecture
-      cornerEmoji: "🎬"
-      emojiRow: 🎞️ 📐 ✂️
-      previewTitle: Video Editing Guided Site
-      previewBlurb: Task-based learning architecture for beginner creators.
-      footerLeft: Task Sequences
-      footerRight: Self-Paced Web
+    - href: /cases/learning-game-generator/
+      ariaLabel: Plane It Right Case Study
+      delay: 1
+      gradient: ["#1f1d1a", "#111110"]
+      previewImage: /assets/projects/plane-it-right/intro-plane-it-right.png
+      badge: Flagship Platform
+      cornerEmoji: "✈️"
+      emojiRow: 🧳 🏷️ ⚡
+      previewTitle: Plane It Right
+      previewBlurb: Airport luggage sorting simulation &amp; AI content authoring suite.
+      footerLeft: Dual-Sided Architecture
+      footerRight: Unity WebGL + AI
       tags:
-        - { label: Task Analysis, highlight: true }
-        - { label: Content Strategy }
-        - { label: Web UI }
-      title: Video Editing Guided Website
+        - { label: Unity C#, highlight: true }
+        - { label: Generative AI, highlight: true }
+        - { label: Instructional Cracking }
+        - { label: Game-Based }
+      title: "Plane It Right: Learning Game &amp; AI Generator"
       description: >-
-        Deconstructing complex technical editing software into progressive,
-        task-based learning steps that eliminate software overwhelm and connect
-        rules to practice.
+        An interactive sorting game for learners paired with a no-code AI
+        generator for educators—transforming quizzes and learning into a fun, engaging experience.
+
+#    - href: /cases/video-editing/
+#      ariaLabel: Video Editing Case Study
+#      delay: 2
+#      gradient: ["#1d1726", "#0d0914"]
+#      badge: Content Architecture
+#      cornerEmoji: "🎬"
+#      emojiRow: 🎞️ 📐 ✂️
+#      previewTitle: Video Editing Guided Site
+#      previewBlurb: Task-based learning architecture for beginner creators.
+#      footerLeft: Task Sequences
+#      footerRight: Self-Paced Web
+#      tags:
+#        - { label: Task Analysis, highlight: true }
+#        - { label: Content Strategy }
+#        - { label: Web UI }
+#      title: Video Editing Guided Website
+#      description: >-
+#        Deconstructing complex technical editing software into progressive,
+#        task-based learning steps that eliminate software overwhelm and connect
+#        rules to practice.
 
 philosophy:
   eyebrow: Instructional Foundations
@@ -194,41 +191,26 @@ about:
   eyebrow: Background
   heading: About Tal Matania
   hook: Instructional designer, learning technologist, and details-obsessed builder.
-  portrait:
-    emoji: 👨‍💻
-    name: Tal Matania
-    role: Instructional Designer
-    badge: Rambam Medical Center
-  cards:
-    - title: Bridging Learning Theory &amp; Interactive Design
-      body: >-
-        Driven by a deep love for cognitive clarity and aesthetic excellence, I
-        specialize in Instructional Design to own the entire creative
-        pipeline—from pedagogical gap analysis to UI/UX design, interactive
-        prototyping, and AI workflow automation.
-    - title: Clinical &amp; Healthcare Experience
-      body: >-
-        In my work as an Instructional Designer at <strong>Rambam Health Care
-        Campus</strong>, I develop just-in-time microlearning tools, clinical
-        habit systems, and AI-accelerated workflows for high-stakes medical teams.
+  greeting: "Nice to meet you — I’m Tal :)"
+  body: >-
+    I’m an Instructional Designer and Learning Technologies student who loves turning complex content into clear, engaging, and interactive learning experiences.<br><br>My work sits at the intersection of instructional strategy, visual design, and development. I enjoy taking a project from content analysis and concept through design, build, and delivery.<br><br>I currently work as an Instructional Designer at Rambam Medical Center, where I create digital learning experiences for clinical environments and combine instructional thinking, AI tools, and hands-on development to make learning practical and accessible.
+  offScreen: "Pilates, good design, and an ongoing search for the perfect Asian dish :)"
+  image: "/assets/about/profile-tal.jpeg"
 
 toolkit:
   eyebrow: Capabilities
-  heading: The Technical Toolkit
-  hook: The technologies, authoring platforms, and AI tools I use daily.
+  heading: My Toolkit.
+  hook: The technologies, authoring platforms, and tools I use daily.
   groups:
+    - icon: "🎯"
+      title: Learning & Media
+      tools: [Articulate Storyline, Genially, Camtasia, HeyGen]
     - icon: "🎨"
-      title: UI/UX &amp; Design
-      tools: [Figma, Design Systems, Adobe Illustrator, Photoshop]
-    - icon: "🕹️"
-      title: Game Engines &amp; Code
-      tools: [Unity (C#), HTML5 / CSS3, JavaScript, WebGL]
-    - icon: "📚"
-      title: Instructional Authoring
-      tools: [Articulate Storyline, Premiere Pro, Task Analysis, Microlearning]
-    - icon: "🤖"
-      title: AI &amp; Innovation
-      tools: [ChatGPT, Claude, Midjourney, Prompt Pipelines]
+      title: Design
+      tools: [Figma, Adobe Illustrator, Canva]
+    - icon: "💻"
+      title: Development
+      tools: [Unity, C#, HTML, JavaScript, Antigravity]
 
 cvBanner:
   heading: Let's build something great.

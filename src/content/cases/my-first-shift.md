@@ -113,5 +113,19 @@ assessment:
   body: >-
     After completing the full Service Cycle, learners unlock a final certification assessment designed to check their understanding of the restaurant’s core service standards.
   techOutput: "Built in Articulate Storyline 360 · PC · SCORM 2004"
+
+inUseToday:
+  eyebrow: "07 / IN USE TODAY"
+  heading: "From Training Module to Real Onboarding"
+  body: >-
+    Today, My First Shift is part of the restaurant’s onboarding process for new waitstaff.<br><br>New trainees are required to complete the full learning experience before beginning their first live shifts, giving them an opportunity to become familiar with the restaurant’s service flow before applying it on the floor.
+  highlight: "Required before the first live shift"
+  microcopy: "The module is now used as a practical preparation step for newly hired waitstaff."
+  feedbackTitle: "Feedback from the Floor."
+  testimonials:
+    - author: "New Waiter Trainee"
+      quote: "I still had questions when I started, but at least I wasn’t coming in completely blind."
+    - author: "Shift Manager"
+      quote: "New waiters still need guidance on the floor, but they arrive with a much better starting point."
 ---
  

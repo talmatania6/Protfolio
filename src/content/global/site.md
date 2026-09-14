@@ -15,8 +15,6 @@ brand:
 # page carries its own footer.
 nav:
   - { href: "#projects", label: Work, home: true }
-  - { href: "#philosophy", label: Philosophy, home: true }
-  - { href: "#process", label: Process, home: true }
   - { href: "#about", label: About, home: true }
   - { href: /assets/documents/tal-matania-cv.pdf, label: CV, download: true, suffix: "↙" }
   - { href: "#contact", label: Contact }

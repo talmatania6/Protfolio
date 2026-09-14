@@ -126,19 +126,10 @@ const home = defineCollection({
       ),
     }),
     about: sectionHeading.extend({
-      portrait: z.object({
-        emoji: z.string(),
-        name: z.string(),
-        role: z.string(),
-        badge: z.string(),
-      }),
-      cards: z.array(
-        z.object({
-          title: z.string(),
-          /** inline HTML */
-          body: z.string(),
-        }),
-      ),
+      greeting: z.string(),
+      body: z.string(),
+      offScreen: z.string(),
+      image: z.string(),
     }),
     toolkit: sectionHeading.extend({
       groups: z.array(
@@ -246,6 +237,19 @@ const cases = defineCollection({
       heading: z.string(),
       body: z.string(),
       followUp: z.string().optional(),
+    }).optional(),
+
+    inUseToday: z.object({
+      eyebrow: z.string(),
+      heading: z.string(),
+      body: z.string(),
+      highlight: z.string(),
+      microcopy: z.string(),
+      feedbackTitle: z.string(),
+      testimonials: z.array(z.object({
+        author: z.string(),
+        quote: z.string()
+      })),
     }).optional(),
 
     assessment: z.object({

@@ -47,7 +47,7 @@ const { meta, breadcrumb, tags, hero, subnav, glance, evidence, problem, challen
 
       <p class="hero-value-prop" style="margin-inline: 0; max-width: 820px; font-size: 1.15rem; line-height: 1.6; margin-bottom: 1.5rem;" set:html={hero.valueProp} />
 
-      <div style="display: flex; justify-content: center; align-items: center; margin: -3rem auto 3rem;">
+      <div style="display: flex; justify-content: center; align-items: center; margin: 1rem auto 3rem;">
         <img src="/assets/projects/surgical-ergonomics/surgical-ergonomics-hero.png" alt="Surgical Ergonomics Companion Hero mockup" style="width: 100%; max-width: 850px; height: auto; display: block;" />
       </div>
     </div>
@@ -93,8 +93,12 @@ const { meta, breadcrumb, tags, hero, subnav, glance, evidence, problem, challen
         <div style="margin-bottom: 5rem;">
           <div class="section-heading reveal">
             <p class="eyebrow">{evidence.eyebrow}</p>
-            <h2 id="problem-heading">{evidence.heading}<span>.</span></h2>
-            <p class="hook" style="font-size: 1.15rem; line-height: 1.65; max-width: 800px;" set:html={evidence.intro} />
+            <h2 id="problem-heading">The Problem<span>.</span></h2>
+          </div>
+
+          <div class="reveal" style="margin-bottom: 2rem;">
+            <h3 style="font-size: 2.2rem; font-family: var(--display); margin-bottom: 1rem; letter-spacing: -0.02em;">{evidence.heading}</h3>
+            <p style="font-size: 1.15rem; line-height: 1.65; max-width: 800px; color: var(--ink-muted);" set:html={evidence.intro} />
           </div>
 
           <div class="evidence-data-strip reveal" data-delay="1">
@@ -134,7 +138,7 @@ const { meta, breadcrumb, tags, hero, subnav, glance, evidence, problem, challen
       {problem && (
         <div class="split-layout">
           <div class="split-text-block reveal">
-            <p class="eyebrow">{problem.eyebrow}</p>
+            {problem.eyebrow && <p class="eyebrow">{problem.eyebrow}</p>}
             <h3 style="font-size: 2.2rem; font-family: var(--display); margin-bottom: 1.5rem; letter-spacing: -0.02em;">{problem.heading}</h3>
             <p style="font-size: 1.15rem; line-height: 1.65; margin-bottom: 1.5rem; color: var(--ink-muted);" set:html={problem.context} />
             <p style="font-size: 1.1rem; line-height: 1.65;" set:html={problem.body} />
@@ -155,27 +159,30 @@ const { meta, breadcrumb, tags, hero, subnav, glance, evidence, problem, challen
   <!-- THE CHALLENGE -->
   {challenge && (
     <section class="wrap section" id="challenge" aria-labelledby="challenge-heading" style="padding-top: 4.5rem;">
-      <div class="split-layout" style="flex-direction: row-reverse;">
-        <div class="split-text-block reveal">
+      <div class="split-layout" style="align-items: flex-start;">
+        <div class="split-text-block reveal" style="max-width: 650px;">
           <p class="eyebrow">{challenge.eyebrow}</p>
-          <h2 id="challenge-heading" style="margin-bottom: 1.5rem;">{challenge.heading}<span>.</span></h2>
-          <p style="font-size: 1.1rem; line-height: 1.65; margin-bottom: 1.5rem;" set:html={challenge.body} />
+          <h2 id="challenge-heading">{challenge.heading}<span>.</span></h2>
           
-          <div class="takeaway-box" style="margin-bottom: 2rem;">
-            <p style="font-size: 1.05rem;"><strong>{challenge.takeaway}</strong></p>
+          <div class="challenge-content-area" set:html={challenge.body} />
+          
+          <div class="refined-takeaway-box">
+            <p>{challenge.takeaway}</p>
           </div>
         </div>
 
-        <div class="split-visual-frame reveal" data-delay="1" style="display: flex; flex-direction: column; justify-content: center; align-items: flex-start;">
-          <span style="font-size: 0.75rem; font-weight: 800; color: var(--orange); text-transform: uppercase; letter-spacing: 0.06em;">Target Goals</span>
-          <h4 style="font-size: 1.25rem; margin: 0.5rem 0 1rem;">Performance Objectives</h4>
-          {challenge.problems && (
-            <ul style="padding-left: 1.25rem; margin: 0; font-size: 1.05rem; line-height: 1.6; color: var(--ink);">
-              {challenge.problems.map((prob) => (
-                <li style="margin-bottom: 0.75rem;">{prob}</li>
-              ))}
-            </ul>
-          )}
+        <div class="split-visual-frame reveal" data-delay="1" style="justify-content: flex-start; align-items: center;">
+          <div class="performance-card">
+            <div class="performance-card-eyebrow">Target Goals</div>
+            <h4 class="performance-card-title">Performance Objectives</h4>
+            {challenge.problems && (
+              <ul class="performance-card-list">
+                {challenge.problems.map((prob) => (
+                  <li>{prob}</li>
+                ))}
+              </ul>
+            )}
+          </div>
         </div>
       </div>
     </section>
@@ -229,6 +236,35 @@ const { meta, breadcrumb, tags, hero, subnav, glance, evidence, problem, challen
     </section>
   )}
 
+  <!-- JUST-IN-TIME ACCESS -->
+  {justInTime && (
+    <section class="wrap section" id="just-in-time" aria-labelledby="jit-heading" style="padding-top: 4.5rem;">
+      <div class="split-layout" style="align-items: center;">
+        <div class="split-text-block reveal" style="max-width: 600px;">
+          <p class="eyebrow">{justInTime.eyebrow}</p>
+          <h2 id="jit-heading">{justInTime.heading}<span>.</span></h2>
+          
+          <div class="challenge-content-area" style="gap: 1.5rem; margin-bottom: 2rem;">
+            <p style="font-size: 1.1rem; line-height: 1.7; color: var(--ink-muted); margin: 0;" set:html={justInTime.body} />
+          </div>
+          
+          {justInTime.followUp && (
+            <div class="refined-takeaway-box">
+              <p>{justInTime.followUp}</p>
+            </div>
+          )}
+        </div>
+        
+        <div class="split-visual-frame reveal" data-delay="1" style="justify-content: center;">
+          <div class="naked-media zoomable-container" style="width: 100%; max-width: 400px; border: 1px solid var(--line, rgba(26,26,26,0.08)); border-radius: 12px; box-shadow: 0 12px 40px rgba(0,0,0,0.06);">
+            <img src="/assets/projects/surgical-ergonomics/ergo-poster.png" alt="Surgical Ergonomics QR Poster" class="case-media zoomable-image" loading="lazy" decoding="async" tabindex="0" aria-label="Zoom image" />
+            <button class="zoom-button" aria-label="Zoom image" tabindex="-1">🔍</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  )}
+
   <!-- THE LEARNING EXPERIENCE -->
   {experience && (
     <section class="wrap section" id="experience" aria-labelledby="experience-heading" style="padding-top: 4.5rem;">
@@ -253,24 +289,6 @@ const { meta, breadcrumb, tags, hero, subnav, glance, evidence, problem, challen
     </section>
   )}
 
-  <!-- JUST-IN-TIME ACCESS -->
-  {justInTime && (
-    <section class="wrap section" id="just-in-time" aria-labelledby="jit-heading" style="padding-top: 4.5rem;">
-      <div class="split-layout" style="flex-direction: row-reverse;">
-        <div class="split-text-block reveal">
-          <p class="eyebrow">{justInTime.eyebrow}</p>
-          <h2 id="jit-heading">{justInTime.heading}<span>.</span></h2>
-          <p style="font-size: 1.15rem; line-height: 1.65; margin-bottom: 1.5rem;" set:html={justInTime.body} />
-          {justInTime.followUp && <p style="font-size: 1.1rem; line-height: 1.65; color: var(--ink-muted);" set:html={justInTime.followUp} />}
-        </div>
-        
-        <div class="split-visual-frame reveal" data-delay="1" style="justify-content: flex-start;">
-          <!-- Structure ready for future visual asset -->
-        </div>
-      </div>
-    </section>
-  )}
-
 
   <!-- THE VISUAL GUIDE -->
   {visualGuide && (
@@ -278,7 +296,7 @@ const { meta, breadcrumb, tags, hero, subnav, glance, evidence, problem, challen
       <div class="split-layout">
         <div class="split-text-block reveal">
           <p class="eyebrow">{visualGuide.eyebrow}</p>
-          <h2 id="guide-heading" style="margin-bottom: 1.5rem;">{visualGuide.heading}<span>.</span></h2>
+          <h2 id="guide-heading">{visualGuide.heading}<span>.</span></h2>
           <p style="font-size: 1.15rem; line-height: 1.65; margin-bottom: 1.5rem; color: var(--ink-muted);" set:html={visualGuide.body} />
           <p style="font-size: 1.1rem; line-height: 1.65;" set:html={visualGuide.impact} />
         </div>
@@ -814,5 +832,98 @@ const { meta, breadcrumb, tags, hero, subnav, glance, evidence, problem, challen
       top: -20px;
       right: -50px;
     }
+  }
+
+  /* THE CHALLENGE REDESIGN */
+  .challenge-content-area {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    margin-bottom: 3.5rem;
+  }
+  .content-block {
+    display: flex;
+    flex-direction: column;
+  }
+  .content-block-subheading {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 0.85rem;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+  }
+  .content-block p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: var(--ink-muted);
+    margin: 0;
+  }
+  .refined-takeaway-box {
+    padding-left: 1.5rem;
+    border-left: 3px solid rgba(239, 108, 53, 0.4);
+    margin-top: 1rem;
+  }
+  .refined-takeaway-box p {
+    font-size: 1.15rem;
+    line-height: 1.6;
+    color: var(--ink);
+    font-weight: 500;
+    font-style: italic;
+    margin: 0;
+  }
+  .performance-card {
+    background: transparent;
+    padding: 2rem;
+    border-radius: 16px;
+    border: 1px solid var(--line, rgba(26,26,26,0.1));
+    width: 100%;
+    max-width: 380px;
+  }
+  .performance-card-eyebrow {
+    font-size: 0.75rem;
+    font-weight: 800;
+    color: var(--orange);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1.25rem;
+  }
+  .performance-card-eyebrow::before {
+    content: '';
+    display: block;
+    width: 12px;
+    height: 2px;
+    background: var(--orange);
+  }
+  .performance-card-title {
+    font-size: 1.35rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+    margin-top: 0;
+  }
+  .performance-card-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .performance-card-list li {
+    position: relative;
+    padding-left: 1.5rem;
+    margin-bottom: 1.25rem;
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: var(--ink-muted);
+  }
+  .performance-card-list li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--orange);
+    font-weight: 600;
   }
 </style>

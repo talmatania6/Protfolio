@@ -117,113 +117,70 @@ if (!site) throw new Error('Missing src/content/global/site.md');
     </div>
   </section>
 
-  <!-- 02 / PHILOSOPHY & PILLARS -->
-  <section class="section wrap" id="philosophy" aria-labelledby="philosophy-title">
-    <div class="section-heading reveal">
-      <p class="eyebrow">{philosophy.eyebrow}</p>
-      <h2 id="philosophy-title"><Fragment set:html={philosophy.heading} /><span>.</span></h2>
-      <p class="hook" set:html={philosophy.hook} />
-    </div>
-
-    <div class="at-a-glance-grid">
-      {
-        philosophy.pillars.map((pillar, index) => (
-          <article class="at-a-glance-card reveal" data-delay={index + 1}>
-            <span class="glance-icon" aria-hidden="true">{pillar.icon}</span>
-            <h3 set:html={pillar.title} />
-            <p set:html={pillar.body} />
-          </article>
-        ))
-      }
-    </div>
-  </section>
-
-  <!-- 03 / PROCESS & INSTRUCTIONAL CRACKING ACCORDION -->
-  <section class="section wrap" id="process" aria-labelledby="process-title">
-    <div class="section-heading reveal">
-      <p class="eyebrow">{process.eyebrow}</p>
-      <h2 id="process-title"><Fragment set:html={process.heading} /><span>.</span></h2>
-      <p class="hook" set:html={process.hook} />
-    </div>
-
-    <div class="accordion-wrapper reveal" data-delay="1">
-      {
-        process.stages.map((stage, index) => (
-          <details class="accordion-item" open={index === 0}>
-            <summary class="accordion-summary">
-              <div class="accordion-title-wrap">
-                <span class="accordion-number">{stage.number}</span>
-                <span set:html={stage.title} />
-              </div>
-              <span class="accordion-chevron" aria-hidden="true">▼</span>
-            </summary>
-            <div class="accordion-content">
-              <p set:html={stage.body} />
-            </div>
-          </details>
-        ))
-      }
-    </div>
-  </section>
-
-  <!-- 04 / ABOUT ME -->
+  <!-- 04 / ABOUT ME & TOOLKIT -->
   <section class="section wrap" id="about" aria-labelledby="about-title">
-    <div class="section-heading reveal">
-      <p class="eyebrow">{about.eyebrow}</p>
-      <h2 id="about-title"><Fragment set:html={about.heading} /><span>.</span></h2>
-      <p class="hook" set:html={about.hook} />
-    </div>
-
-    <div class="about-bento reveal" data-delay="1">
+    <div class="split-layout" style="align-items: flex-start; gap: 4rem;">
       <!-- Left: Portrait Frame -->
-      <div class="portrait-card">
-        <div
-          class="portrait-wrap"
-          style="aspect-ratio: 4/5; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end; background: linear-gradient(145deg, #fbf8f2 0%, #ece5d8 100%); padding: 2rem;"
-        >
-          <div style="font-size: 3.5rem; margin-bottom: 0.75rem;">{about.portrait.emoji}</div>
-          <p style="font-family: var(--display); font-weight: 800; font-size: 1.3rem; margin: 0 0 0.25rem;">
-            {about.portrait.name}
-          </p>
-          <p style="font-size: 0.95rem; color: var(--ink-muted); margin: 0;">{about.portrait.role}</p>
-          <span class="pill-badge" style="margin-top: 1.25rem;">{about.portrait.badge}</span>
+      <div class="split-visual-frame reveal" style="background: transparent; border: none; padding: 0;">
+        <div style="position: sticky; top: 100px;">
+          <img 
+            src={about.image} 
+            alt="Tal Matania" 
+            style="width: 100%; border-radius: var(--radius-md, 14px); object-fit: cover; box-shadow: 0 10px 40px rgba(0,0,0,0.05);"
+          />
+          {site.data.socialLinks && site.data.socialLinks.length > 0 && (
+            <div style="margin-top: 1.5rem; display: flex; gap: 1.5rem; justify-content: flex-start;">
+              {site.data.socialLinks.map((link: any) => (
+                <a href={link.url} target="_blank" rel="noopener noreferrer" style="color: var(--ink-muted); text-decoration: none; font-weight: 600; font-size: 0.95rem; border-bottom: 2px solid transparent; transition: color 0.2s;">
+                  {link.label}
+                </a>
+              ))}
+            </div>
+          )}
         </div>
       </div>
-
-      <!-- Right: Story Cards -->
-      <div class="about-narrative">
-        {
-          about.cards.map((card) => (
-            <article class="about-card">
-              <h3 set:html={card.title} />
-              <p set:html={card.body} />
-            </article>
-          ))
-        }
+      
+      <!-- Right: Story & Toolkit -->
+      <div class="split-text-block reveal" data-delay="1" style="max-width: 650px;">
+        <p class="eyebrow">{about.eyebrow}</p>
+        <h2 id="about-title"><Fragment set:html={about.heading} /><span>.</span></h2>
+        
+        <div style="margin-bottom: 2rem;">
+          <h3 style="font-family: 'Caveat', cursive; font-size: 2.2rem; color: var(--orange); margin-bottom: 1.5rem; font-weight: 500;">
+            {about.greeting}
+          </h3>
+          <p style="font-size: 1.1rem; line-height: 1.7; color: var(--ink-muted); margin-bottom: 0;" set:html={about.body} />
+        </div>
+          
+        <!-- Toolkit -->
+        <div style="margin-top: 3.5rem; padding-top: 2.5rem; border-top: 1px solid var(--line, rgba(26,26,26,0.1));">
+          <h3 style="font-size: 1.5rem; font-weight: 800; margin-bottom: 2rem; letter-spacing: -0.02em;">{toolkit.heading}</h3>
+          
+          <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+            {toolkit.groups.map((group: any) => (
+              <div>
+                <p style="font-size: 0.85rem; font-weight: 800; color: var(--ink-muted); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.65rem; display: flex; align-items: center; gap: 0.5rem;">
+                  <span>{group.icon}</span> {group.title}
+                </p>
+                <ul class="tool-pill-list">
+                  {group.tools.map((tool: any) => (
+                    <li>{tool}</li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </div>
+          
+        <!-- Off Screen Note -->
+        <div style="margin-top: 2.5rem; padding: 1.25rem 1.5rem; background: rgba(246, 241, 235, 0.6); border-radius: 12px; border: 1px solid var(--line, rgba(26,26,26,0.05)); display: flex; align-items: flex-start; gap: 0.75rem;">
+          <span style="font-size: 1.2rem; margin-top: 0.1rem;" aria-hidden="true">🪴</span>
+          <p style="font-size: 0.95rem; line-height: 1.6; color: var(--ink-muted); margin: 0;">
+            <strong style="font-family: 'Caveat', cursive; font-size: 1.45rem; color: var(--orange); font-weight: 600; margin-right: 0.25rem;">Off screen:</strong>
+            {about.offScreen}
+          </p>
+        </div>
       </div>
-    </div>
-  </section>
-
-  <!-- 05 / CATEGORIZED TOOLKIT -->
-  <section class="section wrap" aria-labelledby="toolkit-title">
-    <div class="section-heading reveal">
-      <p class="eyebrow">{toolkit.eyebrow}</p>
-      <h2 id="toolkit-title"><Fragment set:html={toolkit.heading} /><span>.</span></h2>
-      <p class="hook" set:html={toolkit.hook} />
-    </div>
-
-    <div class="toolkit-grid reveal" data-delay="1">
-      {
-        toolkit.groups.map((group) => (
-          <article class="toolkit-card">
-            <span class="toolkit-icon" aria-hidden="true">{group.icon}</span>
-            <h3 set:html={group.title} />
-            <ul class="tool-pill-list">
-              {group.tools.map((tool) => <li>{tool}</li>)}
-            </ul>
-          </article>
-        ))
-      }
     </div>
   </section>
 
@@ -246,4 +203,35 @@ if (!site) throw new Error('Missing src/content/global/site.md');
       </div>
     </div>
   </section>
+
+  <style>
+    /* SPLIT LAYOUT FOR ABOUT ME */
+    .split-layout {
+      display: flex;
+      flex-direction: column;
+      gap: 3rem;
+    }
+    .split-text-block {
+      flex: 1;
+    }
+    .split-visual-frame {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+    }
+    @media (min-width: 900px) {
+      .split-layout {
+        flex-direction: row;
+        gap: 5rem;
+        align-items: flex-start;
+      }
+      .split-visual-frame {
+        flex: 0 0 35%; /* Portrait takes ~1/3 of the screen width */
+      }
+      .split-text-block {
+        flex: 1;       /* Text takes the remaining space */
+      }
+    }
+  </style>
 </BaseLayout>

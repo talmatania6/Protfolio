@@ -4,7 +4,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 
 const entry = await getEntry('cases', 'learning-game-generator');
 if (!entry) throw new Error('Missing src/content/cases/learning-game-generator.md');
-const { meta, breadcrumb, tags, hero, subnav, glance, impact, nextCase } = entry.data;
+const { meta, breadcrumb, tags, hero, subnav, glance, nextCase } = entry.data;
 ---
 
 <BaseLayout
@@ -15,53 +15,48 @@ const { meta, breadcrumb, tags, hero, subnav, glance, impact, nextCase } = entry
   ogDescription={meta.ogDescription}
   ogImage={meta.ogImage}
 >
-  <!-- CASE HERO HEADER (LEFT-ALIGNED) -->
+  <!-- CASE HERO HEADER (LEFT-ALIGNED, DUAL MOCKUPS) -->
   <header class="wrap" id="overview" aria-labelledby="case-title" style="padding-top: 2.5rem; text-align: left;">
-    <!-- Top Left Breadcrumb Navigation -->
-    <nav class="breadcrumb-nav" aria-label="Breadcrumb">
-      <a href="/">← Portfolio</a>
-      <span class="separator">/</span>
-      <span>{breadcrumb}</span>
-    </nav>
+    <div class="hero-split-layout">
+      <div class="hero-split-text reveal">
+        <nav class="breadcrumb-nav" aria-label="Breadcrumb" style="margin-bottom: 2.5rem;">
+          <a href="/">← Portfolio</a>
+          <span class="separator">/</span>
+          <span>{breadcrumb}</span>
+        </nav>
 
-    <div class="reveal">
-      <div class="card-tags" style="margin-bottom: 1rem;">
-        {
-          tags.map((tag) => (
-            <span class={tag.highlight ? 'tag-pill-sm highlight' : 'tag-pill-sm'}>{tag.label}</span>
-          ))
-        }
-      </div>
-
-      <h1 class="hero-name" id="case-title" style="font-size: clamp(2.8rem, 5.5vw, 4.5rem); margin-bottom: 0.75rem;">
-        {hero.title}<span>.</span>
-      </h1>
-
-      <p class="hero-role-title" style="font-size: clamp(1.25rem, 2vw, 1.65rem); color: var(--ink-muted); font-weight: 600; margin-bottom: 1.5rem;">
-        {hero.tagline}
-      </p>
-
-      <p class="hero-value-prop" style="margin-inline: 0; max-width: 820px; font-size: 1.25rem;" set:html={hero.valueProp} />
-
-      <!-- LARGE DEDICATED SHOWCASE MEDIA PLACEHOLDER -->
-      <div class="showcase-media-frame">
-        <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.12); padding-bottom: 1rem; margin-bottom: 1.5rem;">
-          <span style="font-family: var(--display); font-size: 0.85rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--orange);">
-            ✈️ Showcase Video &amp; Interactive Sandbox
-          </span>
-          <span class="pill-badge dark">WebGL + AI Engine</span>
+        <div class="card-tags" style="margin-bottom: 1.5rem;">
+          {
+            tags.map((tag) => (
+              <span class={tag.highlight ? 'tag-pill-sm highlight' : 'tag-pill-sm'}>{tag.label}</span>
+            ))
+          }
         </div>
 
-        <!-- Video / High-Resolution Image Frame Placeholder -->
-        <div style="background: rgba(0,0,0,0.4); border-radius: var(--radius-md); border: 2px dashed rgba(255,255,255,0.15); min-height: 380px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 2rem; position: relative;">
-          <div style="font-size: 3.5rem; margin-bottom: 1rem;">▶️</div>
-          <h3 style="color: #ffffff; font-size: 1.4rem; margin: 0 0 0.5rem;">Interactive Gameplay &amp; AI Generator Showcase</h3>
-          <p style="color: rgba(255,255,255,0.7); max-width: 520px; font-size: 0.95rem; margin: 0;">
-            [ Dedicated Placeholder for Embedded Gameplay Video / High-Resolution Showcase Visuals ]
-          </p>
-          <div style="display: flex; gap: 1rem; margin-top: 1.5rem; flex-wrap: wrap; justify-content: center;">
-            <span class="pill-badge dark">Luggage Conveyor Mechanics</span>
-            <span class="pill-badge dark">AI Taxonomy Authoring</span>
+        <h1 class="hero-name" id="case-title" style="font-size: clamp(2.8rem, 5vw, 4.5rem); margin-bottom: 0.75rem;">
+          {hero.title}<span>.</span>
+        </h1>
+
+        <p class="hero-role-title" style="font-size: clamp(1.15rem, 2vw, 1.5rem); color: var(--ink-muted); font-weight: 600; margin-bottom: 1.5rem;">
+          {hero.tagline}
+        </p>
+
+        <p class="hero-value-prop" style="margin-inline: 0; max-width: 820px; font-size: 1.15rem; line-height: 1.6; margin-bottom: 2.5rem;" set:html={hero.valueProp} />
+
+        <div>
+          <a class="button button-primary" href="https://triangle.telem-hit.net/2026/PlaneItRight_NitzanLironTalMika/" target="_blank" rel="noopener noreferrer">
+            View Live Project <span aria-hidden="true">↗</span>
+          </a>
+        </div>
+      </div>
+      
+      <div class="hero-split-visual reveal" data-delay="1">
+        <div class="dual-mockup-container">
+          <div class="mockup-player-wrapper">
+            <img class="mockup-player" src="/assets/projects/plane-it-right/plane-it-right-player-mockup.png" alt="Plane It Right Player Interface" />
+          </div>
+          <div class="mockup-editor-wrapper">
+            <img class="mockup-editor" src="/assets/projects/plane-it-right/plane-it-right-editor-mockup.png" alt="Plane It Right Editor Interface" />
           </div>
         </div>
       </div>
@@ -71,7 +66,7 @@ const { meta, breadcrumb, tags, hero, subnav, glance, impact, nextCase } = entry
   <!-- IN-PAGE STICKY SUBNAV WITH ACTIVE HIGHLIGHT -->
   <nav class="case-subnav" aria-label="Case study navigation">
     <div class="wrap">
-      <ul class="case-subnav-list">
+      <ul class="case-subnav-list custom-subnav">
         {
           subnav.map((item, index) => (
             <li>
@@ -85,7 +80,7 @@ const { meta, breadcrumb, tags, hero, subnav, glance, impact, nextCase } = entry
     </div>
   </nav>
 
-  <!-- 01 / "AT A GLANCE" SECTION (3 DISTINCT CARDS) -->
+  <!-- OVERVIEW / "AT A GLANCE" SECTION -->
   <section class="wrap at-a-glance-section" aria-labelledby="glance-heading">
     <h2 id="glance-heading" class="sr-only">Project At A Glance</h2>
     <div class="at-a-glance-grid">
@@ -101,175 +96,728 @@ const { meta, breadcrumb, tags, hero, subnav, glance, impact, nextCase } = entry
     </div>
   </section>
 
-  <!-- 02 / CONTENT BLOCKS: SCANNABLE ALTERNATING LAYOUTS -->
-
-  <!-- BLOCK 1: THE CHALLENGE -->
-  <section class="wrap section" id="challenge" aria-labelledby="challenge-heading" style="padding-top: 2rem;">
-    <div class="split-alternating">
+  <!-- THE PROBLEM -->
+  <section class="wrap section" id="problem" aria-labelledby="problem-heading" style="padding-top: 2rem;">
+    <div class="split-layout">
       <div class="split-text-block reveal">
-        <p class="eyebrow">01 / The Pedagogical Dilemma</p>
-        <h2 id="challenge-heading">Binary Recognition vs. True Fluency<span>.</span></h2>
-        <p>
-          Traditional e-learning relies on static multiple-choice questions. While easy to grade, they test passive <em>recognition</em> through elimination rather than active <em>retrieval automaticity</em>.
+        <p class="eyebrow">01 / The Problem</p>
+        <h2 id="problem-heading">From Static Content to Active Practice<span>.</span></h2>
+        <p style="font-size: 1.15rem; line-height: 1.65; margin-bottom: 1.5rem; color: var(--ink-muted);">
+          Educators and learning professionals often need to create engaging digital practice quickly, but building an interactive activity for every new topic can require time, technical knowledge, or specialized authoring tools.
         </p>
-        <p>
-          In high-stakes work environments, learners must classify concepts rapidly and accurately under temporal pressure. Furthermore, traditional gamified quizzes suffer from two fatal pedagogical flaws:
+        <p style="font-size: 1.1rem; line-height: 1.65; margin-bottom: 1.5rem;">
+          At the same time, category-based knowledge is often practiced through static questions that test recognition rather than active classification.
         </p>
-        <ul>
-          <li><strong>The Punitive "Game Over" Wall:</strong> Ejecting learners after 3 strikes causes frustration rather than reinforcement.</li>
-          <li><strong>The "Pause-Screen Cheat":</strong> Freezing game timers allows users to scan external cheat-sheets, defeating genuine retrieval practice.</li>
-        </ul>
+        <p style="font-size: 1.1rem; line-height: 1.65;">
+          Plane It Right was designed to address both needs: giving educators a flexible way to turn their own content into an interactive learning activity, while giving learners a game-based environment for practicing retrieval, classification, and repeated application.
+        </p>
+      </div>
+      
+      <div class="split-visual-frame text-only-frame reveal" data-delay="1">
+         <div style="background: var(--surface); padding: 2.5rem; border-radius: 12px; border: 1px solid var(--border); box-shadow: 0 8px 30px rgba(0,0,0,0.04);">
+            <h4 style="font-family: var(--display); font-size: 1.25rem; margin-bottom: 1rem;">The Need</h4>
+            <ul style="margin: 0; padding-left: 1.5rem; color: var(--ink-muted); line-height: 1.8;">
+              <li><strong>Quick, reusable authoring</strong> for educators</li>
+              <li><strong>Active retrieval</strong> over passive recognition</li>
+              <li><strong>Category-based practice</strong> for fluency</li>
+              <li><strong>Scalable instructional design</strong></li>
+            </ul>
+         </div>
+      </div>
+    </div>
+  </section>
 
-        <div class="takeaway-box">
-          <p><strong>Core Need:</strong> An engaging interaction loop that builds cognitive speed without punitive failure states.</p>
+  <!-- THE CHALLENGE -->
+  <section class="wrap section" id="challenge" aria-labelledby="challenge-heading">
+    <div class="split-layout reverse">
+      <div class="split-text-block reveal">
+        <p class="eyebrow">02 / The Challenge</p>
+        <h2 id="challenge-heading">One Product, Two Very Different Users<span>.</span></h2>
+        <p style="font-size: 1.15rem; line-height: 1.65; margin-bottom: 1.5rem; color: var(--ink-muted);">
+          A central challenge in Plane It Right was creating one product that serves two very different users concurrently.
+        </p>
+        <p style="font-size: 1.1rem; line-height: 1.65;">
+          Educators needed an authoring environment that makes content creation manageable and flexible, while learners needed a game experience that feels immediate, intuitive, and motivating. The challenge was not just designing a game, but designing an end-to-end learning system that connects content creation, publishing, and gameplay into one coherent flow.
+        </p>
+      </div>
+
+      <div class="split-visual-frame text-only-frame reveal" data-delay="1">
+        <div style="display: grid; gap: 1.5rem; width: 100%;">
+          <div style="background: var(--surface); padding: 1.5rem; border-radius: 12px; border: 1px solid var(--border);">
+            <strong style="display: block; color: var(--orange); margin-bottom: 0.5rem; font-size: 1.1rem;">Educator Side</strong>
+            <p style="margin: 0; font-size: 0.95rem; color: var(--ink-muted); line-height: 1.5;">Creating games, defining categories, adding items, using AI support, and publishing content.</p>
+          </div>
+          <div style="background: var(--surface); padding: 1.5rem; border-radius: 12px; border: 1px solid var(--border);">
+            <strong style="display: block; color: var(--primary); margin-bottom: 0.5rem; font-size: 1.1rem;">Learner Side</strong>
+            <p style="margin: 0; font-size: 0.95rem; color: var(--ink-muted); line-height: 1.5;">Entering codes, grasping rules quickly, playing responsive sorting games, and receiving feedback.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- THE LEARNING SOLUTION -->
+  <section class="wrap section" id="solution" aria-labelledby="solution-heading">
+    <div class="split-layout" style="align-items: flex-start;">
+      <div class="split-text-block reveal" style="max-width: 650px;">
+        <p class="eyebrow">03 / The Architecture</p>
+        <h2 id="solution-heading">A Dual-Sided Learning System<span>.</span></h2>
+        <p style="font-size: 1.15rem; line-height: 1.65; color: var(--ink-muted);">
+          Plane It Right connects two synchronized experiences. On the educator side, content is created and published through an authoring interface. Once published, the game receives a unique code. On the learner side, players enter that code to access the correct game content and begin the experience.
+        </p>
+      </div>
+
+      <div class="split-visual-frame reveal" data-delay="1" style="width: 100%; align-items: flex-start;">
+        <!-- 3-PART SYSTEM FLOW -->
+        <div class="system-flow-container">
+          <!-- Educator -->
+          <div class="flow-step step-large">
+            <div class="flow-image-wrapper zoomable-container">
+              <img src="/assets/projects/plane-it-right/plane-it-right-flow-educator.png" alt="Educator Authoring Interface" class="zoomable-image" tabindex="0" aria-label="Zoom image" />
+              <button class="zoom-button" aria-label="Zoom image" tabindex="-1">🔍</button>
+            </div>
+            <h4 class="flow-title">1. Create</h4>
+            <p class="flow-desc">Educators author content and define categories.</p>
+          </div>
+
+          <div class="flow-arrow">→</div>
+
+          <!-- Game Code -->
+          <div class="flow-step step-medium">
+            <div class="flow-image-wrapper zoomable-container">
+              <img src="/assets/projects/plane-it-right/plane-it-right-flow-game-code.png" alt="Game Code Generation" class="zoomable-image" tabindex="0" aria-label="Zoom image" />
+              <button class="zoom-button" aria-label="Zoom image" tabindex="-1">🔍</button>
+            </div>
+            <h4 class="flow-title">2. Publish</h4>
+            <p class="flow-desc">The system generates a unique 6-digit game code.</p>
+          </div>
+
+          <div class="flow-arrow">→</div>
+
+          <!-- Learner -->
+          <div class="flow-step step-large">
+            <div class="flow-image-wrapper zoomable-container">
+              <img src="/assets/projects/plane-it-right/plane-it-right-flow-learner.png" alt="Learner Gameplay Interface" class="zoomable-image" tabindex="0" aria-label="Zoom image" />
+              <button class="zoom-button" aria-label="Zoom image" tabindex="-1">🔍</button>
+            </div>
+            <h4 class="flow-title">3. Play</h4>
+            <p class="flow-desc">Learners enter the code to play the customized sorting game.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INSTRUCTIONAL DESIGN -->
+  <section class="wrap section" id="instructional-design" aria-labelledby="id-heading">
+    <div class="split-layout">
+      <div class="split-text-block reveal">
+        <p class="eyebrow">04 / Instructional Design</p>
+        <h2 id="id-heading">Turning Classification into a Game Mechanic<span>.</span></h2>
+        <p style="font-size: 1.15rem; line-height: 1.65; margin-bottom: 1.5rem; color: var(--ink-muted);">
+          The key instructional challenge was not simply to make a sorting game, but to ask: <em>How might we enable educators to turn their own learning content into an interactive, engaging practice experience quickly, while keeping the activity pedagogically meaningful?</em>
+        </p>
+        <p style="font-size: 1.1rem; line-height: 1.65; margin-bottom: 1.5rem;">
+          The solution relies on a reusable game structure that can support different subject areas. The airport metaphor was selected specifically because it maps naturally onto the cognitive task of classification:
+        </p>
+        <ul style="margin: 0 0 1.5rem; padding-left: 1.5rem; color: var(--ink-muted); line-height: 1.8;">
+          <li><strong>Learning item</strong> = Suitcase</li>
+          <li><strong>Category</strong> = Destination</li>
+          <li><strong>Sorting action</strong> = Sending the suitcase to the correct belt</li>
+        </ul>
+        <p style="font-size: 1.1rem; line-height: 1.65; margin-bottom: 1rem;">
+          This ensures the learning action and the game action are the same action.
+        </p>
+      </div>
+
+      <div class="split-visual-frame large-media-frame reveal" data-delay="1">
+        <div class="zoomable-container" style="width: 100%;">
+          <img src="/assets/projects/plane-it-right/plane-it-right-player-mockup.png" alt="Plane It Right Player Interface" class="zoomable-image" tabindex="0" aria-label="Zoom image" style="width: 100%; border-radius: 12px; display: block;" />
+          <button class="zoom-button" aria-label="Zoom image" tabindex="-1">🔍</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AI & DEVELOPMENT -->
+  <section class="wrap section" id="ai-development" aria-labelledby="dev-heading">
+    <div class="split-layout" style="margin-bottom: 4rem;">
+      <div class="split-text-block reveal">
+        <p class="eyebrow">05 / Execution</p>
+        <h2 id="dev-heading">AI-Assisted Authoring &amp; Technical Development<span>.</span></h2>
+        <p style="font-size: 1.15rem; line-height: 1.65; color: var(--ink-muted); margin-bottom: 1.5rem;">
+          Educators needed a faster way to create interactive practice. Plane It Right provides a reusable authoring system to solve this, and we deliberately embedded AI into the authoring workflow to make that process even faster.
+        </p>
+        <p style="font-size: 1.1rem; line-height: 1.65; color: var(--ink-muted);">
+          By reducing the effort involved in creating individual learning items, the educator can publish the game more easily, and learners ultimately receive an engaging, interactive sorting experience.
+        </p>
+      </div>
+    </div>
+
+    <!-- AI-ASSISTED ITEM GENERATION -->
+    <div class="split-layout tech-block reveal" style="margin-bottom: 6rem; align-items: center;">
+      <div class="split-text-block">
+        <h3 style="font-size: 1.8rem; font-family: var(--display); margin-bottom: 1.5rem;">AI-Assisted Item Generation</h3>
+        <p style="font-size: 1.1rem; line-height: 1.65; color: var(--ink-muted); margin-bottom: 1.5rem;">
+          AI was integrated at the point where content creation can become repetitive. When adding a text item, educators can generate a suggestion directly from the authoring interface.
+        </p>
+        <p style="font-size: 1.1rem; line-height: 1.65; color: var(--ink-muted); margin-bottom: 1.5rem;">
+          The system uses the game topic, category, and existing content context to generate a relevant item, helping the educator move from an empty field to a usable starting point more quickly.
+        </p>
+        <div class="takeaway-box" style="margin-bottom: 1.5rem; padding: 1rem; border-left: 3px solid var(--orange); background: var(--surface); font-size: 1rem;">
+          <strong style="color: var(--orange);">AI where the friction happens.</strong><br/>
+          Context-aware suggestions directly inside the authoring workflow.
+        </div>
+        <p style="font-size: 1.1rem; line-height: 1.65; color: var(--ink-muted);">
+          Rather than replacing the educator, AI acts as an authoring assistant — reducing repetitive work while keeping instructional control with the content creator.
+        </p>
+      </div>
+      <div class="split-visual-frame large-media-frame">
+        <video style="width: 100%; display: block; border-radius: 8px;" controls preload="metadata" playsinline>
+          <source src="/assets/projects/plane-it-right/ai-generate-video.mp4" type="video/mp4" />
+        </video>
+      </div>
+    </div>
+
+    <!-- TECHNICAL DEVELOPMENT: ALTERNATING LARGE BLOCKS -->
+    <div class="technical-alternating-grid">
+      <!-- Block A -->
+      <div class="split-layout tech-block reveal">
+        <div class="split-text-block">
+          <h4 style="font-size: 1.5rem; margin-bottom: 1rem;">A. Authoring System Backend</h4>
+          <p style="font-size: 1.1rem; line-height: 1.65; color: var(--ink-muted);">C# server-side logic and API handling for creating, editing, publishing, duplicating, and managing learning games in the authoring environment. This includes communicating with an API to generate and process the AI-suggested text items.</p>
+        </div>
+        <div class="split-visual-frame large-media-frame">
+          <div class="zoomable-container" style="width: 100%;">
+            <img src="/assets/projects/plane-it-right/plane-it-right-editor-backend.png" alt="Authoring System Backend" class="zoomable-image" tabindex="0" aria-label="Zoom image" style="width: 100%; border-radius: 12px; display: block;" />
+            <button class="zoom-button" aria-label="Zoom image" tabindex="-1">🔍</button>
+          </div>
         </div>
       </div>
 
+      <!-- Block B -->
+      <div class="split-layout tech-block reverse reveal">
+        <div class="split-text-block">
+          <h4 style="font-size: 1.5rem; margin-bottom: 1rem;">B. Unity Development</h4>
+          <p style="font-size: 1.1rem; line-height: 1.65; color: var(--ink-muted);">Building the player-facing game environment in Unity, including the scene, visual structure, interactive elements, and gameplay flow.</p>
+        </div>
+        <div class="split-visual-frame large-media-frame">
+          <div class="zoomable-container" style="width: 100%;">
+            <img src="/assets/projects/plane-it-right/plane-it-right-unity-development.png" alt="Unity Development" class="zoomable-image" tabindex="0" aria-label="Zoom image" style="width: 100%; border-radius: 12px; display: block;" />
+            <button class="zoom-button" aria-label="Zoom image" tabindex="-1">🔍</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Block C -->
+      <div class="split-layout tech-block reveal">
+        <div class="split-text-block">
+          <h4 style="font-size: 1.5rem; margin-bottom: 1rem;">C. Player Game Logic</h4>
+          <p style="font-size: 1.1rem; line-height: 1.65; color: var(--ink-muted);">Programming the gameplay logic in C#, including content handling, sorting behavior, feedback, and dynamic interaction.</p>
+        </div>
+        <div class="split-visual-frame large-media-frame">
+          <div class="zoomable-container" style="width: 100%;">
+            <img src="/assets/projects/plane-it-right/plane-it-right-player-game-logic.png" alt="Player Game Logic" class="zoomable-image" tabindex="0" aria-label="Zoom image" style="width: 100%; border-radius: 12px; display: block;" />
+            <button class="zoom-button" aria-label="Zoom image" tabindex="-1">🔍</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- THE LEARNING EXPERIENCE (VIDEO) -->
+  <section class="wrap section" id="experience" aria-labelledby="exp-heading" style="padding-bottom: 6rem;">
+    <div class="split-layout video-split" style="align-items: center;">
+      <div class="split-text-block reveal">
+        <p class="eyebrow">06 / End-to-End Walkthrough</p>
+        <h2 id="exp-heading">From Authoring to Play<span>.</span></h2>
+        <p style="font-size: 1.15rem; line-height: 1.65; color: var(--ink-muted);">
+          The final learning experience begins in the authoring system, where educators define content and publish a game. From there, learners enter the game code, access the correct content, and play through the sorting experience while receiving feedback. This end-to-end flow demonstrates how instructional design, AI-assisted authoring, and technical development come together in one product.
+        </p>
+      </div>
+
+      <!-- LARGE VIDEO SHOWCASE -->
       <div class="split-visual-frame reveal" data-delay="1">
-        <span style="font-size: 0.75rem; font-weight: 800; color: var(--orange); text-transform: uppercase; letter-spacing: 0.06em;">The Cognitive Bottleneck</span>
-        <h4 style="font-size: 1.25rem; margin: 0.5rem 0 1rem;">Passive Quiz vs. Active Fluency</h4>
-
-        <div style="display: grid; gap: 0.85rem;">
-          <div style="background: var(--paper-soft); padding: 1rem; border-radius: 8px; border-left: 3px solid #e05252;">
-            <strong style="display: block; font-size: 0.9rem; color: #e05252; margin-bottom: 0.2rem;">❌ Traditional Multiple Choice</strong>
-            <p style="margin: 0; font-size: 0.88rem; color: var(--ink-muted);">Infinite time to guess; tests passive elimination rather than real-time recall.</p>
+        <div class="css-computer-mockup">
+          <div class="mockup-header">
+            <span class="dot red"></span>
+            <span class="dot yellow"></span>
+            <span class="dot green"></span>
           </div>
-
-          <div style="background: var(--paper-soft); padding: 1rem; border-radius: 8px; border-left: 3px solid #38a169;">
-            <strong style="display: block; font-size: 0.9rem; color: #38a169; margin-bottom: 0.2rem;">✓ Airport Conveyor Sorting</strong>
-            <p style="margin: 0; font-size: 0.88rem; color: var(--ink-muted);">Mild temporal pressure stimulates rapid mental schema activation and automaticity.</p>
-          </div>
+          <video style="width: 100%; display: block;" controls preload="metadata" playsinline>
+            <source src="/assets/projects/plane-it-right/plane-it-right-full-flow.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
         </div>
       </div>
-    </div>
-  </section>
-
-  <!-- BLOCK 2: THE INSTRUCTIONAL CRACKING -->
-  <section class="wrap section" id="cracking" aria-labelledby="cracking-heading">
-    <div class="split-alternating reverse">
-      <div class="split-text-block reveal">
-        <p class="eyebrow">02 / Pedagogical Logic</p>
-        <h2 id="cracking-heading">The Instructional Cracking<span>.</span></h2>
-        <p>
-          I framed the learning experience around an intuitive real-world metaphor: <strong>The Airport Baggage Claim</strong>.
-        </p>
-        <p>
-          Luggage rolls down the conveyor belt tagged with conceptual items. The learner acts as the flight controller, directing each bag to the correct destination plane before it passes.
-        </p>
-        <ul>
-          <li><strong>Non-Punitive Recovery Queue:</strong> When a learner misclassifies a bag, the system does not penalize them with a game over. Instead, the item is dynamically re-queued later until correctly sorted.</li>
-          <li><strong>Cognitive Occlusion on Pause:</strong> Pausing the game instantly blurs all active luggage tags to prevent cheat-scanning and safeguard retrieval integrity.</li>
-          <li><strong>Feedback Pacing:</strong> Visual cues (green beacon / red deflection) provide instant micro-feedback without interrupting the learner's flow state.</li>
-        </ul>
-
-        <div class="takeaway-box">
-          <p><strong>Pedagogical Win:</strong> 100% module completion with proven retention through iterative practice.</p>
-        </div>
-      </div>
-
-      <div class="split-visual-frame reveal" data-delay="1">
-        <span style="font-size: 0.75rem; font-weight: 800; color: var(--orange); text-transform: uppercase; letter-spacing: 0.06em;">Interaction Architecture</span>
-        <h4 style="font-size: 1.25rem; margin: 0.5rem 0 1rem;">Airport Conveyor Mechanics</h4>
-
-        <div style="display: grid; gap: 0.85rem;">
-          <div style="display: flex; gap: 0.75rem; align-items: flex-start; background: var(--paper-soft); padding: 0.85rem; border-radius: 8px;">
-            <span style="font-size: 1.25rem;">🧳</span>
-            <div>
-              <strong style="font-size: 0.92rem; display: block;">Luggage Conveyor</strong>
-              <p style="margin: 0; font-size: 0.85rem; color: var(--ink-muted);">Paced delivery creating productive, motivating time pressure.</p>
-            </div>
-          </div>
-
-          <div style="display: flex; gap: 0.75rem; align-items: flex-start; background: var(--paper-soft); padding: 0.85rem; border-radius: 8px;">
-            <span style="font-size: 1.25rem;">🔄</span>
-            <div>
-              <strong style="font-size: 0.92rem; display: block;">Dynamic Mistake Queue</strong>
-              <p style="margin: 0; font-size: 0.85rem; color: var(--ink-muted);">Missed concepts return seamlessly until mastery is demonstrated.</p>
-            </div>
-          </div>
-
-          <div style="display: flex; gap: 0.75rem; align-items: flex-start; background: var(--paper-soft); padding: 0.85rem; border-radius: 8px;">
-            <span style="font-size: 1.25rem;">🔒</span>
-            <div>
-              <strong style="font-size: 0.92rem; display: block;">Anti-Cheat Pause Occlusion</strong>
-              <p style="margin: 0; font-size: 0.85rem; color: var(--ink-muted);">Blurs active tags upon pause to safeguard retrieval integrity.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- BLOCK 3: AI INTEGRATION & GENERATOR -->
-  <section class="wrap section" id="ai-solution" aria-labelledby="ai-heading">
-    <div class="split-alternating">
-      <div class="split-text-block reveal">
-        <p class="eyebrow">03 / Dual-Sided Scaling</p>
-        <h2 id="ai-heading">AI as an Authoring Multiplier<span>.</span></h2>
-        <p>
-          An educational game is only as good as its content variety. Creating high-quality taxonomic categories, plausible distractors, and balanced datasets is notoriously tedious for educators.
-        </p>
-        <p>
-          I engineered an in-editor <strong>AI Content Generator</strong>. Educators simply enter their topic (e.g. <em>"Grammar: Verb Tenses"</em> or <em>"Medical: Cardiac Medications"</em>) and the system generates:
-        </p>
-        <ul>
-          <li><strong>Curriculum-Aligned Categorization:</strong> Clean taxonomies matching academic objectives.</li>
-          <li><strong>High-Quality Distractors:</strong> Plausible, balanced terms that challenge learner misconceptions.</li>
-          <li><strong>Strict Defensive JSON Schemas:</strong> Zero-shot validation preventing hallucinations and ensuring seamless game loading.</li>
-        </ul>
-
-        <div class="takeaway-box">
-          <p><strong>Efficiency Gain:</strong> Reduced authoring time from 90 minutes to <strong>under 30 seconds</strong> per module.</p>
-        </div>
-      </div>
-
-      <div class="split-visual-frame reveal" data-delay="1" style="background: var(--ink); color: #ffffff;">
-        <span style="font-size: 0.72rem; font-weight: 800; color: #ffaa40; text-transform: uppercase; letter-spacing: 0.08em; display: block; margin-bottom: 0.5rem;">Defensive AI Pipeline</span>
-        <h4 style="color: #ffffff; font-size: 1.2rem; margin: 0 0 1rem;">Teacher Prompt → Unity Schema</h4>
-
-        <!-- Braces are escaped as {'{'} / {'}'} so Astro doesn't read them as expressions. -->
-        <div style="font-family: monospace; font-size: 0.82rem; background: rgba(255,255,255,0.06); padding: 1rem; border-radius: 8px; color: #a5f3fc; line-height: 1.55; overflow-x: auto;">
-          {'{'}<br />
-          &nbsp;&nbsp;"topic": "Cellular Biology",<br />
-          &nbsp;&nbsp;"categories": ["Organelles", "Membrane Transport"],<br />
-          &nbsp;&nbsp;"items": [<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;{'{'}"tag": "Mitochondria", "target": "Organelles"{'}'},<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;{'{'}"tag": "Osmosis", "target": "Membrane Transport"{'}'}<br />
-          &nbsp;&nbsp;]<br />
-          {'}'}
-        </div>
-        <p style="font-size: 0.82rem; color: rgba(255,255,255,0.6); margin: 0.85rem 0 0;">
-          ✓ Validated against Unity runtime data models before loading.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- BLOCK 4: IMPACT & TAKEAWAYS -->
-  <section class="wrap section" id="impact" aria-labelledby="impact-heading">
-    <div class="section-heading reveal">
-      <p class="eyebrow">{impact.eyebrow}</p>
-      <h2 id="impact-heading"><Fragment set:html={impact.heading} /><span>.</span></h2>
-      <p class="hook" set:html={impact.hook} />
-    </div>
-
-    <div class="at-a-glance-grid">
-      {
-        impact.cards.map((card, index) => (
-          <article class="at-a-glance-card reveal" data-delay={index + 1}>
-            <span class="glance-icon" aria-hidden="true">{card.icon}</span>
-            <h3>{card.title}</h3>
-            <p set:html={card.body} />
-          </article>
-        ))
-      }
     </div>
 
     <!-- Navigation to Next Case -->
-    <div style="text-align: left; margin-top: 3.5rem;" class="reveal">
+    <div style="text-align: center; margin-top: 5rem;" class="reveal">
       <a class="button button-dark" href={nextCase.href}>
         {nextCase.label} <span aria-hidden="true">→</span>
       </a>
     </div>
   </section>
+
+  <!-- LIGHTBOX MODAL -->
+  <div id="image-lightbox" class="lightbox-modal" aria-hidden="true">
+    <div class="lightbox-backdrop" aria-label="Close modal"></div>
+    <div class="lightbox-content" role="dialog" aria-modal="true" aria-label="Enlarged screenshot">
+      <button class="lightbox-close" aria-label="Close zoom">✕</button>
+      <img id="lightbox-image" src="" alt="Enlarged screenshot" />
+    </div>
+  </div>
+
 </BaseLayout>
+
+<style>
+  /* HERO LAYOUT */
+  .hero-split-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    align-items: center;
+  }
+  .hero-split-visual {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+  }
+  
+  .dual-mockup-container {
+    position: relative;
+    width: 100%;
+    max-width: 760px; /* Made slightly larger */
+    aspect-ratio: 1.25 / 1;
+    margin: 0 auto;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+  }
+  
+  .mockup-player-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 72%; /* Increased */
+    z-index: 1; /* Moved to back */
+  }
+
+  .mockup-editor-wrapper {
+    position: absolute;
+    bottom: -2%;
+    right: 0;
+    width: 65%; /* Increased */
+    z-index: 2; /* Moved to front */
+  }
+  
+  .mockup-editor, .mockup-player {
+    width: 100%;
+    display: block;
+    background: transparent;
+  }
+
+  @media (min-width: 900px) {
+    .hero-split-layout {
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: 3rem;
+    }
+  }
+
+  /* SYSTEM FLOW LAYOUT */
+  .system-flow-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    background: transparent;
+    padding: 0;
+    border: none;
+    width: 100%;
+  }
+  .flow-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    max-width: 500px; /* Kept large and clear */
+  }
+  .flow-image-wrapper {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    padding: 0;
+    margin-bottom: 1.5rem;
+  }
+  .flow-image-wrapper img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    display: block;
+  }
+  .flow-title {
+    font-family: var(--display);
+    font-size: 1.35rem;
+    margin-bottom: 0.5rem;
+    color: var(--ink);
+  }
+  .flow-desc {
+    font-size: 1.05rem;
+    color: var(--ink-muted);
+    line-height: 1.5;
+    margin: 0;
+  }
+  .flow-arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    color: var(--border);
+    transform: rotate(90deg); /* Down arrow */
+    margin: 1rem 0;
+  }
+
+  /* REUSABLE CLASSES */
+  .split-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+  }
+
+  /* COMPUTER MOCKUP CSS */
+  .css-computer-mockup {
+    background: var(--surface);
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+    width: 100%;
+    overflow: hidden;
+  }
+  .mockup-header {
+    height: 32px;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    padding: 0 15px;
+    gap: 8px;
+  }
+  .mockup-header .dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+  }
+  .mockup-header .dot.red { background-color: #ff5f56; }
+  .mockup-header .dot.yellow { background-color: #ffbd2e; }
+  .mockup-header .dot.green { background-color: #27c93f; }
+
+  @media (min-width: 900px) {
+    .video-split .split-text-block {
+      flex: 0 0 38%;
+      max-width: 38%;
+    }
+    .video-split .split-visual-frame {
+      flex: 0 0 58%;
+      max-width: 58%;
+    }
+  }
+  .split-text-block {
+    flex: 1;
+  }
+  .split-visual-frame {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    padding: 0;
+  }
+  .text-only-frame {
+    justify-content: center;
+  }
+  .large-media-frame {
+    width: 100%;
+  }
+
+  @media (min-width: 900px) {
+    .split-layout {
+      flex-direction: row;
+      gap: 5rem;
+      align-items: center;
+    }
+    .split-layout.reverse {
+      flex-direction: row-reverse;
+    }
+    .split-text-block {
+      flex: 0 0 42%;
+    }
+    .split-visual-frame {
+      flex: 0 0 52%;
+    }
+  }
+  
+  /* TECHNICAL BLOCKS */
+  .technical-alternating-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 6rem;
+  }
+  .tech-block {
+    margin-bottom: 0;
+  }
+
+  /* VIDEO SHOWCASE */
+  .video-showcase-container {
+    width: 100%;
+    margin: 0 auto;
+    border-radius: 12px;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+  }
+  @media (min-width: 900px) {
+    .video-showcase-container {
+      width: 85%;
+    }
+  }
+  
+  /* SUBNAV REFINEMENT */
+  .custom-subnav {
+    flex-wrap: nowrap !important;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none; /* Firefox */
+  }
+  .custom-subnav::-webkit-scrollbar {
+    display: none;
+  }
+  .custom-subnav li {
+    white-space: nowrap;
+  }
+  @media (min-width: 900px) {
+    .custom-subnav {
+      justify-content: center !important;
+      gap: 1.5rem !important;
+    }
+    .custom-subnav a {
+      font-size: 0.9rem !important;
+      padding: 0.5rem 0.2rem !important;
+    }
+  }
+  @media (min-width: 1024px) {
+    .custom-subnav {
+      gap: 2rem !important;
+    }
+    .custom-subnav a {
+      font-size: 0.95rem !important;
+    }
+  }
+
+  /* LIGHTBOX ZOOM */
+  .zoomable-container {
+    position: relative;
+    cursor: zoom-in;
+  }
+
+  .zoomable-image {
+    transition: transform 0.3s ease;
+  }
+  
+  .zoomable-image:focus {
+    outline: 2px solid var(--orange, #ff6b35);
+    outline-offset: -2px;
+  }
+
+  .zoom-button {
+    position: absolute;
+    bottom: 12px;
+    right: 12px;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: zoom-in;
+    opacity: 0;
+    transition: opacity 0.2s ease, background 0.2s ease;
+    pointer-events: none;
+  }
+
+  .zoomable-container:hover .zoom-button {
+    opacity: 1;
+  }
+  
+  .zoomable-container:hover .zoomable-image {
+    transform: scale(1.015);
+  }
+
+  .lightbox-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+  }
+
+  .lightbox-modal.is-open {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .lightbox-backdrop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(10, 10, 10, 0.9);
+    cursor: zoom-out;
+  }
+
+  .lightbox-content {
+    position: relative;
+    z-index: 10000;
+    max-width: 90vw;
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .lightbox-content img {
+    max-width: 100%;
+    max-height: 90vh;
+    border-radius: 8px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+  }
+
+  .lightbox-close {
+    position: absolute;
+    top: -40px;
+    right: 0;
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    opacity: 0.8;
+    transition: opacity 0.2s ease;
+  }
+
+  .lightbox-close:hover {
+    opacity: 1;
+  }
+</style>
+
+<script>
+  // Active subnav on scroll
+  const observerOptions = {
+    root: null,
+    rootMargin: '-20% 0px -60% 0px',
+    threshold: 0
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = entry.target.getAttribute('id');
+        document.querySelectorAll('.case-subnav-list a').forEach(link => {
+          link.classList.remove('is-active');
+          if (link.getAttribute('href') === `#${id}`) {
+            link.classList.add('is-active');
+          }
+        });
+      }
+    });
+  }, observerOptions);
+
+  document.querySelectorAll('section[id], header[id]').forEach((section) => {
+    observer.observe(section);
+  });
+
+  // Lightbox Implementation
+  const lightbox = document.getElementById('image-lightbox');
+  const lightboxImg = document.getElementById('lightbox-image');
+  const closeBtn = document.querySelector('.lightbox-close');
+  const backdrop = document.querySelector('.lightbox-backdrop');
+  const zoomables = document.querySelectorAll('.zoomable-image');
+  const zoomButtons = document.querySelectorAll('.zoom-button');
+  
+  let previouslyFocusedElement = null;
+
+  function openLightbox(src) {
+    previouslyFocusedElement = document.activeElement;
+    if (lightboxImg && lightbox) {
+      lightboxImg.src = src;
+      lightbox.setAttribute('aria-hidden', 'false');
+      lightbox.classList.add('is-open');
+      document.body.style.overflow = 'hidden'; // Prevent scrolling
+      if (closeBtn) closeBtn.focus();
+    }
+  }
+
+  function closeLightbox() {
+    if (lightbox) {
+      lightbox.setAttribute('aria-hidden', 'true');
+      lightbox.classList.remove('is-open');
+      document.body.style.overflow = ''; 
+      if (previouslyFocusedElement) {
+        previouslyFocusedElement.focus();
+      }
+    }
+  }
+
+  // Bind click/keyboard events to zoomable images and buttons
+  zoomables.forEach(img => {
+    img.addEventListener('click', () => openLightbox(img.getAttribute('src')));
+    img.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        openLightbox(img.getAttribute('src'));
+      }
+    });
+  });
+
+  zoomButtons.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      const img = btn.previousElementSibling;
+      if (img && img.tagName === 'IMG') {
+        openLightbox(img.getAttribute('src'));
+      }
+    });
+  });
+
+  // Close events
+  closeBtn?.addEventListener('click', closeLightbox);
+  backdrop?.addEventListener('click', closeLightbox);
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && lightbox && lightbox.classList.contains('is-open')) {
+      closeLightbox();
+    }
+  });
+</script>

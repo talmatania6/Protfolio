@@ -423,14 +423,25 @@ h1, h2, h3, h4, h5, h6 {
   content: "";
   position: absolute;
   left: -0.1em;
-  right: -0.1em;
-  bottom: 8%;
-  height: 38%;
-  background: rgba(255, 91, 58, 0.45);
+  right: -0.15em;
+  bottom: 12%;
+  height: 32%;
+  background: rgba(255, 91, 58, 0.38);
   z-index: -1;
-  border-radius: 4px;
-  transform: rotate(-0.6deg);
+  border-radius: 60px 10px 40px 10px / 10px 30px 10px 40px;
+  transform: rotate(-0.8deg);
   pointer-events: none;
+}
+
+/* Handwritten Accent Text */
+.handwritten-accent {
+  font-family: 'Caveat', cursive, var(--display);
+  font-size: 1em;
+  font-weight: 700;
+  color: var(--orange);
+  display: inline-block;
+  transform: rotate(-3deg) translateY(-2px);
+  margin-right: 0.25em;
 }
 
 .highlight-orange {
@@ -571,6 +582,16 @@ h1, h2, h3, h4, h5, h6 {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: clamp(1.75rem, 3vw, 2.75rem);
+}
+
+@media (min-width: 769px) {
+  .projects-grid-2col .project-card-rectangular:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+    justify-self: center;
+    width: 100%;
+    /* Same width as other cards: 50% minus half the gap */
+    max-width: calc(50% - (clamp(1.75rem, 3vw, 2.75rem) / 2));
+  }
 }
 
 .project-card-rectangular {
@@ -803,12 +824,17 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .split-text-block h2 {
-  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  font-size: clamp(2.2rem, 3.8vw, 3.4rem);
   font-weight: 900;
-  margin: 0 0 1.25rem;
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+  margin: 0 0 0.75rem;
   text-align: left;
 }
-.split-text-block p {
+.split-text-block h2 span {
+  color: var(--orange);
+}
+.split-text-block p:not(.eyebrow) {
   font-size: 1.1rem;
   color: var(--ink-muted);
   line-height: 1.68;
