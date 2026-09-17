@@ -1,8 +1,9 @@
 ---
 author: Tal Matania
-email: hello@talmatania.com
-linkedin: https://www.linkedin.com/
-cv: /assets/documents/tal-matania-cv.pdf
+email: talmatania6@gmail.com
+linkedin: https://www.linkedin.com/in/tal-matania-2b0504354/
+behance: https://www.behance.net/TalMataniaDesigns
+cv: /assets/Tal-Matania-CV.pdf
 themeColor: "#fdfcf8"
 
 # The two-letter monogram in the header. The second letter is the orange one.
@@ -16,7 +17,6 @@ brand:
 nav:
   - { href: "#projects", label: Work, home: true }
   - { href: "#about", label: About, home: true }
-  - { href: /assets/documents/tal-matania-cv.pdf, label: CV, download: true, suffix: "↙" }
   - { href: "#contact", label: Contact }
 
 footer:

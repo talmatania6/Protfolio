@@ -86,18 +86,36 @@
     });
 
     if (sections.length && 'IntersectionObserver' in window) {
+      const intersectingRatios = new Map();
+
       const sectionObserver = new IntersectionObserver((entries) => {
         if (isNavClickScrolling) return;
 
-        const visible = entries
-          .filter((entry) => entry.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            intersectingRatios.set(entry.target, entry.intersectionRatio);
+          } else {
+            intersectingRatios.delete(entry.target);
+          }
+        });
 
-        if (!visible) return;
         links.forEach((link) => link.classList.remove('is-active'));
-        const current = sections.find((item) => item.section === visible.target);
-        if (current) current.link.classList.add('is-active');
-      }, { threshold: [0.2, 0.5, 0.8], rootMargin: '-15% 0px -50% 0px' });
+
+        if (intersectingRatios.size > 0) {
+          let maxRatio = -1;
+          let mostVisibleSection = null;
+
+          intersectingRatios.forEach((ratio, section) => {
+            if (ratio > maxRatio) {
+              maxRatio = ratio;
+              mostVisibleSection = section;
+            }
+          });
+
+          const current = sections.find((item) => item.section === mostVisibleSection);
+          if (current) current.link.classList.add('is-active');
+        }
+      }, { threshold: [0, 0.25, 0.5, 0.75, 1], rootMargin: '-100px 0px -40% 0px' });
 
       sections.forEach((item) => sectionObserver.observe(item.section));
     }

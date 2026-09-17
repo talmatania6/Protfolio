@@ -361,6 +361,15 @@ const storylineUrl =
     </section>
   )}
 
+    <!-- Navigation to Next Case -->
+    {nextCase && (
+      <div style="text-align: center; margin-top: 5rem; padding-bottom: 2rem;" class="reveal">
+        <a class="button button-dark" href={nextCase.href}>
+          {nextCase.label} <span aria-hidden="true">→</span>
+        </a>
+      </div>
+    )}
+
   <!-- LIGHTBOX MODAL -->
   <div id="image-lightbox" class="lightbox-modal" aria-hidden="true">
     <div class="lightbox-backdrop" aria-label="Close modal"></div>

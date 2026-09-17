@@ -45,6 +45,7 @@ const site = defineCollection({
     author: z.string(),
     email: z.string(),
     linkedin: z.string(),
+    behance: z.string().optional(),
     cv: z.string(),
     themeColor: z.string(),
     brand: z.object({ first: z.string(), second: z.string() }),

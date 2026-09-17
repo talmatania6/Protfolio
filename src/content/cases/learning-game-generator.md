@@ -25,16 +25,16 @@ tags:
 
 hero:
   title: Plane It Right
-  tagline: A dual-sided learning game that turns category-based knowledge into active practice.
+  tagline: A dual-sided learning game that transforms knowledge into an engaging classification challenge.
   valueProp: >-
-    Plane It Right is a dual-sided learning product that combines an educator-facing authoring system with an interactive sorting game. Educators can create and publish customized content, while learners practice rapid classification through a dynamic airport-themed experience.
+    Plane It Right is a learning product that combines an educator-facing authoring system with an interactive sorting game. Educators can create and publish customized content, while learners practice rapid classification through a dynamic airport-themed experience.
 
 subnav:
   - { href: "#overview", label: Overview }
   - { href: "#problem", label: The Problem }
   - { href: "#challenge", label: The Challenge }
-  - { href: "#solution", label: The Learning Solution }
-  - { href: "#instructional-design", label: Instructional Design }
+  - { href: "#solution", label: Educator Solution }
+  - { href: "#instructional-design", label: Learner Solution }
   - { href: "#ai-development", label: "AI & Development" }
   - { href: "#experience", label: The Learning Experience }
 
@@ -52,7 +52,5 @@ glance:
     body: >-
       A synchronized two-sided system that connects an educator authoring environment with a learner-facing sorting game.
 
-nextCase:
-  href: /cases/surgical-ergonomics/
-  label: "Next Case Study: Surgical Ergonomics Companion"
+
 ---

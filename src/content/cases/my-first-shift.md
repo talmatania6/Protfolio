@@ -127,5 +127,8 @@ inUseToday:
       quote: "I still had questions when I started, but at least I wasn’t coming in completely blind."
     - author: "Shift Manager"
       quote: "New waiters still need guidance on the floor, but they arrive with a much better starting point."
+
+nextCase:
+  href: /cases/surgical-ergonomics/
+  label: "Next Case Study: Surgical Ergonomics Companion"
 ---
- 

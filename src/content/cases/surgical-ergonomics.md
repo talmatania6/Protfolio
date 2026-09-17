@@ -35,8 +35,8 @@ subnav:
   - { href: "#challenge", label: The Challenge }
   - { href: "#solution", label: The Learning Solution }
   - { href: "#strategy", label: Content Strategy }
-  - { href: "#experience", label: The Learning Experience }
   - { href: "#just-in-time", label: QR Access }
+  - { href: "#experience", label: The Learning Experience }
 
 glance:
   - icon: 👤
@@ -47,7 +47,7 @@ glance:
   - icon: 🛠️
     title: Tools
     body: >-
-      Camtasia, HeyGen, Figma, Canva, AI tools, Google AI Studio, AI-assisted coding / development, Render — Website deployment platform
+      Camtasia, HeyGen, Figma, Canva, Google AI Studio, AI-assisted coding (Antigravity), Website deployment platform (Render)
   - icon: 🎯
     title: Solution
     body: >-
@@ -77,7 +77,7 @@ problem:
   context: >-
     This project was created for surgeons at Rambam Health Care Campus, where ergonomic strain during surgery is an important occupational concern. The instructional need was to help surgeons reduce musculoskeletal strain and injury caused by prolonged, repetitive, and awkward working postures in the operating room.
   body: >-
-    The challenge was not simply a lack of knowledge. Small ergonomic habits can repeat throughout procedures and accumulate over years of practice, increasing physical strain over time. The project therefore focused on common surgical scenarios where practical ergonomic guidance could have the greatest relevance to everyday clinical work.
+    The challenge was not only to raise awareness of ergonomic principles, but to translate them into practical habits that surgeons could apply within a fast-paced operating-room environment. Small posture and positioning habits can repeat throughout procedures and accumulate over years of practice, increasing physical strain over time. The learning solution therefore needed to make relevant ergonomic guidance easy to access, understand, and apply within common surgical scenarios.
 
 challenge:
   eyebrow: 02 / The Challenge
@@ -96,9 +96,9 @@ learningSolution:
   eyebrow: 03 / The Learning Solution
   heading: The Learning Solution
   context: >-
-    To address this challenge, I designed a mobile learning app that delivers ergonomic guidance through seven short, focused learning topics. Each topic is presented visually and opens a short video explanation, allowing learners to quickly access the guidance most relevant to them.
+    To address this challenge, I designed a mobile learning app that delivers ergonomic guidance through seven short, focused learning topics. The app opens with a brief introductory video featuring an illustrated guide character before transitioning into the main learning interface, where users can explore seven visually presented topics, each linked to a dedicated ergonomics video. With every video kept under two minutes, learners can quickly access relevant guidance and engage in short, digestible learning sessions.
   body: >-
-    The app opens with a short introductory video featuring an illustrated guide character, and then transitions into the main learning interface. From there, users can choose one of seven topics, each linked to a dedicated ergonomics video. Each video remains under two minutes in length in order to support quick, digestible learning.<br><br><strong>Why an App?</strong><br>The learning needed to be available whenever the need arose—not locked inside a one-time training experience. A mobile app allowed the content to remain accessible, non-linear, quick to consume, and available at the point of need. Surgeons could choose the relevant procedure or topic and immediately access a short piece of guidance instead of searching through a full course.
+    <strong>Why an App?</strong><br>The learning needed to be available whenever the need arose—not locked inside a one-time training experience. A mobile app allowed the content to remain accessible, non-linear, quick to consume, and available at the point of need. Surgeons could choose the relevant procedure or topic and immediately access a short piece of guidance instead of searching through a full course.
 
 contentStrategy:
   eyebrow: 04 / Content Strategy
@@ -167,6 +167,6 @@ reflection:
     This project strengthened my ability to translate specialized professional knowledge into an accessible digital learning experience. It required balancing clinical credibility, concise instructional design, and a friendly visual approach. It also deepened my experience in creating learning products that combine UX thinking, video-based instruction, and AI-supported media.
 
 nextCase:
-  href: /cases/my-first-shift/
-  label: "Next Case Study: My First Shift Onboarding"
+  href: /cases/learning-game-generator/
+  label: "Next Case Study: Plane It Right"
 ---

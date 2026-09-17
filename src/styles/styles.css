@@ -367,14 +367,14 @@ h1, h2, h3, h4, h5, h6 {
   animation: subtleFloat 6s ease-in-out infinite alternate;
 }
 .shape-1 {
-  top: -8%;
+  top: 12%;
   right: 10%;
   font-size: 2.5rem;
   color: var(--orange);
   animation-duration: 5.5s;
 }
 .shape-2 {
-  top: 38%;
+  top: 52%;
   right: -2%;
   font-size: 1.9rem;
   color: #ffaa40;
@@ -391,7 +391,7 @@ h1, h2, h3, h4, h5, h6 {
   animation-delay: -1s;
 }
 .shape-4 {
-  top: 6%;
+  top: 28%;
   right: 25%;
   font-size: 2.1rem;
   color: var(--orange);
@@ -422,14 +422,14 @@ h1, h2, h3, h4, h5, h6 {
 .marker-underline::after {
   content: "";
   position: absolute;
-  left: -0.1em;
-  right: -0.15em;
-  bottom: 12%;
-  height: 32%;
-  background: rgba(255, 91, 58, 0.38);
+  left: -1%;
+  right: -2%;
+  bottom: 8%;
+  height: 38%;
+  background: rgba(255, 91, 58, 0.28);
   z-index: -1;
-  border-radius: 60px 10px 40px 10px / 10px 30px 10px 40px;
-  transform: rotate(-0.8deg);
+  border-radius: 255px 20px 225px 30px / 20px 255px 30px 225px;
+  transform: rotate(-1.5deg);
   pointer-events: none;
 }
 
@@ -451,32 +451,32 @@ h1, h2, h3, h4, h5, h6 {
 
 .hero-name {
   font-family: var(--display);
-  font-size: clamp(3.8rem, 8.5vw, 7.2rem);
+  font-size: clamp(4.5rem, 10vw, 8.5rem);
   font-weight: 900;
-  line-height: 1.02;
+  line-height: 1.05;
   letter-spacing: -0.05em;
-  margin: 0 0 1.15rem;
+  margin: 0 0 0.5rem;
   text-align: left;
   color: var(--ink);
 }
 
 .hero-role-title {
   font-family: var(--display);
-  font-size: clamp(1.6rem, 3.2vw, 2.75rem);
-  font-weight: 800;
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  font-weight: 700;
   color: var(--ink);
-  letter-spacing: -0.035em;
-  line-height: 1.25;
-  margin: 0 0 2rem;
+  letter-spacing: -0.03em;
+  line-height: 1.35;
+  margin: 0 0 1.5rem;
   text-align: left;
 }
 
 .hero-value-prop {
   font-size: clamp(1.15rem, 1.6vw, 1.35rem);
-  line-height: 1.68;
+  line-height: 1.65;
   color: var(--ink-muted);
-  max-width: 880px;
-  margin: 0 0 2.75rem;
+  max-width: 650px;
+  margin: 0 0 2.5rem;
   text-align: left;
 }
 .hero-value-prop p {

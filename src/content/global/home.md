@@ -13,20 +13,16 @@ meta:
   ogImage: /assets/images/og-placeholder.svg
 
 hero:
-  badge: ● Open to Instructional Design &amp; Learning Tech Opportunities
-  heading: <span class="handwritten-accent">Hi!</span> I’m <span class="marker-underline">Tal Matania</span>
+  badge: "OPEN TO INSTRUCTIONAL DESIGN & LEARNING TECH OPPORTUNITIES"
+  heading: <span class="highlight-orange">Hi!</span> I’m <span class="marker-underline">Tal Matania</span>
   role: >-
-    <span class="highlight-orange">Instructional Designer</span> &
-    <span class="highlight-orange">Learning Technologies</span> student.
+    I’m an <span class="highlight-orange">Instructional Designer</span><br/>
+    & <span class="highlight-orange">Learning Technologies</span> student.
   valueProp: >-
-    I turn complex content into clear, engaging learning experiences.
+    I design learning experiences that connect instructional thinking with visual design and hands-on development.
   actions:
     - { style: primary, href: "#projects", label: See My Work, suffix: "↓" }
-    - style: ghost
-      href: /assets/documents/tal-matania-cv.pdf
-      label: Download CV
-      suffix: "↗"
-      download: true
+    - { style: ghost, href: "/assets/Tal-Matania-CV.pdf", label: Download CV, download: true, suffix: "↗" }
 
 projects:
   eyebrow: Selected Work
@@ -35,31 +31,9 @@ projects:
     A curated look at interactive learning games, clinical microlearning
     companions, and AI-powered educational systems.
   items:
-    - href: /cases/surgical-ergonomics/
-      ariaLabel: Surgical Ergonomics Case Study
-      delay: 1
-      gradient: ["#101c24", "#081016"]
-      previewImage: /assets/projects/surgical-ergonomics/intro-ergo.png
-      badge: Rambam Medical Center
-      cornerEmoji: "🏥"
-      emojiRow: 🩺 📱 📐
-      previewTitle: Surgical Ergonomics Companion
-      previewBlurb: Mobile JIT microlearning for operating room surgical teams.
-      footerLeft: Just-in-Time Delivery
-      footerRight: Habit Formation
-      tags:
-        - { label: Microlearning, highlight: true }
-        - { label: Healthcare UX }
-        - { label: Clinical Ergonomics }
-      title: Surgical Ergonomics Companion
-      description: >-
-        A mobile microlearning solution designed for Rambam Health Care Campus to
-        help surgeons build healthier operating-room posture habits and prevent
-        musculoskeletal fatigue.
-
     - href: /cases/my-first-shift/
       ariaLabel: My First Shift Case Study
-      delay: 2
+      delay: 1
       gradient: ["#221a15", "#140d09"]
       previewImage: /assets/images/my-first-shift-hero.png
       badge: Simulation · E-Learning
@@ -78,6 +52,26 @@ projects:
         A realistic scenario-based onboarding experience that prepares new restaurant
         waiters to handle service situations, prioritize tasks, and build confidence
         before their first live shifts.
+
+    - href: /cases/surgical-ergonomics/
+      ariaLabel: Surgical Ergonomics Case Study
+      delay: 2
+      gradient: ["#101c24", "#081016"]
+      previewImage: /assets/projects/surgical-ergonomics/intro-ergo.png
+      badge: Rambam Medical Center
+      cornerEmoji: "🏥"
+      emojiRow: 🩺 📱 📐
+      previewTitle: Surgical Ergonomics Companion
+      previewBlurb: Mobile JIT microlearning for operating room surgical teams.
+      footerLeft: Just-in-Time Delivery
+      footerRight: Habit Formation
+      tags:
+        - { label: Microlearning, highlight: true }
+        - { label: Healthcare UX }
+        - { label: Clinical Ergonomics }
+      title: Surgical Ergonomics Companion
+      description: >-
+        A mobile microlearning solution designed to help surgeons in Rambam Health Care Campus build healthier operating-room posture habits and prevent musculoskeletal fatigue.
 
     - href: /cases/learning-game-generator/
       ariaLabel: Plane It Right Case Study
@@ -189,7 +183,7 @@ process:
 
 about:
   eyebrow: Background
-  heading: About Tal Matania
+  heading: About Me
   hook: Instructional designer, learning technologist, and details-obsessed builder.
   greeting: "Nice to meet you — I’m Tal :)"
   body: >-
