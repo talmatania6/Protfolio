@@ -131,18 +131,6 @@ if (!site) throw new Error('Missing src/content/global/site.md');
             alt="Tal Matania" 
             style="width: 100%; border-radius: var(--radius-md, 14px); object-fit: cover; box-shadow: 0 10px 40px rgba(0,0,0,0.05);"
           />
-          <div style="margin-top: 1.5rem; display: flex; flex-wrap: wrap; gap: 1.5rem; justify-content: flex-start; overflow: visible;">
-            {site.data.linkedin && (
-              <a href={site.data.linkedin} target="_blank" rel="noopener noreferrer" style="display: inline-block; white-space: nowrap; padding-inline: 0.25rem; color: var(--ink-muted); text-decoration: none; font-weight: 600; font-size: 0.95rem; border-bottom: 2px solid transparent; transition: color 0.2s;">
-                LinkedIn <span aria-hidden="true">↗</span>
-              </a>
-            )}
-            {site.data.behance && (
-              <a href={site.data.behance} target="_blank" rel="noopener noreferrer" style="display: inline-block; white-space: nowrap; padding-inline: 0.25rem; color: var(--ink-muted); text-decoration: none; font-weight: 600; font-size: 0.95rem; border-bottom: 2px solid transparent; transition: color 0.2s;">
-                Behance <span aria-hidden="true">↗</span>
-              </a>
-            )}
-          </div>
         </div>
       </div>
       
