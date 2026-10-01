@@ -95,26 +95,25 @@ projects:
         An interactive sorting game for learners paired with a no-code AI
         generator for educators—transforming quizzes and learning into a fun, engaging experience.
 
-#    - href: /cases/video-editing/
-#      ariaLabel: Video Editing Case Study
-#      delay: 2
-#      gradient: ["#1d1726", "#0d0914"]
-#      badge: Content Architecture
-#      cornerEmoji: "🎬"
-#      emojiRow: 🎞️ 📐 ✂️
-#      previewTitle: Video Editing Guided Site
-#      previewBlurb: Task-based learning architecture for beginner creators.
-#      footerLeft: Task Sequences
-#      footerRight: Self-Paced Web
-#      tags:
-#        - { label: Task Analysis, highlight: true }
-#        - { label: Content Strategy }
-#        - { label: Web UI }
-#      title: Video Editing Guided Website
-#      description: >-
-#        Deconstructing complex technical editing software into progressive,
-#        task-based learning steps that eliminate software overwhelm and connect
-#        rules to practice.
+    - href: /cases/video-editing/
+      ariaLabel: Video Editing Case Study
+      delay: 2
+      gradient: ["#1d1726", "#0d0914"]
+      previewImage: /assets/projects/plane-it-right/planeitright-ui-hero.png
+      badge: Instructional One-Pager
+      cornerEmoji: "🎬"
+      emojiRow: 🎞️ 📐 ✂️
+      previewTitle: Video Editing Website
+      previewBlurb: A One-Pager Instructional Site for aspiring creators.
+      footerLeft: Figma Prototype
+      footerRight: Self-Paced Web
+      tags:
+        - { label: Instructional Web Design, highlight: true }
+        - { label: Content Architecture }
+        - { label: Figma Prototype }
+      title: "Video Editing Website for Aspiring Creators"
+      description: >-
+        A dedicated instructional One-Pager designed for the next generation of digital storytellers, transforming the daunting world of video editing into a streamlined, single-scroll learning journey.
 
 philosophy:
   eyebrow: Instructional Foundations

@@ -1,0 +1,266 @@
+---
+export interface Props {
+  beforeImage: string;
+  beforeAlt?: string;
+  afterImage: string;
+  afterAlt?: string;
+}
+
+const { beforeImage, beforeAlt, afterImage, afterAlt } = Astro.props;
+---
+
+<div class="image-comparison-wrapper">
+  <div class="image-comparison-labels" aria-hidden="true">
+    <span class="label-wireframe">wireframe</span>
+    <span class="label-final">final UI</span>
+  </div>
+  
+  <image-comparison class="image-comparison">
+    <!-- After Image (Background) -->
+    <img src={afterImage} alt={afterAlt || 'After image'} class="image-comparison__after" draggable="false" />
+    
+    <!-- Before Image (Foreground, clipped) -->
+    <img src={beforeImage} alt={beforeAlt || 'Before image'} class="image-comparison__before" draggable="false" />
+    
+    <!-- Handle -->
+    <div class="image-comparison__handle">
+      <div class="image-comparison__handle-line"></div>
+      <div class="image-comparison__handle-button">
+        <svg class="icon-left" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M15 18l-6-6 6-6"/>
+        </svg>
+        <svg class="icon-right" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M9 18l6-6-6-6"/>
+        </svg>
+      </div>
+    </div>
+    
+    <!-- Range Input (invisible, covers the whole image) -->
+    <input type="range" min="0" max="100" value="50" step="0.1" class="image-comparison__range" aria-label="Compare images" />
+  </image-comparison>
+</div>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@700&display=swap');
+
+.image-comparison-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.image-comparison-labels {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding-inline: 0.75rem;
+  margin-bottom: 0.35rem;
+  font-family: 'Caveat', cursive, sans-serif;
+  font-size: 26px;
+  font-weight: 700;
+  color: #FF4400;
+  line-height: 1;
+  user-select: none;
+}
+
+.label-wireframe {
+  text-align: left;
+}
+
+.label-final {
+  text-align: right;
+}
+
+.image-comparison {
+  position: relative;
+  display: block;
+  width: 100%;
+  overflow: hidden;
+  border-radius: var(--radius-md, 8px);
+  background: var(--paper-soft, #f4f4f4);
+  line-height: 0;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.image-comparison__after,
+.image-comparison__before {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  pointer-events: none;
+}
+
+.image-comparison__before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  clip-path: inset(0 50% 0 0);
+  will-change: clip-path;
+}
+
+/* Range Input: Covers the entire component, invisible but interactive */
+.image-comparison__range {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0; /* visually hidden */
+  cursor: ew-resize;
+  margin: 0;
+  z-index: 10;
+  -webkit-appearance: none;
+}
+
+.image-comparison__handle {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 4px; /* width of the vertical line */
+  background-color: white;
+  transform: translateX(-50%);
+  pointer-events: none; /* Let the range input handle clicks */
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  will-change: left;
+}
+
+.image-comparison__handle-button {
+  width: 44px;
+  height: 44px;
+  background-color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+  color: #333;
+}
+
+.icon-left, .icon-right {
+  width: 16px;
+  height: 16px;
+}
+
+/* Better drag behavior by expanding thumb height to cover entire area for easier grabbing */
+.image-comparison__range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 44px;
+  height: 1000px; /* arbitrary large height to act as a full vertical grab target */
+  background: transparent;
+  cursor: ew-resize;
+}
+.image-comparison__range::-moz-range-thumb {
+  width: 44px;
+  height: 1000px;
+  background: transparent;
+  cursor: ew-resize;
+  border: none;
+}
+</style>
+
+<script>
+class ImageComparison extends HTMLElement {
+  constructor() {
+    super();
+    
+    // We run the script setup after the component mounts
+    const range = this.querySelector('.image-comparison__range');
+    const beforeImage = this.querySelector('.image-comparison__before');
+    const handle = this.querySelector('.image-comparison__handle');
+
+    if (!range || !beforeImage || !handle) return;
+
+    let hasInteracted = false;
+    let animationFrameId = null;
+
+    const setPosition = (value) => {
+      const valNum = parseFloat(value);
+      range.value = valNum.toString();
+      beforeImage.style.clipPath = `inset(0 ${100 - valNum}% 0 0)`;
+      handle.style.left = `${valNum}%`;
+    };
+
+    const stopAnimation = () => {
+      hasInteracted = true;
+      if (animationFrameId !== null) {
+        cancelAnimationFrame(animationFrameId);
+        animationFrameId = null;
+      }
+    };
+
+    // Listen for drag/input events
+    range.addEventListener('input', (e) => {
+      stopAnimation();
+      setPosition(e.target.value);
+    });
+
+    // Stop animation on any user interaction with the slider wrapper
+    range.addEventListener('mousedown', stopAnimation);
+    range.addEventListener('touchstart', stopAnimation, { passive: true });
+    this.addEventListener('mouseenter', stopAnimation);
+
+    // Animation logic
+    const animateHint = () => {
+      if (hasInteracted) return;
+      const duration = 6600; // 3 cycles of ~2.2s
+      const startTime = performance.now();
+
+      const animate = (currentTime) => {
+        if (hasInteracted) return;
+        
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        
+        // Smoothly fade the amplitude in and out to prevent jerky starts/stops
+        let envelope = 1;
+        if (progress < 0.1) envelope = progress / 0.1; // fade in first 10%
+        if (progress > 0.9) envelope = (1 - progress) / 0.1; // fade out last 10%
+
+        // Sinusoidal movement over 3 cycles: starts at 50, oscillates gently, settles at 50
+        const value = 50 + (Math.sin(progress * Math.PI * 2 * 3) * 4.5 * envelope);
+        
+        setPosition(value);
+
+        if (progress < 1) {
+          animationFrameId = requestAnimationFrame(animate);
+        } else {
+          setPosition(50);
+          animationFrameId = null;
+        }
+      };
+      
+      animationFrameId = requestAnimationFrame(animate);
+    };
+
+    // Intersection Observer to trigger animation once
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting && !hasInteracted) {
+            // Add a slight 300ms delay after scrolling into view before motion starts
+            setTimeout(() => {
+              if (!hasInteracted) animateHint();
+            }, 300);
+            observer.disconnect();
+          }
+        });
+      }, { threshold: 0.6 });
+
+      observer.observe(this);
+    }
+  }
+}
+
+if (!customElements.get('image-comparison')) {
+  customElements.define('image-comparison', ImageComparison);
+}
+</script>

@@ -259,6 +259,7 @@ const cases = defineCollection({
       body: z.string(),
       techOutput: z.string().optional(),
     }).optional(),
+
   }),
 });
 
